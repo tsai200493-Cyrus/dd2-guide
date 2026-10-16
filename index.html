@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>龍族教義2 攻略指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4ecdc; --bg2:#ebe0c8; --card:#fbf6ea; --ink:#2a2118; --muted:#6d5e4b; --line:#d6c7a8;
+  --accent:#a3271b; --accent-soft:#f3d9d3; --gold:#9a6b12; --gold-soft:#f2e3bf;
+  --ok:#2f6b3a; --ok-soft:#dbeedd; --warn:#8a5a00; --warn-soft:#fbecc8; --bad:#9b1c1c; --bad-soft:#f8d7d7;
+  --blue:#2c5d8a; --blue-soft:#dce8f3;
+  --tS:#c0392b; --tA:#d9822b; --tB:#b8a227; --tC:#5b8c5a; --tD:#6b7f99;
+  --shadow:0 1px 2px rgba(60,40,10,.08),0 6px 18px rgba(60,40,10,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15110d; --bg2:#1d1813; --card:#211b15; --ink:#efe5d3; --muted:#b0a089; --line:#3a3026;
+    --accent:#e0614f; --accent-soft:#3a1d18; --gold:#d9a845; --gold-soft:#3a2e15;
+    --ok:#7fc58a; --ok-soft:#1b2e1e; --warn:#e8b54e; --warn-soft:#352a12; --bad:#ef7b7b; --bad-soft:#3a1a1a;
+    --blue:#8ab8e0; --blue-soft:#18273a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15110d; --bg2:#1d1813; --card:#211b15; --ink:#efe5d3; --muted:#b0a089; --line:#3a3026;
+  --accent:#e0614f; --accent-soft:#3a1d18; --gold:#d9a845; --gold-soft:#3a2e15;
+  --ok:#7fc58a; --ok-soft:#1b2e1e; --warn:#e8b54e; --warn-soft:#352a12; --bad:#ef7b7b; --bad-soft:#3a1a1a;
+  --blue:#8ab8e0; --blue-soft:#18273a;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
+a{color:var(--accent)}
+h1,h2,h3{font-family:"Noto Serif TC","PMingLiU",serif;line-height:1.3;margin:0}
+button{font:inherit;color:inherit}
+code,kbd{font-family:ui-monospace,Consolas,monospace;font-size:.88em;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:0 .3em}
+#readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--accent));z-index:50}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;max-width:1200px;margin:0 auto;padding:0 24px}
+/* hero */
+.hero{background:radial-gradient(1200px 400px at 70% -10%,rgba(163,39,27,.38),transparent 60%),linear-gradient(180deg,#1a120c,#2a1a11);color:#f5ead6;padding:56px 24px 40px;position:relative;overflow:hidden}
+.hero-in{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero .eyebrow{letter-spacing:.2em;font-size:13px;color:#d9a845;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:900;margin:8px 0 10px;letter-spacing:.04em}
+.hero p{max-width:680px;color:#d8c9b0;margin:0}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-block;font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(217,168,69,.5);color:#ecd3a0}
+.hero svg.wyrm{position:absolute;right:-40px;top:-10px;width:520px;max-width:70%;opacity:.18;z-index:0}
+.theme-btn{position:absolute;top:16px;right:16px;z-index:2;background:rgba(255,255,255,.08);color:#f5ead6;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+.quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:26px;max-width:860px}
+.quick a{display:block;text-decoration:none;color:#f5ead6;background:rgba(255,255,255,.06);border:1px solid rgba(217,168,69,.3);border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.4}
+.quick a b{display:block;color:#ecd3a0;font-size:15px}
+.quick a:hover{background:rgba(255,255,255,.12)}
+/* nav */
+nav.toc{position:sticky;top:16px;align-self:start;margin-top:32px;font-size:14px;max-height:calc(100vh - 32px);overflow:auto;padding-right:4px}
+nav.toc .grp{font-weight:700;color:var(--muted);font-size:11.5px;letter-spacing:.15em;margin:14px 0 4px}
+nav.toc .grp:first-child{margin-top:0}
+nav.toc a{display:block;padding:4px 10px;border-left:2px solid var(--line);color:var(--ink);text-decoration:none}
+nav.toc a:hover{background:var(--bg2)}
+nav.toc a.active{border-left-color:var(--accent);color:var(--accent);font-weight:700}
+nav.toc a .n{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--muted);margin-right:6px}
+main{padding:32px 0 80px;min-width:0}
+section{margin-bottom:60px}
+section > h2{font-size:28px;margin-bottom:6px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+section > h2 .no{font-family:ui-monospace,Consolas,monospace;font-size:14px;color:var(--accent);font-weight:700}
+.lead{color:var(--muted);margin:0 0 20px}
+h3{font-size:19px;margin:26px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.callout{border-radius:10px;padding:14px 16px;margin:14px 0;border:1px solid}
+.callout > b:first-child{display:block;margin-bottom:2px}
+.c-bad{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.c-bad > b:first-child{color:var(--bad)}
+.c-warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+.c-warn > b:first-child{color:var(--warn)}
+.c-ok{background:var(--ok-soft);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
+.c-ok > b:first-child{color:var(--ok)}
+.c-info{background:var(--blue-soft);border-color:color-mix(in srgb,var(--blue) 40%,transparent)}
+.c-info > b:first-child{color:var(--blue)}
+.tag{display:inline-block;font-size:11.5px;line-height:1.6;padding:0 7px;border-radius:5px;font-weight:700;vertical-align:1px;white-space:nowrap}
+.t-new{background:var(--accent-soft);color:var(--accent)}
+.t-gold{background:var(--gold-soft);color:var(--gold)}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-bad{background:var(--bad-soft);color:var(--bad)}
+.t-blue{background:var(--blue-soft);color:var(--blue)}
+.t-unv{background:var(--bg2);color:var(--muted);border:1px dashed var(--line)}
+ul.tight{margin:6px 0;padding-left:1.2em}
+ul.tight li{margin:3px 0}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+table.wide{min-width:760px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--bg2);font-weight:700;font-size:13px;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td .en{display:block;font-size:12px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;align-items:center}
+.filters .lbl{font-size:13px;color:var(--muted);margin-right:2px}
+.chip{font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;line-height:1.4}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.search{flex:1 1 220px;min-width:0;font:inherit;font-size:14.5px;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+/* tier */
+.tier-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+.trow{display:grid;grid-template-columns:64px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.trow:last-child{border-bottom:0}
+.tlabel{display:grid;place-items:center;font:900 26px/1 "Noto Serif TC",serif;color:#fff}
+.tS{background:var(--tS)}.tA{background:var(--tA)}.tB{background:var(--tB)}.tC{background:var(--tC)}.tD{background:var(--tD)}
+.titems{display:flex;flex-wrap:wrap;gap:10px;padding:12px}
+.tcard{display:flex;flex-direction:column;gap:2px;min-width:150px;flex:1 1 180px;max-width:320px;text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);cursor:pointer}
+.tcard:hover{border-color:var(--accent)}
+.tcard b{font-size:15.5px}
+.tcard span{font-size:13px;color:var(--muted);line-height:1.5}
+.tcard .mv{font-size:11.5px;font-weight:700}
+.up{color:var(--ok)}.down{color:var(--bad)}
+/* vocation explorer */
+.vpick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.vpick button{padding:9px 6px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;line-height:1.3;text-align:center}
+.vpick button small{display:block;font-size:11.5px;color:var(--muted)}
+.vpick button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:700}
+.vpanel .vhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;margin-bottom:6px}
+.vpanel .vhead h3{margin:0;font-size:24px}
+.vpanel .vhead .en{color:var(--muted);font-size:14px}
+.vmeta{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.sk{display:grid;grid-template-columns:minmax(150px,230px) minmax(0,1fr);gap:4px 14px;margin:6px 0 4px;font-size:14.5px}
+.sk dt{font-weight:700;line-height:1.5;padding-top:6px;border-top:1px dashed var(--line)}
+.sk dd{margin:0;color:var(--muted);line-height:1.6;padding-top:6px;border-top:1px dashed var(--line)}
+.sk dt .adv{display:block;font-weight:500;font-size:12.5px;color:var(--gold)}
+.slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:8px 0}
+.slot6{border:1px dashed var(--gold);border-radius:9px;padding:8px 6px;text-align:center;font-size:13px;line-height:1.35;background:var(--gold-soft);color:var(--ink);word-break:break-word}
+.slot6 i{display:block;font-style:normal;font-size:11px;color:var(--gold);font-weight:700}
+.maister-box{border-left:3px solid var(--gold);padding:8px 14px;background:var(--bg2);border-radius:0 10px 10px 0;margin:8px 0;font-size:14.5px}
+.maister-box b{color:var(--gold)}
+/* party */
+.party{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.slot{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg2);text-align:center}
+.slot .r{font-size:12px;color:var(--muted)}
+.slot .v{font-weight:700}
+/* quests */
+.part{display:flex;align-items:center;gap:10px;margin:28px 0 10px;font-family:"Noto Serif TC",serif;font-size:20px;color:var(--accent)}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+details.q{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+details.q.danger{border-color:color-mix(in srgb,var(--bad) 55%,var(--line))}
+details.q > summary{list-style:none;cursor:pointer;padding:11px 14px;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center}
+details.q > summary::-webkit-details-marker{display:none}
+details.q .num{width:30px;height:30px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;font:700 12px ui-monospace,Consolas,monospace;color:var(--accent)}
+details.q.danger .num{border-color:var(--bad);color:var(--bad);background:var(--bad-soft)}
+details.q .qn{font-weight:700;line-height:1.35}
+details.q .qn small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+details.q .chev{color:var(--muted);transition:transform .2s;font-size:13px}
+details.q[open] .chev{transform:rotate(90deg)}
+details.q .qb{padding:0 16px 14px 58px;font-size:14.5px}
+details.q .qb ol{margin:4px 0 8px;padding-left:1.2em}
+details.q .qb ol li{margin:3px 0}
+.kv{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--muted);margin-top:6px}
+.kv b{color:var(--ink)}
+.qwarn{margin-top:8px;padding:8px 12px;border-radius:8px;background:var(--bad-soft);color:var(--ink);font-size:14px}
+.qwarn::before{content:"⚠ ";color:var(--bad);font-weight:700}
+.tool-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.btn{font-size:13px;padding:5px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+/* side quests */
+.sq{display:grid;gap:8px}
+.sqi{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.sqi.done{opacity:.55}
+.sqi.done .sqn{text-decoration:line-through}
+.sqi input{width:18px;height:18px;margin-top:4px;accent-color:var(--accent)}
+.sqn{font-weight:700}
+.sqm{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 4px}
+.sqd{font-size:14px;color:var(--muted);line-height:1.6}
+.sqd b{color:var(--ink);font-weight:500}
+.sqs{margin-top:6px}
+.sqs summary{cursor:pointer;font-size:14px;color:var(--accent);width:max-content;padding:2px 0}
+.sqs ol{margin:4px 0 2px;padding-left:22px;font-size:14px;line-height:1.65}
+.sqs li{margin:3px 0}
+.sqs li b{font-weight:600}
+.count{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+/* spoiler */
+.spoiler{position:relative}
+.spoiler.hidden > .sp-body{filter:blur(9px);pointer-events:none;user-select:none;max-height:340px;overflow:hidden}
+.spoiler .sp-cover{display:none}
+.spoiler.hidden .sp-cover{display:grid;place-items:center;position:absolute;inset:0;z-index:2}
+.sp-cover button{padding:12px 20px;border-radius:12px;border:1px solid var(--accent);background:var(--card);color:var(--accent);font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+/* steps */
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;position:relative;padding:12px 14px 12px 54px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:8px;background:var(--gold-soft);color:var(--gold);font:700 14px/28px ui-monospace,Consolas,monospace;text-align:center}
+/* tips */
+.tip{display:flex;gap:12px}
+.tip .ic{flex:0 0 34px;height:34px;border-radius:9px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;font-weight:900}
+.tip h4{margin:0 0 2px;font-size:15.5px}
+.tip p{margin:0;color:var(--muted);font-size:14.5px}
+/* checklist */
+.check{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.check input{margin-top:6px;width:17px;height:17px;accent-color:var(--accent);flex:0 0 auto}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;border-radius:99px;background:var(--bg2);overflow:hidden;margin:6px 0 14px;border:1px solid var(--line)}
+.progress > div{height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));width:0;transition:width .3s}
+/* route + spots */
+.route{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;margin:6px 0 2px}
+.route .stop{font-size:13.5px;line-height:1.4;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg2)}
+.route .stop small{display:block;font-size:11px;color:var(--muted)}
+.route .stop.key{border-color:var(--accent);background:var(--accent-soft)}
+.route .arr{color:var(--muted);font-size:12px;padding:0 2px}
+.rlabel{font-weight:700;font-size:14px;color:var(--accent);margin-top:12px}
+.spots{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:0}
+.spots li{padding:9px 0;border-top:1px dashed var(--line);font-size:14.5px}
+.spots li:first-child{border-top:0;padding-top:2px}
+.spots .sn{font-weight:700}
+.spots .sn .en{font-weight:400;font-size:12.5px;color:var(--muted);margin-left:4px}
+.spots .sd{color:var(--muted);line-height:1.6}
+.spots .sd b{color:var(--ink);font-weight:600}
+.src li{margin:4px 0;font-size:14px;word-break:break-word}
+footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+#toTop{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);cursor:pointer;font-size:18px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+#toTop.show{opacity:1;pointer-events:auto}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;padding:0 16px;gap:0}
+  nav.toc{position:sticky;top:0;z-index:30;max-height:none;margin:0 -16px;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap;background:var(--bg);border-bottom:1px solid var(--line);scrollbar-width:none}
+  nav.toc::-webkit-scrollbar{display:none}
+  nav.toc .grp{display:none}
+  nav.toc a{border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:13px;flex:0 0 auto}
+  nav.toc a.active{border-color:var(--accent);background:var(--accent-soft)}
+  html{scroll-padding-top:58px}
+  main{padding-top:24px}
+  .g2,.g3{grid-template-columns:1fr}
+  .party{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{padding:48px 16px 30px}
+  .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vpick{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sk{grid-template-columns:1fr;gap:0}
+  .sk dd{border-top:0;padding-top:0;padding-bottom:4px}
+  details.q .qb{padding:0 14px 14px 14px}
+  .trow{grid-template-columns:46px minmax(0,1fr)}
+  .tcard{max-width:none}
+}
+</style>
+<style id="dmap-style">
+/* ===== 互動示意地圖（第 13 節）：樣式。資料與程式在檔尾 <script id="dmap-js"> ===== */
+:root{--map-sea:#c9d5d3;--map-v:#adbf8a;--map-v-edge:#869b66;--map-b:#e0c192;--map-b-edge:#bf9a64;--map-x:#bcae9f;--map-x-edge:#93826f;--map-road:#f7f0e0;--map-ink:#2a2118;--map-halo:#fbf6ea;--pin-main:#a8740f;--pin-side:#b3301f;--pin-town:#3b2f24;--route1:#2c5d8a;--route2:#7b3fa0}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--map-sea:#1a2325;--map-v:#3d4a30;--map-v-edge:#55683f;--map-b:#5c4829;--map-b-edge:#7c6239;--map-x:#4a4038;--map-x-edge:#66584c;--map-road:#8f846f;--map-ink:#efe5d3;--map-halo:#15110d;--pin-main:#c48d1c;--pin-side:#c9402c;--pin-town:#e9dcc5;--route1:#7fb2e0;--route2:#c592e6}
+}
+:root[data-theme="dark"]{--map-sea:#1a2325;--map-v:#3d4a30;--map-v-edge:#55683f;--map-b:#5c4829;--map-b-edge:#7c6239;--map-x:#4a4038;--map-x-edge:#66584c;--map-road:#8f846f;--map-ink:#efe5d3;--map-halo:#15110d;--pin-main:#c48d1c;--pin-side:#c9402c;--pin-town:#e9dcc5;--route1:#7fb2e0;--route2:#c592e6}
+.dmap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;grid-template-areas:"top side" "stage side" "foot side";gap:0 14px;margin:0 0 18px}
+.dmap-top{grid-area:top}.dmap-stage{grid-area:stage}.dmap-foot{grid-area:foot}
+.dmap .filters{margin:0 0 8px}
+.dmap-stage{position:relative;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;background:var(--map-sea)}
+.dmap-svg{display:block;width:100%;height:auto;aspect-ratio:1590/1980;max-height:78vh;user-select:none;-webkit-user-select:none}
+.dmap-compass{position:absolute;top:8px;left:10px;font:700 12px/1.1 ui-monospace,Consolas,monospace;color:var(--map-ink);opacity:.7;text-align:center;pointer-events:none}
+.dmap-svg .land path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.dmap-svg .road{fill:none;stroke:var(--map-road);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.dmap-svg .rname{font:italic 900 74px "Noto Serif TC",serif;fill:var(--map-ink);opacity:.16;letter-spacing:.15em;pointer-events:none}
+.dmap-svg .route{fill:none;stroke-width:3;stroke-dasharray:9 7;stroke-linecap:round;display:none}
+.dmap-svg.r1 .route.p1,.dmap-svg.r2 .route.p2{display:inline;animation:dmapDash 1.2s linear infinite}
+.dmap-svg .route.p1{stroke:var(--route1)}.dmap-svg .route.p2{stroke:var(--route2)}
+.dmap-svg .route.br{stroke-dasharray:3 6;opacity:.8}
+.dmap-svg .rb{display:none;pointer-events:none}
+.dmap-svg.r1 .rb.p1,.dmap-svg.r2 .rb.p2{display:inline}
+.dmap-svg .rb circle{stroke:var(--map-halo);stroke-width:2}
+.dmap-svg .rb.p1 circle{fill:var(--route1)}.dmap-svg .rb.p2 circle{fill:var(--route2)}
+.dmap-svg .rb text{font:700 11px ui-monospace,Consolas,monospace;fill:#fff;text-anchor:middle}
+@keyframes dmapDash{to{stroke-dashoffset:-32}}
+.dmap-svg .pin{cursor:pointer;outline:none}
+.dmap-svg .pin .dot{stroke:var(--map-halo);stroke-width:2.5}
+.dmap-svg .pin.k-main .dot{fill:var(--pin-main)}
+.dmap-svg .pin.k-side .dot{fill:var(--pin-side)}
+.dmap-svg .pin.k-town .dot{fill:var(--pin-town)}
+.dmap-svg .pin.k-way .dot{fill:var(--map-halo);stroke:var(--pin-town);stroke-width:2.5}
+.dmap-svg .pin .ap{fill:none;stroke:var(--map-ink);stroke-width:1.6;stroke-dasharray:3 3;opacity:.75}
+.dmap-svg .pin .num{font:700 12px ui-monospace,Consolas,monospace;fill:#fff;text-anchor:middle;pointer-events:none}
+.dmap-svg .pin .lbl{font:700 13px "Noto Sans TC","Microsoft JhengHei",sans-serif;fill:var(--map-ink);paint-order:stroke;stroke:var(--map-halo);stroke-width:4px;stroke-linejoin:round;display:none;pointer-events:none}
+.dmap-svg .pin.k-town .lbl{display:inline;font-size:12.5px}
+.dmap-svg.zoomed .pin .lbl,.dmap-svg .pin:hover .lbl,.dmap-svg .pin:focus-visible .lbl,.dmap-svg .pin.sel .lbl{display:inline}
+.dmap-svg .pin.k-way{display:none}
+.dmap-svg.zoomed .pin.k-way,.dmap-svg.r1 .pin.k-way,.dmap-svg.r2 .pin.k-way,.dmap-svg .pin.k-way.sel{display:inline}
+.dmap-svg .pin.dim{opacity:.18}
+.dmap-svg .pin .halo{fill:none;stroke:var(--accent);stroke-width:3;opacity:0}
+.dmap-svg .pin.sel .halo{opacity:1;animation:dmapPulse 1.4s ease-out infinite}
+.dmap-svg .pin:focus-visible .halo{opacity:1}
+@keyframes dmapPulse{0%{stroke-width:4;opacity:1}100%{stroke-width:1;opacity:.15}}
+.dmap-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted);margin:8px 2px 0}
+.dmap-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:4px;border:2px solid var(--card)}
+.dmap-legend i.sq{border-radius:3px}
+.dmap-legend i.ap{background:none;border:1.5px dashed var(--muted)}
+.dmap-side{grid-area:side;align-self:start;position:sticky;top:16px;padding:16px 18px;max-height:calc(100vh - 32px);overflow:auto}
+.dmap-side h4{margin:0;font:700 19px/1.3 "Noto Serif TC",serif}
+.dmap-side .en{font-size:12.5px;color:var(--muted)}
+.dmap-side p{margin:8px 0 0;font-size:14.5px}
+.dmap-side .lab{display:block;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em}
+.dmap-side .how{background:var(--bg2);border-radius:8px;padding:8px 10px;margin-top:10px}
+.dmap-side .what{color:var(--muted);line-height:1.65}
+.dmap-side .what b{color:var(--ink)}
+.dmi-head{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.dmi-no{flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 13px ui-monospace,Consolas,monospace;color:#fff}
+.dmi-no.k-main{background:var(--pin-main)}.dmi-no.k-side{background:var(--pin-side)}
+.dmi-no.k-town,.dmi-no.k-way{background:var(--pin-town);color:var(--map-halo);border-radius:7px}
+.dmap-idx{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:2px}
+.dmap-idx li button{all:unset;box-sizing:border-box;display:flex;gap:8px;align-items:center;width:100%;padding:4px 6px;border-radius:7px;cursor:pointer;font-size:14px;line-height:1.35}
+.dmap-idx li button:hover,.dmap-idx li button:focus-visible{background:var(--bg2)}
+.dmap-idx .dmi-no{flex-basis:22px;height:22px;font-size:11px}
+.dmap-idx .rg{font-size:11.5px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.dmap-side .gh{font-size:12px;font-weight:700;color:var(--accent);margin:10px 0 0}
+.dmap-side .q{margin:4px 0 0;padding-left:1.1em;font-size:14px}
+.dmap-go{font:700 11.5px/1.5 inherit;padding:0 7px;margin-left:6px;border-radius:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);cursor:pointer;vertical-align:1px;white-space:nowrap}
+.dmap-go:hover{border-color:var(--accent);background:var(--accent-soft)}
+.route .stop[data-go]{cursor:pointer}
+.route .stop[data-go]:hover{border-color:var(--accent)}
+.dmap-flash{animation:dmapFlash 1.6s ease-out}
+@keyframes dmapFlash{0%{background:var(--gold-soft)}100%{background:transparent}}
+/* 任務模式：主線／支線點「一起看」時，只亮任務提到的地點，旁邊標出現順序 */
+:root{--pin-q:#1f7a72}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pin-q:#4fc1b4}}
+:root[data-theme="dark"]{--pin-q:#4fc1b4}
+.dmap-svg.qf .pin:not(.hl):not(.sel){opacity:.28}
+.dmap-svg .pin.hl .lbl,.dmap-svg .pin.k-way.hl{display:inline}
+.dmap-svg .pin.hl .halo{opacity:1;stroke:var(--pin-q);stroke-width:3}
+.dmap-svg .qo{pointer-events:none}
+.dmap-svg .qo circle{fill:var(--pin-q);stroke:var(--map-halo);stroke-width:2}
+.dmap-svg .qo text{font:700 11px ui-monospace,Consolas,monospace;fill:#fff;text-anchor:middle}
+.dmi-no.k-q{background:var(--pin-q)}
+.dmap-ql{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px}
+.dmap-ql button{font-size:13px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.dmap-ql button:hover,.dmap-ql button:focus-visible{border-color:var(--pin-q)}
+.dmap-ql .st{font-size:11px;color:var(--pin-q);font-weight:700;margin-left:4px}
+.dmap-qp{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:4px 0 6px}
+.dmap-qp .lab{font-size:12px;font-weight:700;color:var(--muted)}
+.dmap-qp .dmap-go{margin:0}
+.dmap-go.all{color:var(--pin-q);border-color:color-mix(in srgb,var(--pin-q) 45%,var(--line))}
+/* 浮動地圖：在主線／支線點 📍 時，地圖整塊搬進這個視窗，不用跳去第 13 節 */
+.dmap-dock{position:fixed;z-index:45;top:16px;right:16px;bottom:16px;width:min(470px,calc(100vw - 32px));display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.28)}
+.dmap-dock[hidden]{display:none}
+.dmap-dock-bar{display:flex;align-items:center;gap:8px;padding:8px 10px 8px 14px;border-bottom:1px solid var(--line)}
+.dmap-dock-bar b{font:700 15px "Noto Serif TC",serif;margin-right:auto}
+.dmap-dock-body{overflow:auto;padding:10px 12px 12px;overscroll-behavior:contain}
+.dmap-dock .dmap{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"top" "stage" "side" "foot";margin:0}
+.dmap-dock .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.dmap-dock .filters > *{flex:0 0 auto;white-space:nowrap}
+.dmap-dock #dmapRoute,.dmap-dock .dmap-foot p{display:none}
+.dmap-dock .dmap-svg{max-height:46vh}
+.dmap-dock .dmap-side{position:static;max-height:none;margin-top:10px;box-shadow:none}
+.dmap-ph{border:1px dashed var(--line);border-radius:12px;padding:14px 16px;margin:0 0 18px;color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.dmap-fab{position:fixed;right:18px;bottom:72px;z-index:40;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:700 14px/1 inherit;box-shadow:var(--shadow);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+.dmap-fab.show{opacity:1;pointer-events:auto}
+@media (min-width:1101px){body.dmap-docked{padding-right:500px}}
+@media (prefers-reduced-motion: reduce){.dmap-svg .route,.dmap-svg .pin.sel .halo{animation:none!important}}
+@media (max-width:900px){
+  .dmap{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:"top" "stage" "side" "foot"}
+  .dmap-side{position:static;max-height:none;margin-top:12px}
+  .dmap-svg{max-height:none}
+  .dmap-dock{top:auto;left:0;right:0;bottom:0;width:auto;height:64vh;height:64dvh;border-radius:14px 14px 0 0;border-bottom:0}
+  .dmap-dock .dmap-svg{max-height:30vh;max-height:30dvh}
+  .dmap-dock .dmap-foot{display:none}
+}
+</style>
+</head>
+<body>
+<div id="readbar"></div>
+
+<header class="hero">
+  <button class="theme-btn" id="themeBtn" type="button">切換明暗</button>
+  <svg class="wyrm" viewBox="0 0 400 300" aria-hidden="true"><path fill="none" stroke="#e0614f" stroke-width="3" d="M20 240 C80 120 160 260 220 150 S330 40 380 90 M300 70 l40-50 l-5 60 M220 150 l-30-70 l55 40 M120 190 l-40-80 l60 50"/><circle cx="372" cy="86" r="6" fill="#d9a845"/></svg>
+  <div class="hero-in">
+    <div class="eyebrow">龍族教義 2 · 冒險手冊</div>
+    <h1>龍族教義 2 攻略指南</h1>
+    <p>給覺醒者的手冊：十大職業的技能、能力與排行，主線 21 個任務的逐步流程，30 多條重要支線的起點與獎勵，以及 2026 年更新與《Dark Arisen》資料片。</p>
+    <div class="meta">
+      <span class="pill">整理日期 2026-10-16</span>
+      <span class="pill">涵蓋遊戲更新 3.1／3.2／4.0</span>
+      <span class="pill">含 Dark Arisen（2026-10-09 上市）</span>
+    </div>
+    <div class="quick">
+      <a href="#tier"><b>職業排行</b>現在哪個職業最強</a>
+      <a href="#skills"><b>技能圖鑑</b>每職業技能＋6 格配招</a>
+      <a href="#story"><b>主線流程</b>逐步做法與不可逆點</a>
+      <a href="#side"><b>支線任務</b>可篩選、可打勾</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" id="toc">
+  <div class="grp">入門</div>
+  <a href="#version"><span class="n">00</span>版本現況</a>
+  <a href="#basics"><span class="n">01</span>新手必知</a>
+  <div class="grp">職業</div>
+  <a href="#vocations"><span class="n">02</span>職業與解鎖</a>
+  <a href="#tier"><span class="n">03</span>職業排行</a>
+  <a href="#skills"><span class="n">04</span>技能圖鑑</a>
+  <a href="#augments"><span class="n">05</span>能力</a>
+  <a href="#maister"><span class="n">06</span>大師技能</a>
+  <a href="#party"><span class="n">07</span>隊伍與隨從</a>
+  <div class="grp">劇情</div>
+  <a href="#story"><span class="n">08</span>主線流程</a>
+  <a href="#side"><span class="n">09</span>支線任務</a>
+  <a href="#ending"><span class="n">10</span>真結局</a>
+  <div class="grp">系統</div>
+  <a href="#plague"><span class="n">11</span>巨龍附身</a>
+  <a href="#travel"><span class="n">12</span>移動與經濟</a>
+  <div class="grp">探索</div>
+  <a href="#map"><span class="n">13</span>地圖與探索</a>
+  <a href="#gear"><span class="n">14</span>特殊裝備道具</a>
+  <a href="#dlc"><span class="n">15</span>Dark Arisen</a>
+  <div class="grp">附錄</div>
+  <a href="#checklist"><span class="n">16</span>終局前檢查</a>
+  <a href="#sources"><span class="n">17</span>資料來源</a>
+</nav>
+
+<main>
+
+<!-- 00 -->
+<section id="version">
+  <h2><span class="no">00</span>版本現況：先知道你玩的是哪一版</h2>
+  <p class="lead">2024 年發售時被罵的痛點（移動太慢、只有一格存檔、巨龍附身會毀檔、技能欄太少），在 2026 年三次大更新裡大多被處理掉了。網路上 2024 年的老攻略有些已經過時，以下是差異。</p>
+  <div class="grid g3">
+    <div class="card">
+      <span class="tag t-new">更新 3.1 · 2026-06-10</span>
+      <h3 style="margin-top:8px">移動與經濟</h3>
+      <ul class="tight">
+        <li>新增 <b>永恆剎那飛石</b>，主線王城之都和貝恩德對話後取得</li>
+        <li>梅爾威村、關口旅宿之鎮、火山島營地新增固定的歸途基石</li>
+        <li>牛車增加中途站，發車改為早到晚</li>
+        <li>一般剎那飛石價格 10,000G → 5,000G</li>
+        <li>隨從新專長「對抗襲擊」：防牛車、營地被偷襲</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-new">更新 3.2 · 2026-09 初</span>
+      <h3 style="margin-top:8px">戰鬥與存檔</h3>
+      <ul class="tight">
+        <li>自訂技能欄 <b>4 → 6 格</b>（職業排行因此大洗牌，見第 03 節）</li>
+        <li>每個覺醒者 <b>3 個存檔槽</b>，各含自動／中途／旅店三種存檔</li>
+        <li>新道具 <b>墮龍藥</b> 可治巨龍附身</li>
+        <li>隨從 AI 大改：會抓敵、救倒地主角、推薦落石</li>
+        <li>法師／巫師新增核心技「魔法護盾」，魔弓手治療箭下修等平衡調整</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-new">更新 4.0 · 2026-10-09</span>
+      <h3 style="margin-top:8px">配合資料片</h3>
+      <ul class="tight">
+        <li>新增 <b>困難模式</b>，新舊存檔都能套用</li>
+        <li>可用同一份存檔隨時重新開始遊戲</li>
+        <li>支援 FSR 3 幀生成、DLSS 4.5</li>
+        <li>捏臉新增髮型、刺青</li>
+        <li>付費資料片《Dark Arisen》同日上市（見第 15 節）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout c-warn"><b>譯名說明</b>名稱都改用<b>官方繁中版</b>的譯名：以 Capcom 繁中官網的更新說明、線上說明書為準，查不到的再參考巴哈姆特、Cool3c 等繁中玩家攻略。<b>仍然是英文的名稱，就是目前查不到繁中譯名的</b>（多半是部分技能、能力、裝備與資料片新內容），保留原文方便你對照英文攻略站。幾個容易搞混的官方用語：<b>體力</b>＝HP、<b>耐力</b>＝衝刺與技能用的條、<b>能力</b>＝被動技能、<b>自訂技能</b>＝放進技能欄的招式、技能升級版叫「原名＋2」。標 <span class="tag t-unv">待驗證</span> 的是攻略站之間說法不一的項目。</div>
+</section>
+
+<!-- 01 -->
+<section id="basics">
+  <h2><span class="no">01</span>新手必知</h2>
+  <p class="lead">這款遊戲刻意不給你方便，懂這幾條規則就少走一半冤枉路。</p>
+  <div class="grid g2">
+    <div class="card tip"><div class="ic">夜</div><div><h4>天黑就是另一款遊戲</h4><p>夜晚伸手不見五指、怪物變強（亡靈、巨型怪多出沒）。出門帶<b>油燈＋燈油</b>，長途盡量白天走、晚上露營或住店。</p></div></div>
+    <div class="card tip"><div class="ic">傷</div><div><h4>體力條會「掉灰」（耗損體力條）</h4><p>受傷時體力上限會被扣（灰色段），一般回復藥補不回來，要<b>住旅店或露營</b>才會恢復。灰段變長就是該休息的訊號。</p></div></div>
+    <div class="card tip"><div class="ic">營</div><div><h4>露營工具很重，給隨從背</h4><p>野外營火點可以紮營、烤肉、存檔、換隨從。營具是重物，讓隨從拿，主角保持輕裝才跑得遠、耐力回得快。</p></div></div>
+    <div class="card tip"><div class="ic">爬</div><div><h4>大型魔物要爬上去打</h4><p>獨眼巨人、獅鷲、龍都能攀附。爬上去打弱點（眼睛、心臟、翅膀）比在地上砍腳有效率得多，盜賊尤其擅長。各魔物的弱點見本節最下面的表。</p></div></div>
+    <div class="card tip"><div class="ic">醒</div><div><h4>龍之鼓動是保命也是救人</h4><p>龍之鼓動能讓自己死亡時原地復活，也能<b>復活死掉的 NPC</b>（主線關鍵角色死了靠它）。碎片集滿 3 片合成 1 顆，身上至少常備 1 顆。</p></div></div>
+    <div class="card tip"><div class="ic">技</div><div><h4>能力跨職業通用</h4><p>各職業升階拿到的能力（能力強化）換職業後仍可裝。先練幾個職業把好用的能力拿到手（例如巫師 +30 魔力、盜賊 +30 力量），再回主職業。見第 05 節。</p></div></div>
+    <div class="card tip"><div class="ic">導</div><div><h4>隨從會帶路</h4><p>隨從知道其他世界學到的任務資訊，對話或「Go」指令時會出現「帶路」。不想看攻略時，跟著隨從走常常就是答案。</p></div></div>
+    <div class="card tip"><div class="ic">存</div><div><h4>3.2 起存檔不再只有一格</h4><p>每個覺醒者 3 槽、每槽有自動／中途／旅店存檔。<b>重大選擇前另開一槽備份</b>，尤其是謊言之宴和神的守護者前。</p></div></div>
+    <div class="card tip"><div class="ic">時</div><div><h4>有些任務會默默逾時</h4><p>任務日誌裡有<b>沙漏圖示</b>的就有時限，睡太多天、牛車坐太久就會失敗。不想趕就先別接——時限從接下的那一刻才開始算。</p></div></div>
+    <div class="card tip"><div class="ic">錢</div><div><h4>錢與裂縫水晶分開用</h4><p>金幣買裝備、住店、強化；<b>異界石點數</b>用來雇高等級隨從、買特殊道具。高等隨從很貴，雇等級接近自己的就好。</p></div></div>
+  </div>
+
+  <h3 id="monsters">大型魔物打法</h3>
+  <p style="margin:0 0 12px">遇到大隻的先看這張表：<b>打哪裡</b>比用什麼職業重要。「屬性」欄寫的是攻略站測到的弱點，空白是查不到。名字是英文的，是目前查不到繁中譯名的。</p>
+  <div class="tbl-wrap">
+    <table class="wide" id="monTable">
+      <thead><tr><th style="width:130px">魔物</th><th style="width:190px">打哪裡</th><th style="width:150px">屬性</th><th>打法重點</th><th style="width:220px">常見地點</th></tr></thead>
+      <tbody>
+        <tr><td><b>獨眼巨人</b><span class="en">Cyclops</span></td><td><b>眼睛</b>；拿武器的手打久了會繳械；倒地時打臉可打斷獠牙</td><td>怕<b>雷</b>（會麻痺）；火、冰幾乎無效</td><td>前排一個人吸引牠，其他人遠程射眼睛或爬上背。拿棍棒的比空手的難打。</td><td>國境監視團營地往西再往北、古戰場遺跡廢墟</td></tr>
+        <tr><td><b>食人魔</b><span class="en">Ogre</span></td><td>頭</td><td>紅眼的 Grim Ogre 怕<b>冰</b></td><td>別站在牠手臂範圍內，會抓人捏、被抓到會沾黏液。一開始動作慢，會突然加速衝過來抓人。Grim Ogre 有時在睡覺，可以先偷襲。</td><td>山岳神殿裡；Grim Ogre 在往禮拜神廟的路上、Coral Snakes 藏身處（略奪和慈悲之後，必掉 Ogresbane）</td></tr>
+        <tr><td><b>魔像</b><span class="en">Golem</span></td><td>身上飄著的<b>發光護符</b>、右肩和腳下的發光圓盤</td><td>純魔法幾乎打不動，用<b>物理</b>（弓、鈍器、帶物理傷害的法術）</td><td>先用弓把發光點一個個打掉，打幾下重的牠會暈，再用槌類鈍器猛打。拿鈍器的可以從手臂爬上背。</td><td>聖樹之村東邊的 Arboreal Ruins、巴克巴塔爾西邊的 Crumbling Ruins</td></tr>
+        <tr><td><b>獅鷲</b><span class="en">Griffin</span></td><td><b>翅膀</b>（打翅膀牠就飛不走）、頭</td><td>怕<b>火</b>、毒</td><td>受重傷會飛起來逃，逃掉之後還會再遇到。抓住尾巴往上爬到背上；被牠抓起來時狂搖左搖桿掙脫，從高處摔下來很痛。</td><td>菲倫瓦思往西 Misty Marshes 的獅鷲巢、關口旅宿之鎮南方 Enoa'Battahl 森林的獅鷲巢</td></tr>
+        <tr><td><b>奇美拉</b><span class="en">Chimera</span></td><td>三個頭：蛇尾可以砍斷、山羊頭放魔法、獅頭血最多</td><td>獅頭怕魔法、山羊頭怕物理；蛇尾兩種都吃，怕斬擊</td><td>先處理山羊頭（停掉催眠和火球）和蛇尾（停掉毒），<b>獅頭留到最後</b>。盜賊爬上去打山羊頭最快。普通攻擊打身體幾乎沒傷害。</td><td>瀑布洞窟 1 樓（謊言之宴後換成更強的 Gorechimera）、聖樹之村附近</td></tr>
+        <tr><td><b>牛頭人</b><span class="en">Minotaur</span></td><td>角、頭、腳</td><td>冰可以讓牠變慢</td><td>先打腳讓牠站不穩，再爬上去打角。牠衝過來時最後一刻側閃，讓牠撞到地形或物體會暈。斧頭砍中一下可能就倒地。</td><td>聖樹之村東南、無名村西南的森林</td></tr>
+        <tr><td><b>亞龍</b><span class="en">Drake</span></td><td>胸口<b>發光的心臟</b>、翅膀</td><td>會噴火；有攻略說怕冰 <span class="tag t-unv">待驗證</span></td><td>打翅膀讓牠停下來，再打胸口。牠抓住隨從時，用擊倒力高的招打斷，不然隨從可能被傳染巨龍附身（見第 11 節）。別讓牠飛走。</td><td>梅爾威（災難降臨）、食龍塔、後期北菲倫瓦思牛車站</td></tr>
+        <tr><td><b>Lesser Dragon</b></td><td>身上的膿包</td><td></td><td>不會用魔法，但胸口會灑酸液，別站在牠正下方太久。</td><td>哈波村北邊、菲倫瓦思北門附近、食龍塔頂</td></tr>
+        <tr><td><b>無頭騎士</b><span class="en">Dullahan</span></td><td><b>發光的頭骨</b></td><td>怕<b>聖</b>；冰效果差</td><td>拉開距離用遠程打。開戰就先開防護技能，牠的尖叫無法用沉默打斷。會瞬移，天亮就逃走，建議 Lv.30 以上再打。</td><td>夜晚出現：菲倫瓦思西北（Till Death Do Us Part）、往國境監視團營地的路上、古戰場遺跡入口的樹林</td></tr>
+        <tr><td><b>Lich</b></td><td>—</td><td>怕<b>聖</b></td><td>擊倒力高的招和沉默最有效。會召喚殭屍骷髏、還會<b>復活倒下的大型怪</b>，先處理牠。成排的雷球和會追蹤的白球要閃。</td><td>只在夜晚：巴塔爾的 Tomb of Al'Guttos、Tomb of Ja'Nuwa，真實世界</td></tr>
+        <tr><td><b>Wight</b></td><td>頭</td><td>怕<b>聖</b></td><td>同 Lich：擊倒和沉默很有效。牠會躲在暗處、從上方連續放法術，別讓牠飛上去。</td><td>只在夜晚：瀑布洞窟 2 樓（開寶箱觸發，一次性）、Illdoers' Resting Place</td></tr>
+        <tr><td><b>美杜莎</b><span class="en">Medusa</span></td><td>頭</td><td>怕<b>雷</b></td><td>爬上去用普通攻擊砍頭，拿得到能石化敵人的美杜莎頭顱。做法見第 13 節的雷拉巴塔爾風穴。</td><td>雷拉巴塔爾風穴</td></tr>
+        <tr><td><b>龍</b><span class="en">Dragon</span></td><td>先打<b>頭</b>到暈，再打<b>腹部的心臟</b></td><td>—</td><td>從腿爬上背去打頭；牠起飛時抓緊別放。地上出現法陣就走出圈外。牠噴火時近戰可以趁機爬上脖子。</td><td>主線意志（月光塔）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout c-info"><b>通用原則</b>① <b>Lich、Wight、無頭騎士這些亡靈只在晚上出來</b>，而且都怕聖屬性；不想打就白天趕路。② 獅鷲、亞龍會在血少時飛走，先打翅膀。③ 塔羅斯（主線神的守護者）打法見第 08 節、史芬克斯見第 14 節。標 <span class="tag t-unv">待驗證</span> 的只有一個攻略站這樣寫。</div>
+</section>
+
+<!-- 02 -->
+<section id="vocations">
+  <h2><span class="no">02</span>十大職業與解鎖方法</h2>
+  <p class="lead">開場可選 4 個基本職業，其餘 6 個要靠任務或探索解鎖。換職業在各大城的<b>職業公會</b>或部分旅店。後 4 個是<b>覺醒者專屬</b>，隨從不能用。技能細節見第 04 節。</p>
+  <div class="filters" role="group" aria-label="職業篩選" id="vocFilter">
+    <button type="button" class="chip" data-f="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-f="pawn" aria-pressed="false">隨從可用</button>
+    <button type="button" class="chip" data-f="arisen" aria-pressed="false">主角專屬</button>
+    <button type="button" class="chip" data-f="start" aria-pressed="false">開場可選</button>
+  </div>
+  <div class="tbl-wrap">
+  <table id="vocTable" class="wide">
+    <thead><tr><th style="width:130px">職業</th><th style="width:110px">武器</th><th style="width:96px">誰能用</th><th>怎麼解鎖</th><th style="width:220px">定位</th></tr></thead>
+    <tbody>
+      <tr data-k="pawn start"><td><b>戰士</b></td><td>單手劍＋盾</td><td><span class="tag t-ok">主角／隨從</span></td><td>開場可選</td><td>前排坦克，挑釁與格擋；隨從首選之一</td></tr>
+      <tr data-k="pawn start"><td><b>弓箭手</b></td><td>弓</td><td><span class="tag t-ok">主角／隨從</span></td><td>開場可選</td><td>遠程物理、可射弱點與屬性箭；新手很穩</td></tr>
+      <tr data-k="pawn start"><td><b>法師</b></td><td>法杖</td><td><span class="tag t-ok">主角／隨從</span></td><td>開場可選</td><td>治療、上屬性、輔助；隊上有一個能省大量藥水</td></tr>
+      <tr data-k="pawn start"><td><b>盜賊</b></td><td>雙匕首</td><td><span class="tag t-ok">主角／隨從</span></td><td>開場可選</td><td>高機動近戰、攀爬大型怪；單人輸出最高</td></tr>
+      <tr data-k="pawn"><td><b>鬥士</b></td><td>雙手劍／巨鎚</td><td><span class="tag t-ok">主角／隨從</span></td><td>支線 <b>進步的阻礙</b>：菲倫瓦思職業公會說武器缺貨 → 城西北<b>特雷弗礦山</b>，寬闊空間的華麗寶箱有<b>雙手劍</b> → 交回公會</td><td>蓄力重擊、打斷大型怪；慢但痛</td></tr>
+      <tr data-k="pawn"><td><b>巫師</b></td><td>大杖</td><td><span class="tag t-ok">主角／隨從</span></td><td>同上；<b>大杖</b>在礦山雙手劍位置往北、有橋的空間底部寶箱。可趁主線討伐魔物順路拿</td><td>長詠唱大範圍魔法，爆發最高之一；讓隨從當巫師很香</td></tr>
+      <tr data-k="arisen"><td><b>魔劍士</b></td><td>魔雙劍</td><td><span class="tag t-gold">主角專屬</span></td><td>梅爾威村遭龍襲擊後，找背魔雙劍的 <b>西格爾特</b> 對話、問他的武器。錯過的話：主線浪恬之聲時在<b>食龍塔</b>，之後在<b>哈波村海邊小屋</b></td><td>近戰＋魔法兼具，可定身、全隊無敵屏障；新手轉職首選</td></tr>
+      <tr data-k="arisen"><td><b>魔弓手</b></td><td>魔弓</td><td><span class="tag t-gold">主角專屬</span></td><td>支線 <b>隱居的夫妻</b>：火山島營地西邊遇到矮人 <b>古斯塔夫</b> → 護送到<b>火山島營地的溫泉</b>，他太太克莉烏娜傳授。中後期才碰得到</td><td>自動追蹤魔法箭、治療箭；3.2 起治療箭範圍／傷害下修</td></tr>
+      <tr data-k="arisen"><td><b>幻術師</b></td><td>香爐</td><td><span class="tag t-gold">主角專屬</span></td><td>主線 <b>火之國的陰影</b> 期間，到關口旅宿之鎮方向的<b>禮拜神廟</b>與神諭者露姿對話</td><td>製造幻影誘敵、強化隨從；自己幾乎不打傷害</td></tr>
+      <tr data-k="arisen"><td><b>復甦者</b></td><td>任何武器</td><td><span class="tag t-gold">主角專屬</span></td><td>支線 <b>武藝高超的酒豪</b>：火山島營地溫泉前找 <b>魯蒙德</b>，交 <b>3 瓶蜥蜴酒</b>（蜥蜴酒）。巴克巴塔爾 <b>希格斯的酒攤</b>有賣，每瓶 5,000G；要把店外的袋子搬進圍欄區，戴獸人頭套守衛才不會打你</td><td>戰鬥中切換各職業武器與技能；3.2 擴欄後強度大漲</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="tier">
+  <h2><span class="no">03</span>職業排行</h2>
+  <p class="lead">排行是「主角單人好不好用」的角度。3.2 把技能欄從 4 格加到 6 格後排名大洗牌，所以這裡同時列 2026 版與 2024 版，讓你看出網路上老文章為什麼講法不同。點卡片可跳到該職業的技能。</p>
+  <div class="filters" role="group" aria-label="排行版本" id="tierFilter">
+    <button type="button" class="chip" data-t="t26" aria-pressed="true">2026 主角（現行版）</button>
+    <button type="button" class="chip" data-t="t24" aria-pressed="false">2024 主角（舊版 4 格）</button>
+    <button type="button" class="chip" data-t="pawn" aria-pressed="false">隨從適性</button>
+  </div>
+  <div class="tier-wrap" id="tierBox"></div>
+  <p class="small muted" id="tierNote" style="margin-top:10px"></p>
+  <div class="callout c-info"><b>怎麼看這份排行</b>排行只是參考：DD2 的難度不高，任何職業都能破關，玩得順手最重要。兩份來源差最多的是<b>復甦者</b>（舊版 4 格、裝快速切換武器後只剩 3 格，被評 C；6 格後能把多職業招式塞進同一套，變成 S）。魔弓手掉到 A 的主因是 3.2 下修治療箭與大師技能殉身霸魔弓。</div>
+</section>
+
+<!-- 04 -->
+<section id="skills">
+  <h2><span class="no">04</span>技能圖鑑</h2>
+  <p class="lead">每個職業有兩種技能：<b>一般技能</b>（固定在攻擊鍵上，用職業點數解鎖）和<b>自訂技能</b>（自己挑著放進技能欄，3.2 起 6 格）。多數自訂技能有兩階，遊戲裡進階版叫「原名＋2」（例如護衛之靈2），要更高職業等級。下方先選職業。</p>
+  <div class="vpick" id="vpick" role="group" aria-label="選擇職業"></div>
+  <div class="card vpanel" id="vpanel"></div>
+  <div class="callout c-warn" style="margin-top:14px"><b>關於標「新」的技能</b>標 <span class="tag t-new">新</span> 的是 2026 年新增的技能（3.2 平衡更新或《Dark Arisen》諾爾坎的恩寵石塔）。各技能確切的取得方式與點數，攻略站之間還不一致 <span class="tag t-unv">待驗證</span>，以遊戲內職業公會／恩寵石塔選單為準。</div>
+</section>
+
+<!-- 05 -->
+<section id="augments">
+  <h2><span class="no">05</span>能力（被動）</h2>
+  <p class="lead">每個職業升到第 2、4、6、8、9 階時可用職業點數解鎖一個能力，<b>解鎖後所有職業都能裝</b>。所以常見的玩法是：先練巫師拿 +30 魔力、練盜賊拿 +30 力量，再回主職業。<b>復甦者只有 2 個能力</b>（第 6 階 Zeal、第 9 階 Dynamism），這是遊戲本身的設計——它本來就是借用其他職業的技能和能力，不是這裡漏列。標 <span class="tag t-ok">推薦</span> 的是適用面廣、多數配置都會裝的（編者依效果整理，非官方）。</p>
+  <div class="filters" id="augFilter" role="group" aria-label="能力篩選"></div>
+  <div class="tbl-wrap">
+    <table id="augTable" class="wide">
+      <thead><tr><th style="width:140px">能力</th><th style="width:120px">來源職業</th><th style="width:96px">階級／點數</th><th>效果</th><th style="width:150px">適合誰</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="callout c-info"><b>表格最後 5 個「資料片」能力是什麼</b>這 5 個是《Dark Arisen》新增的，不靠職業升階，要拿到對應的<b>論著（一種書）</b>讀了才學會，任何職業都能讀、讀完主角和主隨從都能裝。資料片另外還能把能力欄從 6 格加到 <b>7 格</b>：在諾爾坎旅店找杜安，用 20 枚諾爾坎古錢換《Augmentum Scriptura》。寵狼是什麼見第 15 節。</div>
+  <div class="callout c-ok"><b>常見的萬用組合</b>
+    物理系（盜賊、鬥士、戰士、魔劍士、復甦者）：<b>猛擊</b>（+30 力量）、<b>Vitality</b>（+200 體力）、<b>Endurance</b>（+150 耐力）、<b>Exaltation</b>（耐力回復）、<b>Mettle</b>（物防）、<b>迅步</b> 或 <b>Lethality</b>。<br>
+    魔法系（法師、巫師、魔弓手）：<b>Sagacity</b>（+30 魔力）、<b>Catalysis</b>（打屬性弱點 +5%）、<b>Constancy</b>（不易被打斷詠唱）、<b>Endurance</b>、<b>Exaltation</b>、<b>Apotropaism</b>（魔防）。<br>
+    幻術師／重視隨從：<b>Ascendancy</b> 與 <b>Sustainment</b>（隨從力量魔力、雙防 +30）。
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="maister">
+  <h2><span class="no">06</span>大師技能</h2>
+  <p class="lead">每個職業都有向「大師」NPC 學來的最強招式，取得方式是完成他的任務或把好感度拉滿，拿到一本大師技能書。<b>書要先解鎖對應職業才能讀</b>，拿到先收著。盜賊、巫師各有 2 招，12 本全拿有成就。</p>
+  <div class="tbl-wrap">
+    <table class="wide" id="maisterTable">
+      <thead><tr><th style="width:110px">職業</th><th style="width:170px">技能</th><th>效果</th><th style="width:320px">怎麼拿</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="callout c-ok"><b>送禮捷徑</b>多數大師在好感不足時會拖著不給。送<b>龍血晶</b>一顆就能大幅拉好感，睡一天再送一顆通常就給了。部分大師（塔埃森）要有學會「森林語口譯」專長、聽得懂精靈語的隨從才能對話。</div>
+</section>
+
+<!-- 07 -->
+<section id="party">
+  <h2><span class="no">07</span>隊伍與隨從</h2>
+  <p class="lead">你只能完整培育一個「主隨從」，另外兩個是向其他玩家世界雇來的。主隨從會跟著你升級、可換職業（只能選開場 4 職＋鬥士／巫師），所以它的職業要用來補你的短板。</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-top:0">新手穩定配置（前中期）</h3>
+      <div class="party">
+        <div class="slot"><div class="r">主角</div><div class="v">盜賊／弓箭手</div></div>
+        <div class="slot"><div class="r">主隨從</div><div class="v">戰士</div></div>
+        <div class="slot"><div class="r">雇用</div><div class="v">法師</div></div>
+        <div class="slot"><div class="r">雇用</div><div class="v">巫師或弓箭手</div></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:14.5px;color:var(--muted)">前排一個坦（戰士或鬥士）、後排一個補師（法師），剩下兩格放輸出。主角是脆皮職業時，主隨從當戰士並學盾牌挑釁最安心。</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">中後期進階配置</h3>
+      <div class="party">
+        <div class="slot"><div class="r">主角</div><div class="v">魔劍士／復甦者</div></div>
+        <div class="slot"><div class="r">主隨從</div><div class="v">巫師</div></div>
+        <div class="slot"><div class="r">雇用</div><div class="v">法師</div></div>
+        <div class="slot"><div class="r">雇用</div><div class="v">戰士／鬥士</div></div>
+      </div>
+      <p style="margin:12px 0 0;font-size:14.5px;color:var(--muted)">魔劍士自己能控場、能開全隊無敵，可以把主隨從換成巫師負責爆發。巫師隨從的流星火雨／龍捲風打龍、打群怪都很有感。</p>
+    </div>
+  </div>
+  <h3>隨從操作小技巧</h3>
+  <ul class="tight">
+    <li><b>Go</b>：（遊戲裡的指令就是英文）讓隨從散開進攻（一般戰鬥用）；3.2 起長按 Go＝「探索」，會去撿東西、找路。</li>
+    <li><b>Come</b>：叫隨從靠過來保護你，主角是後排職業時很好用。</li>
+    <li><b>Help</b>：被抓、被包圍時喊救命。</li>
+    <li>隨從的大師技能也能學：多數大師技能書讀了之後，<b>主角和主隨從同時學會</b>。</li>
+  </ul>
+
+  <h3>隨從專長（共 8 種）</h3>
+  <p style="margin:0 0 12px">專長是隨從的「特殊能力」，跟職業無關。主隨從讀<b>專長書</b>學會，一次只能有一種，讀新的就換掉舊的、書會用掉。雇來的兩個隨從各自帶著原主人設定的專長，所以隊上最多同時有 3 種。缺哪個專長，最快的辦法是到異界石雇一個有那個專長的隨從。</p>
+  <div class="tbl-wrap">
+    <table class="wide" id="specTable">
+      <thead><tr><th style="width:120px">專長</th><th>效果</th><th style="width:360px">專長書怎麼拿</th><th style="width:80px">推薦</th></tr></thead>
+      <tbody>
+        <tr><td><b>森林語口譯</b></td><td>聽得懂精靈語，並幫全隊翻譯。沒有的話，聖樹之村的精靈名字會顯示「？？？」、對話看不懂。官網介紹寫作「森林語翻譯」。</td><td>聖樹之村送<b>花束</b>（陽光花＋月光花可合成）。村長的妻子<b>盧茨婭</b>最常被回報：送 2～3 次、每次送完睡一晚，之後她會給書。村口的女守衛、旅館老闆娘也有人拿到過。</td><td><span class="tag t-new">必備</span></td></tr>
+        <tr><td><b>治療優先</b></td><td>隨從會自己判斷，對你和隊友使用回復道具。</td><td>完成梅爾威支線<b>小小的冒險</b>（芙蘿拉要的藥），之後到菲倫瓦思城裡找到她對話。</td><td><span class="tag t-ok">好用</span></td></tr>
+        <tr><td><b>整理行李</b></td><td>自動在隊友之間搬東西幫你減重，並把素材<b>自動合成</b>。關不掉，只能換專長。</td><td>菲倫瓦思貧民窟：完成<b>腳下的真相</b>，過幾天到<b>救護之家</b>找神父或肯德里克對話。王城酒館的 Glenna 連送 3 天禮物也會給。</td><td><span class="tag t-unv">看情況</span></td></tr>
+        <tr><td><b>採集知識</b></td><td>在地圖上標出附近的強化素材位置。</td><td>同樣是救護之家：<b>腳下的真相</b>之後，跟馬爾科姆（貧民窟的小男孩）對話。</td><td><span class="tag t-ok">好用</span></td></tr>
+        <tr><td><b>收購協議</b></td><td>負重太重時，隨從在營火邊開價收購你的東西。它不會賣裝備，但會連你想留的素材一起收。</td><td>行商人<b>達德利</b>：烏爾里克的任務線做完、哈波村村民撤離後，他會跟到各城鎮，在城門附近出現，送花束拉好感就給。菲倫瓦思的商人 Bjorn 連送 3 天花束、第 4 天也會給。</td><td><span class="tag t-bad">不推</span></td></tr>
+        <tr><td><b>沉默不語</b></td><td>隨從幾乎不說話，只在少數重要時刻開口。嫌隨從太吵就用這個。</td><td>梅爾威北方<b>艾妮家</b>的爺爺（Eino）：連 3 天送魔物素材，或完成他的護送任務後對話。</td><td><span class="tag t-unv">個人喜好</span></td></tr>
+        <tr><td><b>對抗襲擊</b> <span class="tag t-new">3.1</span></td><td>同行時<b>牛車不會被襲擊</b>；紮營被偷襲時，自己打退小型敵人，大型魔物也會先削一段體力。</td><td>無名村「無名道具店」有賣；也是支線<b>獸人教官</b>、<b>災難降臨</b>的獎勵（更新前已完成的，書會直接放進背包）。</td><td><span class="tag t-ok">好用</span></td></tr>
+        <tr><td><b>野營知識</b> <span class="tag t-new">4.0</span></td><td>跟資料片一起加入。官方更新說明只寫了「新增專長」，<b>沒寫效果</b>，各攻略站目前也還沒有測出確定的效果。</td><td>有一篇英文攻略寫：諾爾坎的<b>杜安</b>用 3 枚諾爾坎古錢換（只有這一個來源，未確認）。</td><td><span class="tag t-unv">待確認</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout c-info"><b>專長書用掉也買得回來</b>3.2 起，用掉或丟掉的專長書會出現在<b>逸品店</b>的商品裡，可以隨時換回來。送禮拿書的 NPC 每天只收一次禮，送完要睡一晚或過一天。</div>
+  <div class="callout c-bad"><b>整理行李的坑</b>它會自動把素材合成掉。巴哈的攻略提醒：去火山島前要準備藥草和蜥蜴酒，這時別帶整理行李的隨從，不然準備好的東西可能被合成成別的。</div>
+
+  <h3>隨從性格（傾向）</h3>
+  <p style="margin:0 0 12px">捏主隨從時要選一種性格。性格不改數值，改的是<b>戰鬥和探索時的行為</b>，還有說話的口氣。</p>
+  <div class="tbl-wrap">
+    <table class="wide" id="inclTable">
+      <thead><tr><th style="width:90px">性格</th><th>行為</th><th style="width:230px">適合</th></tr></thead>
+      <tbody>
+        <tr><td><b>奉獻</b></td><td>最聽話。重視支援，優先幫助、扶起隊友。</td><td>法師（會更積極補血、救人）；主角是脆皮後排時</td></tr>
+        <tr><td><b>才略</b></td><td>重視自保，戰鬥中多防禦、閃避，不亂衝。會整理背包、丟掉腐爛食物這類沒用的東西。</td><td>弓箭手、巫師這類後排；不想隨從暴斃</td></tr>
+        <tr><td><b>純真</b></td><td>好奇心強，愛探索。會撿路上的素材、開寶箱、回報發現的地方、把東西遞給你，還會自己做回復藥。</td><td>想多撿素材、少自己跑腿；探索期</td></tr>
+        <tr><td><b>奔放</b></td><td>很會發現敵人，看到就全力衝上去打，比其他性格大膽。</td><td>盜賊、鬥士、戰士這類輸出；主角是坦克時</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout c-ok"><b>怎麼改性格</b>只有<b>主隨從</b>能改，雇來的不行。到菲倫瓦思的隨從公會（Pawn Guild），用異界石點數向 Neomith 買對應性格的香（Rift Incense），在營火<b>紮營</b>時對主隨從使用。香有 4 種性格各一種，外加一種隨機的。效果永久，想再換就再買。換性格不會改外觀。價格各攻略寫法不一，以遊戲裡為準。</div>
+  <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">「才略」「奔放」是官方繁中更新說明裡的寫法；「奉獻」「純真」來自港台攻略站，遊戲內字樣可能有一兩字出入。</p>
+</section>
+
+<!-- 08 -->
+<section id="story">
+  <h2><span class="no">08</span>主線流程</h2>
+  <p class="lead">主線分三部：序章＋貝爾蒙特的宮廷陰謀 → 巴塔爾 → 真實世界（真結局才有）。點開每個任務看逐步做法。紅框是<b>不可逆點</b>，過了會讓一批支線失敗或消失。</p>
+  <div class="callout c-bad"><b>兩個不可逆點</b>① <b>謊言之宴</b>：參加加冕典禮後，災難降臨、Masked Correspondence 和貝恩德派的其他委託會中止，貝爾蒙特有沙漏的支線先清。② <b>神的守護者</b>：這個任務結束時，<b>所有支線都變成可錯過</b>，進月光塔就直奔結局。</div>
+  <div class="tool-row"><button type="button" class="btn" id="expandAll">全部展開</button><button type="button" class="btn" id="collapseAll">全部收合</button></div>
+  <div id="mainQuests"></div>
+  <div class="spoiler hidden" id="spPart3">
+    <div class="sp-cover"><button type="button" data-reveal="spPart3">第三部（真實世界）含結局劇透，點此顯示</button></div>
+    <div class="sp-body" id="mainQuests3"></div>
+  </div>
+</section>
+
+<!-- 09 -->
+<section id="side">
+  <h2><span class="no">09</span>支線任務</h2>
+  <p class="lead">本篇的支線全部收在這裡（資料片諾爾坎的在最下面），大致照遇到的先後排。<b>任務名是英文的</b>，是查不到官方繁中譯名的，保留原文方便對照英文攻略。先看「⌛ 有時限」那一批，錯過就沒了。打勾會記在這台電腦的瀏覽器裡。</p>
+  <div class="filters" role="group" aria-label="地區" id="sideArea">
+    <span class="lbl">地區</span>
+    <button type="button" class="chip" data-a="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-a="v" aria-pressed="false">貝爾蒙特</button>
+    <button type="button" class="chip" data-a="b" aria-pressed="false">巴塔爾</button>
+    <button type="button" class="chip" data-a="u" aria-pressed="false">真實世界</button>
+  </div>
+  <div class="filters" role="group" aria-label="類型" id="sideType">
+    <span class="lbl">類型</span>
+    <button type="button" class="chip" data-g="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-g="timed" aria-pressed="false">⌛ 有時限</button>
+    <button type="button" class="chip" data-g="voc" aria-pressed="false">解鎖職業</button>
+    <button type="button" class="chip" data-g="maister" aria-pressed="false">大師技能</button>
+    <button type="button" class="chip" data-g="todo" aria-pressed="false">只看未完成</button>
+  </div>
+  <div class="filters"><input type="search" class="search" id="sideSearch" placeholder="搜尋任務名、NPC、地點、獎勵…" aria-label="搜尋支線"></div>
+  <p class="count" id="sideCount"></p>
+  <div class="sq" id="sideList"></div>
+  <h3>《Dark Arisen》諾爾坎支線</h3>
+  <p class="small">資料片新增的雪國支線隨諾爾坎主線推進開放，名單如下（細節待更多攻略整理）：Hammer and Tongs、Relics of the Past、When the Culling Gets Tough、In for a Hare, In for a Hound、The Snatching Beast、Village Defense、A Direwolf Delicacy、The Truant Soldier、Sticks and Stones、Reaching the Far Shore。部分會依完成方式給不同獎勵。</p>
+</section>
+
+<!-- 10 -->
+<section id="ending">
+  <h2><span class="no">10</span>真結局與「真實世界」</h2>
+  <p class="lead">正常打倒巨龍只會得到「一般結局」。真結局要在龍背上對自己使用魂魄之劍，進入名為真實世界（Unmoored World）的終局篇章。</p>
+  <div class="callout c-bad"><b>會永久錯失真結局的事</b>① 把魂魄之劍賣掉、送給 NPC 或處理掉。② 在意志選「轉身離開」——直接播片尾，而且<b>好感度最高的 NPC 會死</b>。③ 在神的守護者用美杜莎頭石化塔羅斯，或放著不管讓塔羅斯被完全摧毀——會鎖掉真實世界的法茲斯的反抗。</div>
+  <div class="spoiler hidden" id="spEnding">
+    <div class="sp-cover"><button type="button" data-reveal="spEnding">真結局步驟含劇透，點此顯示</button></div>
+    <div class="sp-body">
+    <ol class="steps">
+      <li>主線推進到 <b>浪恬之聲</b>，交 15 顆龍血晶給安布羅修斯，取得 <b>魂魄之劍</b>。</li>
+      <li>推進到最終主線 <b>意志</b>，被問要「離開」還是「與龍一戰」時，選<b>戰鬥</b>。</li>
+      <li>龍會載著你飛到下一個場景。攀在龍身上，<b>移動到發光的部位</b>（多數攻略說是胸口心臟處，也有說在頸部附近 <span class="tag t-unv">待驗證</span>）。</li>
+      <li>保持攀附狀態，打開道具欄，<b>對自己使用魂魄之劍</b>。</li>
+      <li>看完過場動畫就進入<b>真實世界</b>，主線接沉眠（見第 08 節第三部）。</li>
+      <li>打倒龍但沒走真結局的人：可以直接進多輪遊玩，或找觀察者對話重來這個選擇。</li>
+    </ol>
+    <h3>真實世界注意事項</h3>
+    <ul class="tight">
+      <li>世界崩壞，各大城附近出現<b>紅色光柱</b>，裡面各有一隻特殊頭目。</li>
+      <li>時間壓力：法茲斯的反抗的試煉建議約 <b>4 天內</b>完成，真實世界裡休息太多次任務會失效。</li>
+      <li>海底神殿的<b>紅色信標一碰就進最終戰</b>，所有城鎮疏散完、想做的事做完再碰；藍色信標是跟羅瑟厄斯對話用的。</li>
+      <li>多數支線在這階段無法繼續，轉職、大師技能、想拿的裝備請<b>在進入前完成</b>（見第 16 節清單）。</li>
+      <li>走完真結局才會開放完整的 <b>多輪遊玩</b>。</li>
+      <li><span class="tag t-unv">待驗證</span> 有攻略指出：存檔已推進到真實世界者，要等多輪遊玩才能進《Dark Arisen》資料片內容。想玩資料片的人，建議在意志之前就先開始。</li>
+    </ul>
+    </div>
+  </div>
+  <div class="callout c-ok"><b>保險做法</b>接到神的守護者後，用 3.2 的多存檔槽另存一份「終局前」存檔。PC 玩家也可以直接備份存檔資料夾。</div>
+</section>
+
+<!-- 11 -->
+<section id="plague">
+  <h2><span class="no">11</span>巨龍附身</h2>
+  <p class="lead">隨從之間會互相傳染的疾病。前期它讓隨從變強，放著不管最後會發狂、在你<b>住旅店時毀掉整座城的 NPC</b>——這是 2024 年最多人哭的機制。</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-top:0">怎麼看出來</h3>
+      <ul class="tight">
+        <li>瞳孔閃爍紅光，後期變成恆亮的紅眼（注意：有些隨從捏臉時就是紅眼，不一定是病）</li>
+        <li>閒置時抱頭、看起來不舒服</li>
+        <li>開始不聽指令</li>
+        <li>第一次感染時會跳通知，但<b>不會告訴你是哪一個</b></li>
+        <li>3.1 起，感染帶來的能力加成會顯示在狀態畫面——數值莫名變高也是線索</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">怎麼處理</h3>
+      <ul class="tight">
+        <li><b>3.2 起</b>：新道具 <b>墮龍藥</b> 可直接治癒（遊戲內有教學）</li>
+        <li>舊方法仍有效：雇用隨從直接解雇；主隨從可以讓它死亡（例如丟進水裡），之後在異界石重新召回即淨化</li>
+        <li><b>有疑似感染時，不要住旅店</b>，改用露營休息</li>
+        <li>3.2 起感染中的隨從反而變強：攻擊大型怪腳部可暈眩、對小怪限時不耗耐力——可以刻意在打頭目前留著，事後再治</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="travel">
+  <h2><span class="no">12</span>移動與經濟</h2>
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">永恆剎那飛石</h3><p style="margin:0">3.1 新增、可重複使用的剎那飛石，王城之都和貝恩德對話後取得。想保留原汁原味長途旅行的人可以不用——這是作者刻意留給你的選擇。</p></div>
+    <div class="card"><h3 style="margin-top:0">歸途基石</h3><p style="margin:0">傳送目的地。除了固定點，你也能拿到歸途基石插在地圖任何地方。建議插在：火山島附近、巴塔爾深處、常去刷材料的點。3.1 起可以從地圖直接點水晶傳送。</p></div>
+    <div class="card"><h3 style="margin-top:0">牛車</h3><p style="margin:0">便宜的城際交通，可以打盹快轉（但會讓有時限的任務過時間）。可能被魔物襲擊（帶「對抗襲擊」專長的隨從可預防）。3.1 起發車時間延長到傍晚，並有中途站。</p></div>
+  </div>
+  <h3>賺錢與省錢</h3>
+  <ul class="tight">
+    <li>高報酬支線：<b>朽劍與名匠 → 鐵石之心的溫度</b> 一串最高 35,000G；<b>火之國的陰影</b>（主線）25,000G；<b>接近聖焰的黑影</b> 18,000G；<b>年輕雕刻家的煩惱</b> 14,000G。</li>
+    <li><b>心血來潮的旅人</b>：花 20,000G 買下菲倫瓦思的房子，有自己的床和倉庫。</li>
+    <li>剎那飛石原價 10,000G，3.1 起正常模式降到 5,000G；轉賣價也從 99G 調到 900G。</li>
+    <li>3.1 起旅店、理髮費用全面調降，部分任務金幣獎勵提高。</li>
+    <li>裝備強化需要材料，3.2 起裝備畫面可預覽未來強化要的材料，先收藏常用裝備（新增「最愛」）。</li>
+    <li>伊普希姆逸品店（關口旅宿之鎮）能<b>偽造</b>任務道具，追尋夢想、魔法師的信念、鐵石之心的溫度都用得到。</li>
+  </ul>
+</section>
+
+<!-- 13 -->
+<section id="map">
+  <h2><span class="no">13</span>地圖與探索</h2>
+  <p class="lead">主線走的地點大致固定、順序也幾乎不會變。真正的好東西大多不在主線路上，而是在<b>主線地點旁邊的洞窟、廢墟</b>裡。下面先列主線會帶你去哪，再列每一帶順路值得探的地方。</p>
+
+  <h3 style="margin-top:6px">主線固定會經過的地方</h3>
+  <div class="card">
+    <div class="rlabel">第一部 · 貝爾蒙特</div>
+    <div class="route">
+      <span class="stop">挖掘場<small>開場（火山島）</small></span><span class="arr">→</span>
+      <span class="stop">群青瀑布</span><span class="arr">→</span>
+      <span class="stop">國境監視團營地</span><span class="arr">→</span>
+      <span class="stop">梅爾威村</span><span class="arr">→</span>
+      <span class="stop">貝爾蒙特北部關卡</span><span class="arr">→</span>
+      <span class="stop key">菲倫瓦思<small>王都，第一部的基地</small></span>
+    </div>
+    <p class="small muted" style="margin:6px 0 0">貝恩德的委託會從王都派你出去：<b>特雷弗礦山</b>（城西北）、<b>哈波村＋鳴潮洞窟</b>（往南）、<b>無名村</b>（往東），其餘委託都在王城和貴族區裡。</p>
+    <div class="rlabel">第二部 · 巴塔爾</div>
+    <div class="route">
+      <span class="stop">關口旅宿之鎮<small>兩國邊界</small></span><span class="arr">→</span>
+      <span class="stop key">巴克巴塔爾<small>第二部的基地</small></span><span class="arr">→</span>
+      <span class="stop">奧魯托巴特海岸<small>禁術研究所</small></span><span class="arr">→</span>
+      <span class="stop">禮拜神廟</span><span class="arr">→</span>
+      <span class="stop">鳴潮洞窟</span><span class="arr">→</span>
+      <span class="stop">海底神殿</span><span class="arr">→</span>
+      <span class="stop">食龍塔</span><span class="arr">→</span>
+      <span class="stop">奉炎殿</span><span class="arr">→</span>
+      <span class="stop key">月光塔</span>
+    </div>
+    <div class="rlabel">第三部 · 真實世界（真結局後）</div>
+    <p class="small" style="margin:4px 0 0">回到巴克巴塔爾和海底神殿，然後要跑遍各城鎮疏散人民，<b>聖樹之村、火山島營地、挖掘場</b>都會去到（步驟見第 08 節第三部）。</p>
+    <div class="callout c-info" style="margin-bottom:0"><b>主線不會帶你去的地方</b>前兩部主線<b>不會經過聖樹之村（精靈村）和火山島</b>（開場除外）。魔弓手、復甦者的解鎖都在火山島營地的溫泉（見第 02 節），要自己找時間去。</div>
+  </div>
+
+  <h3>每一帶順路值得探的地方</h3>
+  <p class="small muted" style="margin:-4px 0 10px">「主線順路」是做主線本來就會經過或很近的；其他要自己繞路。裝備的效果和其他取得方式見第 14 節。</p>
+  <!-- 互動示意地圖：資料與程式在檔尾 <script id="dmap-js">，樣式在 <style id="dmap-style"> -->
+  <div class="dmap" id="dmap">
+    <div class="dmap-top">
+      <div class="filters" role="group" aria-label="地圖範圍" id="dmapZoom">
+        <span class="lbl">看哪一帶</span>
+        <button type="button" class="chip" aria-pressed="true" data-z="all">全圖</button>
+        <button type="button" class="chip" aria-pressed="false" data-z="north">北部營地</button>
+        <button type="button" class="chip" aria-pressed="false" data-z="capital">王都一帶</button>
+        <button type="button" class="chip" aria-pressed="false" data-z="border">兩國邊界</button>
+        <button type="button" class="chip" aria-pressed="false" data-z="battahl">巴塔爾</button>
+        <button type="button" class="chip" aria-pressed="false" data-z="volcano">火山島</button>
+      </div>
+      <div class="filters" role="group" aria-label="主線路線" id="dmapRoute">
+        <span class="lbl">疊上主線路線</span>
+        <button type="button" class="chip" aria-pressed="true" data-r="">不顯示</button>
+        <button type="button" class="chip" aria-pressed="false" data-r="r1">第一部</button>
+        <button type="button" class="chip" aria-pressed="false" data-r="r2">第二部</button>
+      </div>
+    </div>
+    <div class="dmap-stage">
+      <svg class="dmap-svg" id="dmapSvg" viewBox="0 0 1590 1980" role="group" aria-label="示意地圖：點編號看地點說明"></svg>
+      <div class="dmap-compass" aria-hidden="true">▲<br>北</div>
+    </div>
+    <aside class="card dmap-side" id="dmapInfo" aria-live="polite"></aside>
+    <div class="dmap-foot">
+      <div class="dmap-legend">
+        <span><i style="background:var(--pin-main)"></i>主線順路</span>
+        <span><i style="background:var(--pin-side)"></i>要自己繞路</span>
+        <span><i class="sq" style="background:var(--pin-town)"></i>城鎮</span>
+        <span><i class="ap"></i>虛線圈＝位置是推估</span>
+      </div>
+      <p class="small muted" style="margin:6px 2px 0;line-height:1.6">示意圖，地形經過簡化。北部（營地、梅爾威、特雷弗礦山）依 <a href="https://game-maps.com/DD2/dd2-world-map.asp" target="_blank" rel="noopener">game-maps.com</a> 的區域圖定位；虛線圈的點是依 Fextralife／GamerGuides 的文字方位（如「巴克巴塔爾往南」）推估，走到附近請開遊戲內地圖確認。主線路線的線只表示先後順序，不是實際道路；第一部的細點線是王都委託會派你去的地方。</p>
+    </div>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <span class="tag t-ok">前期 · 約 Lv.1–20</span>
+      <h3 style="margin-top:8px">貝爾蒙特（國境監視團營地～王都）</h3>
+      <ul class="spots">
+        <li><div class="sn">瀑布洞窟</div><div class="sd">國境監視團營地附近。二樓要<b>打破假牆</b>才進得去，有龍之鼓動、Onyx 等前期好東西。</div></li>
+        <li><div class="sn">The Mountains' Secret</div><div class="sd">國境監視團營地往西北。有礦點和強化材料，但對前期角色偏危險。</div></li>
+        <li><div class="sn">特雷弗礦山</div><div class="sd"><span class="tag t-gold">主線順路</span> 討伐魔物會來。順手拿<b>鬥士雙手劍、巫師大杖</b>，交回職業公會解鎖兩個職業。</div></li>
+        <li><div class="sn">Spirits' Path</div><div class="sd">菲倫瓦思東北，巨石後面有個帶梯子的石坑。路邊出現山賊就表示入口快到了。</div></li>
+        <li><div class="sn">王宮寶庫</div><div class="sd">王城地下一樓，廚房和謁見廳之間的窄走廊。要先引開守衛：從廚房搬木桶丟出去引他追你，或打倒他事後用龍之鼓動救回，或等蒂莎晚上經過。裡面有<b>Daughter of the Evening</b>（到巴塔爾前最強的盾）、Wyrmhunter's Cloak、Ring of Reassurance、腐朽的美杜莎頭顱。</div></li>
+        <li><div class="sn">Guerco Cavern</div><div class="sd">哈波村和關口旅宿之鎮之間的東海岸。很長的洞窟，<b>一路通到巴克巴塔爾</b>，可以不走關口提早進巴塔爾。內有<b>Fool's Prize</b>（魔劍士魔雙劍）、龍之鼓動、Dragon's Gaze。魔像和稀有怪多，等級低就跑過魔像。</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-gold">中期 · 兩國邊界</span>
+      <h3 style="margin-top:8px">關口旅宿之鎮周邊</h3>
+      <ul class="spots">
+        <li><div class="sn">古戰場遺跡</div><div class="sd">鎮北。過橋後第一個岔路左轉，下一個岔路再左轉往西北。北側兩隻<b>獨眼巨人</b>旁的寶箱有<b>Black Matter</b>（鬥士巨鎚，基礎數值很高），另有 Infernal Edge、4 枚探求之證、金色帝王甲蟲、龍血晶。入口附近的樹林可能刷出無頭騎士。</div></li>
+        <li><div class="sn">山岳神殿</div><div class="sd">從古戰場遺跡往北穿過盡頭山窟。住著<b>史芬克斯</b>（支線你知曉什麼），猜謎獎勵見第 14 節。</div></li>
+        <li><div class="sn">禮拜神廟</div><div class="sd"><span class="tag t-gold">主線順路</span> 神諭者露姿在這裡，解鎖幻術師。</div></li>
+      </ul>
+      <div class="callout c-warn" style="margin-bottom:0"><b>伊普希姆逸品店</b>就在關口旅宿之鎮，能<b>偽造</b>任務道具和稀有道具（例如久遠的龍之鼓動 30,000G），重要道具可以先做一份備用。</div>
+    </div>
+    <div class="card">
+      <span class="tag t-gold">中期 · 約 Lv.25+</span>
+      <h3 style="margin-top:8px">巴塔爾（巴克巴塔爾周邊）</h3>
+      <ul class="spots">
+        <li><div class="sn">海灣神廟</div><div class="sd"><span class="tag t-gold">主線順路</span> 巴塔爾東海岸，巴克巴塔爾往北，或從 Guerco Cavern 過來。<b>龍識者</b>的店，用龍血晶買東西；第一次來地上就有 5 顆結晶可撿。</div></li>
+        <li><div class="sn">食龍塔</div><div class="sd"><span class="tag t-gold">主線順路</span> 浪恬之聲會來打小龍。<b>2 樓可以打破的牆後面</b>有<b>Anathema</b>（巫師大杖，攻擊會讓敵人沉默），很容易錯過；同層還有 Dragon's Faith、龍血晶。打完龍，西格爾特會送大師技能書。</div></li>
+        <li><div class="sn">雷拉巴塔爾風穴</div><div class="sd">巴塔爾區域最西南角，往食龍塔的路上，洞底是<b>美杜莎</b>。怕雷屬性。爬上她的頭用普通攻擊砍頭，可以拿到能石化敵人的<b>美杜莎頭顱</b>（第一條血沒打掉前砍下最好）。約 18% 掉 <b>Medusan Spellbow</b>（弓）。沒拿到，休息 7 天她會重生。</div></li>
+        <li><div class="sn">德拉布尼爾大石窟</div><div class="sd">巴克巴塔爾往南，<b>連到火山島的洞窟</b>（不用等主線就能過去）。有<b>The Exalted</b>（戰士劍）、Indomitable Armor；獅鷲和兩隻獨眼巨人守著。</div></li>
+        <li><div class="sn">海底神殿</div><div class="sd"><span class="tag t-gold">主線順路</span> 邂逅會來。1 樓寶箱有<b>大積戒指</b>（負重 +10），地下一樓有 Grand Cuirass。</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-bad">後期</span>
+      <h3 style="margin-top:8px">火山島</h3>
+      <ul class="spots">
+        <li><div class="sn">火山島山麓洞穴</div><div class="sd">火山島北部，三層的大洞窟，裡面是滲著岩漿的古龍骨鍛爐。<b>2 樓寶箱有 Cinderspine</b>（鬥士武器）和 <b>Molten Fury</b>（戰士劍），兩把都是火屬性。另有探求之證 2 枚、龍之鼓動碎片。支線鐵石之心的溫度的莎拉也在這裡。</div></li>
+                <li><div class="sn">火山島營地</div><div class="sd">補給據點，3.1 起有固定的歸途基石。營地的溫泉是魔弓手（克莉烏娜）、復甦者（魯蒙德）解鎖的地方，見第 02 節。</div></li>
+      </ul>
+      <div class="callout c-info" style="margin-bottom:0"><b>聖樹之村（精靈村）</b>在貝爾蒙特境內的古綠之森裡，菲倫瓦思西北方。大部分精靈只講精靈語，帶有<b>森林語口譯專長</b>的隨從才聽得懂。第三部主線會來這裡。</div>
+    </div>
+  </div>
+  <div class="callout c-ok"><b>探索小技巧</b>隨從帶 <b>Detection</b>（幻術師第 2 階能力）會提示附近的探求之證和龍之鼓動碎片；地城是探求之證的主要來源，有些藏在可以打破的牆後或高處平台。金色帝王甲蟲會發光，<b>晚上比較好找</b>。</div>
+</section>
+
+<!-- 14 -->
+<section id="gear">
+  <h2><span class="no">14</span>特殊裝備與道具</h2>
+  <p class="lead">武器依職業分前期、中期、後期、終局列出推薦和取得地點；也收了值得專程去拿的防具、戒指和道具。點分類或職業篩選，也可以直接搜尋名稱或地點。</p>
+  <div class="callout c-info"><b>階段怎麼分</b><b>前期</b>＝貝爾蒙特就拿得到。<b>中期</b>＝巴克巴塔爾阿瓦朗武器店、聖樹之村 Grisha's Armory 這類中價位的店，或中段地城。<b>後期</b>＝火山島營地的武器店；同一批武器在支線隱居的夫妻之後找古斯塔夫、鐵石之心的溫度之後到布洛克工坊也買得到。<b>終局</b>＝進入真實世界後各城鎮武器店才開賣，以及龍識者。<br>復甦者沒有專屬武器，從你主要切換的職業裡挑。魔弓手、幻術師解鎖得比較晚，所以從中期開始看就好。</div>
+  <div class="filters" role="group" aria-label="裝備分類" id="gearType">
+    <button type="button" class="chip" data-g="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-g="w" aria-pressed="false">武器</button>
+    <button type="button" class="chip" data-g="a" aria-pressed="false">防具</button>
+    <button type="button" class="chip" data-g="r" aria-pressed="false">戒指</button>
+    <button type="button" class="chip" data-g="i" aria-pressed="false">道具</button>
+  </div>
+  <div class="filters" role="group" aria-label="武器職業" id="gearVoc">
+    <button type="button" class="chip" data-v="all" aria-pressed="true">全部職業</button>
+    <button type="button" class="chip" data-v="戰士" aria-pressed="false">戰士</button>
+    <button type="button" class="chip" data-v="鬥士" aria-pressed="false">鬥士</button>
+    <button type="button" class="chip" data-v="弓箭手" aria-pressed="false">弓箭手</button>
+    <button type="button" class="chip" data-v="法師" aria-pressed="false">法師</button>
+    <button type="button" class="chip" data-v="盜賊" aria-pressed="false">盜賊</button>
+    <button type="button" class="chip" data-v="巫師" aria-pressed="false">巫師</button>
+    <button type="button" class="chip" data-v="魔劍士" aria-pressed="false">魔劍士</button>
+    <button type="button" class="chip" data-v="魔弓手" aria-pressed="false">魔弓手</button>
+    <button type="button" class="chip" data-v="幻術師" aria-pressed="false">幻術師</button>
+  </div>
+  <div class="filters"><input type="search" class="search" id="gearSearch" placeholder="搜尋名稱、職業、地點…" aria-label="搜尋裝備道具"></div>
+  <div class="tbl-wrap">
+    <table id="gearTable" class="wide">
+      <thead><tr><th style="width:190px">名稱</th><th style="width:110px">類型</th><th>效果</th><th style="width:300px">在哪拿</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <h3>探求之證兌換表</h3>
+  <div class="grid g2">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:90px">累計交出</th><th>獎勵</th></tr></thead>
+        <tbody>
+          <tr><td>1 枚</td><td>剎那飛石</td></tr>
+          <tr><td>5 枚</td><td>壓倒戒指（擊倒力 +100）</td></tr>
+          <tr><td>15 枚</td><td>昂然戒指（體力 +100、耐力 +100、負重 +5）</td></tr>
+          <tr><td>30 枚</td><td>尋水匕首（盜賊匕首，攻擊力 230）</td></tr>
+          <tr><td>50 枚</td><td>晨星頭冠（頭部，物防 60、魔防 60）</td></tr>
+          <tr><td>70 枚</td><td>大積戒指（負重 +10）</td></tr>
+          <tr><td>90 枚</td><td>凱旋披風（雷屬性抗性 3%）</td></tr>
+          <tr><td>120 枚</td><td>誓約戒指（好感度 +10%）</td></tr>
+          <tr><td>150 枚</td><td>魅力胸衣（物防 300、魔防 280，冰、雷抗性各 5%）</td></tr>
+          <tr><td>180 枚</td><td>隨從之力（法師法杖）</td></tr>
+          <tr><td>220 枚</td><td>求道戒指（職業點數 +50%）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <ul class="tight">
+        <li>到<b>任何一間職業公會</b>交（菲倫瓦思的在旅館樓下）。獎勵看<b>累計交了幾枚</b>，不用一次交齊。</li>
+        <li>代幣散在全地圖，地城最多。每一區的位置可查 Fextralife 的逐區清單。</li>
+        <li>收 80 枚有收集獎盃。透過隨從交換或複製的不算。</li>
+        <li>220 枚之後就沒有新獎勵了，多出來的不用再找。</li>
+      </ul>
+      <p class="small muted" style="margin:6px 0 0">效果取自 Cool3c 繁中攻略的兌換表。</p>
+    </div>
+  </div>
+
+  <h3>史芬克斯猜謎（你知曉什麼）</h3>
+  <div class="callout c-bad"><b>出發前先看</b>每題<b>只有一次機會</b>，答錯就拿不到全答對的獎盃，<b>先另存一份存檔</b>。最大的獎勵久遠的龍之鼓動要用<b>會心箭</b> 射她，只有<b>弓箭手</b>能射，記得先換職業。地點：古戰場遺跡往北穿過盡頭山窟到山岳神殿。</div>
+  <div class="spoiler hidden" id="spSphinx">
+    <div class="sp-cover"><button type="button" data-reveal="spSphinx">十題解法含謎底，點此顯示</button></div>
+    <div class="sp-body">
+      <div class="tbl-wrap">
+        <table class="wide">
+          <thead><tr><th style="width:180px">謎題</th><th>解法</th><th style="width:170px">獎勵</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3" class="muted small">第一處：山岳神殿</td></tr>
+            <tr><td><b>慧眼</b></td><td>把樓下房間「最有價值的東西」帶來：入口上方寶箱裡的 <b>封印小瓶</b>，別用掉</td><td>龍之鼓動</td></tr>
+            <tr><td><b>瘋狂</b></td><td>帶「最愛的人」來：主隨從，或戀愛對象（例如烏爾里克）</td><td>歸途基石</td></tr>
+            <tr><td><b>智慧</b></td><td>帶官方做的隨從（名字叫 SphinxMother／SphinxFather／SphinxParent，在異界石找），關掉網路功能比較好找</td><td>1,200 異界石點數</td></tr>
+            <tr><td><b>本性</b></td><td>隨便給她一件道具，沒有錯的答案，她會還你一份複製品</td><td>你給的那件的複製品（建議給歸途基石）</td></tr>
+            <tr><td><b>回味</b></td><td>回到你第一次撿到探求之證的地方，那裡會出現一枚初衷之證，帶回來</td><td>剎那飛石 ×3</td></tr>
+            <tr><td colspan="3" class="muted small">第二處：邊境神殿（從關口旅宿之鎮西邊的河過去），題目順序隨機</td></tr>
+            <tr><td><b>重逢</b></td><td>找到她就自動完成，開左邊第一個寶箱</td><td>100,000G</td></tr>
+            <tr><td><b>徒勞</b></td><td>把一個易碎的花瓶交給巴克巴塔爾的莫里茨。比較省事的做法：在史芬克斯這裡插歸途基石，帶莫里茨用剎那飛石過來</td><td>誓約戒指</td></tr>
+            <tr><td><b>鑑別</b></td><td>帶回<b>直髮的但丁</b>，不是捲髮的維吉爾（兩人都在關口旅宿之鎮）</td><td>Whimsical Daydream</td></tr>
+            <tr><td><b>追憶</b></td><td>答對幾題就在她面前放幾座雕像（第二處的這題也算）。<b>這題的獎勵就是會心箭</b></td><td>會心箭</td></tr>
+            <tr><td><b>決鬥</b></td><td>安排一場對決，抓住對手丟下右邊的懸崖</td><td>Ring of Ambition（經驗 +50%）</td></tr>
+            <tr><td colspan="3" class="muted small">全部解完之後</td></tr>
+            <tr><td><b>久遠的龍之鼓動</b></td><td>跟她說話，她要飛走時開戰。用會心箭射<b>身體或後腿</b>（射臉她會逃走），掉落鑰匙和 10,000G，用鑰匙開她身後的金色大寶箱。<b>題目沒解完就殺她</b>一樣拿得到，但全答對的獎盃就沒了</td><td>久遠的龍之鼓動</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h3>龍識者的終局商店</h3>
+  <div class="card">
+    <p style="margin:0 0 8px">海灣神廟的龍識者只收<b>龍血晶</b>（打倒龍類掉 10–20 顆）。一開始只賣剎那飛石（3 顆）、歸途基石（20 顆，限 1 個）、會心箭（8 顆，限 1 支）；<b>主線到終局後</b>才開賣各職業最強裝備。</p>
+    <div class="tbl-wrap" style="box-shadow:none">
+      <table class="wide">
+        <thead><tr><th style="width:120px">職業</th><th>武器（各 110 顆）</th></tr></thead>
+        <tbody>
+          <tr><td>戰士</td><td>Dragon's Dogma（劍）＋ Dragon's Aegis（盾，40 顆）</td></tr>
+          <tr><td>弓箭手</td><td>Dragon's Rancor</td></tr>
+          <tr><td>法師</td><td>Dragon's Nous</td></tr>
+          <tr><td>盜賊</td><td>Dragon's Vein</td></tr>
+          <tr><td>鬥士</td><td>Dragon's Bite</td></tr>
+          <tr><td>巫師</td><td>Dragon's Wit</td></tr>
+          <tr><td>魔劍士</td><td>Lindworm Fang</td></tr>
+          <tr><td>魔弓手</td><td>Grianmhar</td></tr>
+          <tr><td>幻術師</td><td>Dragonswail Litany（攻略站說幻術師武器普遍偏弱，這把是唯一好用的）</td></tr>
+          <tr><td>復甦者</td><td>沒有專屬武器，從上面挑你主要切換的那幾把</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin:10px 0 0"><b>防具：</b>頭 20 顆、腿 30 顆、身體 70 顆，各職業各有一套（如 Stygian Omen、Vashara Scaleskin、Heroic Coat）。<b>其他服務：</b>武器練到其他鍛造流派 3 級後，只有他能加上<b>龍火</b>；也能花 20 顆讓技能耗耐力減半（多輪遊玩時）。</p>
+    <div class="callout c-bad" style="margin-bottom:0"><b>會買不到</b>做出觸發結局的不可逆選擇後，這些裝備就不能再買。想要的先在進結局前買好。</div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section id="dlc">
+  <h2><span class="no">15</span>資料片《Dark Arisen》</h2>
+  <p class="lead">2026-10-09 上市的付費擴充，PS5／Xbox Series X|S／Steam；Switch 2 版直接包含本篇＋資料片。內容分兩塊：北方雪國「被遺棄的領地」故事線，以及散布在本篇地圖的 12 座新地城。</p>
+  <div class="grid g2">
+    <div class="card">
+      <span class="tag t-gold">建議 Lv.40</span>
+      <h3 style="margin-top:8px">被遺棄的領地：諾爾坎</h3>
+      <ul class="tight">
+        <li><b>開啟：</b>晚上到菲倫瓦思的 <b>王城酒館</b> 找 <b>貝恩德</b>，選「關於新的覺醒者」的話題→ 任務 <b>Chilling Tidings</b></li>
+        <li>雪國曾是貝爾蒙特的舊領地，新故事圍繞 <b>艾爾</b> 與一頭墮落之龍</li>
+        <li><b>遺物（戰爭遺物）</b>：怪物掉落或藏在各處，到諾爾坎聚落鑑定，會骰出強化數值，部分裝備附帶特殊技能</li>
+        <li>9 座<b>恩寵石塔</b>：替所有職業新增自訂技能、能力，以及新的大師自訂技能</li>
+        <li>完成諾爾坎一串支線可解鎖<b>外觀變更</b>（換裝外觀、保留數值）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-gold">建議 Lv.20</span>
+      <h3 style="margin-top:8px">被忘卻的考驗</h3>
+      <ul class="tight">
+        <li><b>開啟：</b>同樣晚上找貝恩德，選「關於發現的遺跡」的話題</li>
+        <li>12 座地城散布在貝爾蒙特與巴塔爾，由引導者設下考驗</li>
+        <li>獎勵是「歷代覺醒者」用過的稀有裝備</li>
+        <li>可取得<b>恩寵獻火</b>，用來解鎖諾爾坎恩寵石塔的高階技能</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Beorcan Stronghold：兩本論著的寶庫</h3>
+  <div class="card">
+    <p style="margin:0 0 8px">諾爾坎北部的廢棄要塞，大寶箱裡有 <b>論著 on Advertence</b> 和 <b>論著 on Fortuity</b>（主角、主隨從都能讀）。</p>
+    <ol class="tight">
+      <li><b>過河：</b>諾爾坎主線 Seek the Sage 期間，Dorin 會給你<b>鉤爪</b>，用它過河到要塞。</li>
+      <li><b>防寒：</b>要塞有暴風雪會削耐力，帶 Heatstone；雷達會失效，看主選單地圖找位置。主線打倒 Fimbul Dragon 後暴風雪會停，回來比較好找。</li>
+      <li><b>鑰匙一：</b>地圖東北的黑色方塊處，在半空中下劈打出隱藏梯子，往地下走，兩個寶箱之一有半把鑰匙。</li>
+      <li><b>鑰匙二：</b>大門外一間破屋的寶箱（東南黑色方塊處）。屋門被木頭擋住，從地圖上的梯子下地道繞進屋裡。</li>
+      <li><b>開門：</b>樓梯上去那扇貼著告示的大門插兩把鑰匙，進大廳後上主樓梯，一樓中央的大寶箱（也有攻略說是走道上第一個寶箱）就有兩本論著。側房還有其他寶物。</li>
+    </ol>
+  </div>
+  <h3>寵狼弗列基（尋寶夥伴）</h3>
+  <div class="card">
+    <p style="margin:0 0 8px">諾爾坎聚落的村民 <b>Ilsa</b> 養的母狼。解鎖後可以向 Ilsa「借」牠出門散步，牠會<b>聞出藏起來的遺物（戰爭遺物）和寶箱</b>帶你過去。不會幫你打架。</p>
+    <ol class="tight">
+      <li><b>In for a Hare, in for a Hound</b>：在聚落北邊出口找 Ilsa，交 1 份雪兔肉，跟著弗列基找到寶箱再回報，之後就能借牠尋寶。</li>
+      <li><b>A Direwolf Delicacy</b>：上一個做完開放，答案是雪鹿骨。</li>
+      <li><b>A Hound and His Bone</b>：弗列基的小狼 Skoll 走失。問過 Dorin、Hal、Ilsa，在 Hal 的鍛爐附近撿到 Skoll 的雪鹿骨，給 Ilsa 看再交給弗列基，跟牠到聚落西南約 350 公尺的洞穴，把 Skoll 抱回去（抱著時別跳）。獎勵 60,000 經驗、雪兔肉 ×3、論著 on Lupinity（另一說是和 Hound's Scent Pouch 二選一）。</li>
+    </ol>
+    <p class="small muted" style="margin:8px 0 0">雪兔在 Valgr Ravine、Norgandian Foothills 可以獵到。每次帶弗列基出門都要餵一份肉，多備幾份。隊伍摔死太多次可能讓牠離隊。</p>
+  </div>
+  <div class="callout c-ok"><b>建議順序</b>不必破完主線就能玩。官方表示兩者在主線早期就能進入，建議等級只是「起點」，越往後越難。中等級角色可以先打被忘卻的考驗拿裝備和恩寵獻火，再去諾爾坎。</div>
+  <div class="callout c-warn"><b>進諾爾坎前準備</b>暴風雪會壓低耐力上限，準備<b>抗寒裝備</b>或保暖道具；新怪「Fimbul Dragon」會用冰雹削血 <span class="tag t-unv">待驗證：取自單一攻略站</span>。開打前把 6 格技能填滿、身上帶一瓶墮龍藥。</div>
+</section>
+
+<!-- 16 -->
+<section id="checklist">
+  <h2><span class="no">16</span>進終局前檢查清單</h2>
+  <p class="lead">接到 <b>神的守護者</b> 之後、進月光塔之前，逐項打勾。勾選會記在這台電腦的瀏覽器裡。</p>
+  <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+  <p id="count" style="margin:-6px 0 12px;font-size:14px;color:var(--muted)"></p>
+  <ul class="check" id="checkList">
+    <li><label><input type="checkbox" data-id="godsbane"><span>魂魄之劍還在道具欄（沒賣、沒送人）</span></label></li>
+    <li><label><input type="checkbox" data-id="backup"><span>另開一個存檔槽保留「終局前」存檔</span></label></li>
+    <li><label><input type="checkbox" data-id="talos"><span>打塔羅斯時打弱點，不用美杜莎頭、不放給 NPC 打</span></label></li>
+    <li><label><input type="checkbox" data-id="voc"><span>想玩的職業都解鎖了（尤其魔弓手、復甦者這兩個後期才碰得到的）</span></label></li>
+    <li><label><input type="checkbox" data-id="maister"><span>主力職業的大師技能已取得（見第 06 節）</span></label></li>
+    <li><label><input type="checkbox" data-id="aug"><span>想要的能力都解鎖了（Sagacity、猛擊等要練到第 9 階）</span></label></li>
+    <li><label><input type="checkbox" data-id="side"><span>在意的支線已完成或推進到不會失敗的段落</span></label></li>
+    <li><label><input type="checkbox" data-id="wake"><span>身上至少 2 顆龍之鼓動（真實世界的法茲斯可能死）</span></label></li>
+    <li><label><input type="checkbox" data-id="plague"><span>隊伍隨從都確認沒有巨龍附身（或已準備解藥）</span></label></li>
+    <li><label><input type="checkbox" data-id="gear"><span>主要裝備強化完畢，備好回復與攀爬用的耐力藥</span></label></li>
+    <li><label><input type="checkbox" data-id="dlc"><span>想玩 Dark Arisen：已先接 Chilling Tidings／被忘卻的考驗（避免卡在真實世界）</span></label></li>
+  </ul>
+  <p style="margin-top:12px"><button type="button" class="btn" id="resetBtn">清除勾選</button></p>
+</section>
+
+<!-- 17 -->
+<section id="sources">
+  <h2><span class="no">17</span>資料來源</h2>
+  <p class="lead">2026-10-16 查詢整理。版本更新頻繁，若遊戲內實際情況與本頁不同，以遊戲內為準。</p>
+  <div class="card">
+  <ul class="src">
+    <li>更新內容：<a href="https://www.psu.com/news/dragons-dogma-ii-update-3-1-adds-fast-travel-item-eternal-ferrystone-adjustments-to-ui-pawns-more-read-the-full-patch-notes/">PSU — Update 3.1 完整更新說明</a>、<a href="https://www.psu.com/news/dragons-dogma-2-update-3-2-now-due-sept-1-full-patch-notes-reveal-adjustments-to-pawns-ui-save-system-more/">PSU — Update 3.2 完整更新說明</a>、<a href="https://multiplayer.it/notizie/dragons-dogma-2-ricevera-due-grandi-update-prima-del-dlc-dark-arisen-con-molte-novita-richieste-dai-giocatori.html">Multiplayer.it — 3.1／3.2 與資料片時程</a></li>
+    <li>職業排行：<a href="https://allthings.how/?p=265214">AllThings.How — 2026-10 版排行</a>、<a href="https://www.gamerguides.com/dragons-dogma-2/guide/vocations/basics/vocation-tier-list">GamerGuides — 2024-05 版排行</a></li>
+    <li>技能與被動：Fextralife Wiki 各職業頁（<a href="https://dragonsdogma2.wiki.fextralife.com/Fighter">Fighter</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Archer">Archer</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Mage">Mage</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Thief">Thief</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Warrior">Warrior</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Sorcerer">Sorcerer</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Mystic+Spearhand">Mystic Spearhand</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Magick+Archer">Magick Archer</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Trickster">Trickster</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Warfarer">Warfarer</a>）、<a href="https://dragonsdogma2.wiki.fextralife.com/Augments">Fextralife — Augments</a></li>
+    <li>大師技能：<a href="https://www.powerpyx.com/?p=237441">PowerPyx — 全大師技能</a>、<a href="https://gamingbolt.com/dragons-dogma-2-guide-all-vocation-maisters-and-how-to-find-them">GamingBolt — 大師位置</a></li>
+    <li>職業解鎖：<a href="https://www.rpgsite.net/guide/15634-dragons-dogma-2-vocations-where-to-find-and-how-to-unlock-all-vocations">RPG Site — Vocations</a>、<a href="https://pinogamer.com/17415">Pinogamer — 全職業解鎖（繁中）</a></li>
+    <li>主線：<a href="https://dragonsdogma2.wiki.fextralife.com/Walkthrough">Fextralife — Walkthrough</a> 及各任務頁（<a href="https://dragonsdogma2.wiki.fextralife.com/Seat+of+the+Sovran">Seat of the Sovran</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Monster+Culling">Monster Culling</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Feast+of+Deception">Feast of Deception</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/The+Guardian+Gigantus">The Guardian Gigantus</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Legacy">Legacy</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Halls+of+the+First+Dawn">Halls of the First Dawn</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/When+Wills+Collide">When Wills Collide</a> 等）、<a href="https://twinfinite.net/guides/dragons-dogma-2-all-main-quests-in-order/">Twinfinite — 主線順序</a></li>
+    <li>結局：<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-how-to-get-the-true-ending/">Samurai Gamers — 真結局</a>、<a href="https://rpgsite.net/guide/15650-dragons-dogma-ii-point-no-return-guide">RPG Site — 不可逆點</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/A+New+Godsway">Fextralife — A New Godsway</a>、<a href="https://www.ggrecon.com/guides/dragons-dogma-2-unmoored-world-true-ending/">GGRecon — 脫錨世界</a></li>
+    <li>支線：<a href="https://dragonsdogma2.wiki.fextralife.com/Side+Quests">Fextralife — Side Quests</a> 及各任務頁、<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-side-quest-list-and-guides/">Samurai Gamers — 支線列表與獎勵</a>、<a href="https://www.dexerto.com/gaming/dragons-dogma-2-timed-quests-explained-2606463/">Dexerto — 時限任務說明</a></li>
+    <li>Dark Arisen：<a href="https://www.gameleap.com/articles/dragon-s-dogma-2-dark-arisen-out-now">GameLeap — 上市與 TU 4.0</a>、<a href="https://afkjournal.com/guides/dragons-dogma-2-dark-arisen-how-to-start-norgan-lost-rites">AFK Journal — 如何開始</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dark+Arisen">Fextralife — Dark Arisen</a>、<a href="https://www.videogameschronicle.com/guide/dragons-dogma-2-how-to-start-the-dark-arisen-dlc-recommended-levels/">VGC — 開始方式與建議等級</a></li>
+    <li>資料片被動與狼犬：<a href="https://allthings.how/?p=262293">AllThings.How — Dark Arisen 被動與第 7 格</a>、<a href="https://allthings.how/a-hound-and-his-bone-walkthrough-finding-skoll-in-dragon-s-dogma-2-dark-arisen/">AllThings.How — A Hound and His Bone</a>、<a href="https://www.videogameschronicle.com/guide/dd2-dark-arisen-treat-for-the-hounds-a-direwolf-delicacy-quest-guide/">VGC — A Direwolf Delicacy</a>、<a href="https://hardcoregamer.com/dragons-dogma-2-dark-arisen-beorcans-twinned-key/">Hardcore Gamer — Beorcan's Twinned Key</a>、<a href="https://game8.co/games/Dragons-Dogma-2/archives/630970">Game8 — Treatise on Advertence</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Treatise+on+Advertence">Fextralife — Treatise on Advertence</a></li>
+    <li>地圖與探索：<a href="https://game-maps.com/DD2/dd2-world-map.asp">Game-Maps — 世界地圖分區</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Locations">Fextralife — Locations</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Vernworth+Castle+Vault">Vernworth Castle Vault</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Ancient+Battleground">Ancient Battleground</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dragonsbreath+Tower">Dragonsbreath Tower</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Drabnir's+Grotto">Drabnir's Grotto</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Mountain+Base+Cave">Mountain Base Cave</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Seafloor+Shrine">Seafloor Shrine</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Medusa">Medusa</a>、<a href="https://www.gamerguides.com/dragons-dogma-2/guide/exploration/caves/how-to-reach-battahl-early-guerco-cave-walkthrough">GamerGuides — Guerco Cavern</a>、<a href="https://www.pcgamesn.com/dragons-dogma-2/map">PCGamesN — 地圖與城鎮</a></li>
+    <li>裝備與道具：<a href="https://dragonsdogma2.wiki.fextralife.com/The+Dragonforged">Fextralife — The Dragonforged</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Weapons">Fextralife — Weapons</a> 及各武器頁（各職業前中後期武器的取得地點與價格）、<a href="https://www.sportskeeda.com/esports/how-get-overpowered-early-dragon-s-dogma-2">Sportskeeda — 前期裝備</a>、<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-best-weapons-for-each-vocation/">Samurai Gamers — 各職業最強武器</a>、<a href="https://videogames.si.com/guides/dragons-dogma-2-best-weapons">SI — Best weapons</a>、<a href="https://primagames.com/gaming/the-7-best-hidden-items-you-must-find-in-dragons-dogma-2">Prima Games — 7 個隱藏好物</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Rings">Fextralife — Rings</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Seeker's+Token">Fextralife — Seeker's Token</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Eternal+Wakestone">Fextralife — Eternal Wakestone</a>、<a href="https://www.powerpyx.com/dragons-dogma-2-all-sphinx-riddles-solutions/">PowerPyx — 獅身人面全謎題</a>、<a href="https://www.ggrecon.com/guides/dragons-dogma-2-golden-trove-beetle-locations-map/">GGRecon — 黃金寶甲蟲</a></li>
+    <li>大型魔物打法：Fextralife 各魔物頁（<a href="https://dragonsdogma2.wiki.fextralife.com/Cyclops">Cyclops</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Ogre">Ogre</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Grim+Ogre">Grim Ogre</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Golem">Golem</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Griffin">Griffin</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Chimera">Chimera</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Minotaur">Minotaur</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Drake">Drake</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Lesser+Dragon">Lesser Dragon</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dullahan">Dullahan</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Lich">Lich</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Wight">Wight</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dragon">Dragon</a>）、<a href="https://gamingbolt.com/dragons-dogma-2-guide-all-boss-fights-and-best-strategies-to-beat-them">GamingBolt — 頭目打法</a></li>
+    <li>2026-10-16 補上的 23 個支線：Fextralife 各任務頁（例：<a href="https://dragonsdogma2.wiki.fextralife.com/The+Ornate+Box">The Ornate Box</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Every+Rose+Has+Its+Thorn">Every Rose Has Its Thorn</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Tolled+to+Rest">Tolled to Rest</a>）、<a href="https://www.powerpyx.com/dragons-dogma-2-all-side-quests/">PowerPyx — 全支線</a></li>
+    <li>龍災：<a href="https://gamesradar.com/dragons-dogma-2-dragonsplague">GamesRadar</a>、<a href="https://www.windowscentral.com/gaming/dragons-dogma-2-dragonsplague-explained-psa-this-pawn-illness-can-nuke-and-ruin-your-save">Windows Central</a></li>
+  </ul>
+  </div>
+</section>
+
+<footer>私人用攻略整理 · 2026-10-16 · 內容彙整自上列公開攻略，與 Capcom 官方無關。</footer>
+</main>
+</div>
+<button type="button" id="toTop" aria-label="回到頂端">↑</button>
+
+<script>
+/* ================= 資料 ================= */
+// 職業：core＝一般技能；weapon＝[基本, 進階, 說明, 是否新增]；build＝建議 6 格
+var VOC=[
+{id:"fighter",zh:"戰士",en:"戰士",wp:"單手劍＋盾",pawn:1,role:"前排坦克。靠盾牌格擋、彈反和嘲諷把怪拉住，讓後排安心輸出。玩法核心是真盾牌反擊的完美彈反。",
+core:[["Onslaught","快速連斬"],["Empale","前刺；命中失衡的敵人會追加重擊"],["盾牌防禦","舉盾擋正面攻擊，被打中消耗耐力"],["盾牌反擊","彈反攻擊，反擊省耐力"],["真盾牌反擊","強化彈反，反擊不耗耐力"],["升龍斬","上挑，把輕型敵人打上天"],["Steeled Foundation","用盾緩衝落地，減少摔落傷害"],["Enchanted Counter","武器附魔時，格擋會自動放出同屬性反擊"]],
+weapon:[["突刺","突刺2","突進重擊；進階距離更遠更快"],["裂空斬","裂空斬2","跳起斜上斬，專打飛行怪；進階可空中使用"],["盾牌擊","盾牌擊2","盾擊讓敵人失衡；進階打兩下"],["Shield Summons","Shield Drum","敲盾嘲諷；進階連遠處敵人都能拉"],["圓月斬","圓月斬2","持劍旋轉斬"],["盾牌騰","盾牌騰2","用盾把隊友彈上天（攀大型怪）"],["穿刺","穿刺2","刺入連擊，可固定大型怪、壓制小怪"],["Impeccable Guard","Flawless Guard","全方向格擋，硬直中也能用"],["Hindsight Slash","Hindsight Sweep","後撤再突進斬，當閃避用時威力提升"],["反擊斬","反擊斬2","盾擋後反擊"],["Perfect Defense","Divine Defense","完全防禦正面，耐力消耗大"],["穿刺EX","","穿刺2 的再進階，刺更多下、必定壓制小怪",1],["Shield Precision","","可格擋時自動觸發完美彈反，盾碰到的小怪被彈飛",1],["Whirlwind Strike","Hurricane Strike","衝刺亂斬，可接一記讓敵失衡的重擊",1]],
+mst:"riotous",build:["Shield Drum","突刺2","裂空斬2","穿刺2","反擊斬2","狂襲"],
+bnote:"主角當戰士時偏重輸出（穿刺＋狂襲）；給隨從當坦克就把 Shield Drum、Flawless Guard 放前面。"},
+{id:"archer",zh:"弓箭手",en:"弓箭手",wp:"弓",pawn:1,role:"遠程物理輸出，射弱點、上屬性箭。安全但輸出被魔弓手、巫師壓過，很多人練它主要是為了能力 Endurance（+150 耐力）。",
+core:[["Loose","自動瞄準速射，可邊走邊射"],["前踢","踢擊讓敵人硬直；空中命中會往後彈"],["Steady Shot","拉弓精準瞄準，拉越久越強"],["飛踢","踢退敵人並後跳拉開距離"],["Parting Shot","後跳時順手射一箭"],["Swift Nock","搭箭更快"],["Puncture Dart","拉滿弓時穿透力更強，但較難瞄"]],
+weapon:[["連射箭","連射箭2","對單體快速連射，主力輸出"],["Sweep Shot","Cascade Shot","扇形箭雨，打多目標"],["鑽心箭","鑽心箭2","強力一箭擊倒小怪；進階能把小怪釘在牆上"],["Keen Sight","Lyncean Sight","望遠瞄準，打遠處目標"],["火藥箭","火藥箭2","會黏住的爆炸箭；攀附時使用直接刺入"],["淋油箭","淋油箭2","焦油箭（再點火有大傷害），需焦油箭矢"],["怒濤箭","怒濤箭2","站樁連射，越射越快"],["淋水箭","淋水箭2","浸濕箭，需浸濕箭矢"],["Whirling Arrow","Spiral Arrow","旋轉多段箭，清小怪"],["疫毒箭","疫毒箭2","中毒箭，需毒箭矢"],["Falcon Arrow","Kite Arrow","踢擊後跳射；對倒地敵人會躍起重射",1],["Cloudburst Shot","","大範圍箭雨，持續拉弓可連發",1]],
+mst:"heavenly",build:["連射箭2","鑽心箭2","火藥箭2","怒濤箭2","Spiral Arrow","鬼神箭"],
+bnote:"隨身帶一點屬性箭矢，遇到怕火／怕冰的怪再換淋油箭2 或淋水箭2。"},
+{id:"mage",zh:"法師",en:"法師",wp:"法杖",pawn:1,role:"純輔助：補血、護盾、解異常、替隊友武器附魔。自己打不痛，但當隨從是公認 S 級。",
+core:[["Magick Bolt","依附魔屬性變化的魔彈，可邊走邊放"],["治療結界","治療法陣，站在裡面的人回血"],["Focused Bolt","集中魔彈"],["Quickspell","耗耐力大幅加快詠唱"],["羽落術","暫時減輕重量漂浮"],["魔法護盾","魔法護盾，擋下攻擊（3.2 新增）"]],
+weapon:[["火焰風暴","火焰風暴2","噴射火焰，無視防禦、可穿透"],["閃電術","閃電術2","天降落雷，耗耐力可追加"],["護衛之靈","護衛之靈2","擋 3 次攻擊的護盾；進階也給附近隊友"],["Fire Boon","Fire Affinity","替自己或隊友武器附火（另有冰、雷兩種）"],["冰柱術","冰柱術2","冰柱可當踏板；進階放寒波傷害"],["Halidom","High Halidom","解除異常狀態；進階連著火、冰封、中毒都能解"],["Empyrean","High Empyrean","聖光球，周圍持續傷害"],["Celerity","High Celerity","加速法陣，隊友移動變快"],["緊急治療","緊急治療2","瞬間補滿一人體力／持續回血"],["強制緘默","強制緘默2","沉默目標，專治會施法的怪"],["Spellhold","High Spellhold","把詠唱好的魔法存起來，之後瞬放"],["Virtuous Bolt","Exalted Bolt","召喚聖靈，在普攻魔彈上追加光彈",1],["Benediction","","暫時降低自己體力上限，讓隊上隨從倒地時自動復活",1]],
+mst:"paean",build:["護衛之靈2","High Halidom","緊急治療2","屬性附魔（看敵人弱點）","Benediction","神之鼓舞"],
+bnote:"隊上有法師隨從時，記得讓主角或物理隨從身上有屬性附魔——打弱點差很多。"},
+{id:"thief",zh:"盜賊",en:"盜賊",wp:"雙匕首",pawn:1,role:"高機動近戰，爬大怪、打弱點。兩份排行都放 S，被認為是單人輸出最強的基本職業。無我境界能讓你幾乎打不到。",
+core:[["Carve","快速匕首連擊"],["二連牙","雙擊，按住可攀附大怪或壓制小怪"],["Swift Step","壓低身形快速移動、閃避"],["Scarlet Kisses","向前亂斬"],["Controlled Fall","被擊倒時翻滾快速起身"],["瞬盜","Carve 命中時有機率偷東西"],["Footpad","蹬牆跳遠"]],
+weapon:[["鐮鼬斬","鐮鼬斬2","穿身斬，接觸時追加斬擊"],["帶炎刃","帶炎刃2","匕首點火，攀附中也能用"],["隱身","隱身2","潛行，降低被發現機率"],["斷頭台","斷頭台2","躍起旋轉下砍，從高處更強；打弱點最高傷"],["爆炎線","爆炎線2","放遙控炸藥"],["套索","套索2","甩繩拉小怪、拉倒失衡大怪（拉下飛行怪）"],["爆跳","爆跳2","炸藥後撤"],["煙霧","煙霧2","煙霧彈致盲"],["奪取","奪取2","偷取道具；進階易偷到稀有物"],["刨刺","刨刺2","攀附中刺弱點再抽身"],["流刃殺","流刃殺2","彈反後繞背割喉"],["Fanged Schism","Fanged Rift","上挑後引爆，按住多一段跳斬",1],["Combustive Caper","","邊跑邊埋炸藥，停下時大範圍引爆",1]],
+mst:"feint",build:["無我境界","斷頭台2","刨刺2","絕火超炎刃","套索2","流刃殺2"],
+bnote:"沒有絕火超炎刃時用帶炎刃2 代替。能力配猛擊（+30 力量）與 Endurance。"},
+{id:"warrior",zh:"鬥士",en:"鬥士",wp:"雙手劍／巨鎚",pawn:1,role:"蓄力重擊、打倒大型怪的爆發輸出，也能當半個坦。慢，對敏捷的怪吃虧。",
+core:[["橫揮斬","橫掃，按住蓄力且不易被打斷"],["順劈斬","前刺，命中失衡敵追加重擊"],["金剛衝","衝撞讓敵人硬直"],["Bulwark","蓄力時減傷"],["Breakneck Strike","剛好蓄滿瞬間放開，追加傷害"],["行雲流水","在揮擊尾端接下一擊會多一次橫掃"],["Repulse","以蓄力攻擊彈反，可讓敵失衡"]],
+weapon:[["平地斬","平地斬2","旋轉斬全方位，可蓄力"],["蒼天斬","蒼天斬2","跳起上斬，打擊倒值極高"],["Bellow","Roar","吼叫嘲諷"],["戰神突刺","戰神突刺2","衝刺突刺，再按一次追刺"],["Ladder Launch","Catapult Launch","從肩上把隊友舉上天"],["Surging Strike","Diluvian Strike","躍下斬，越高越痛"],["Revivify","Inspirit","解除著火、凍傷、睡眠、沉默、昏厥"],["魔人斬","魔人斬2","全力蓄力重擊"],["崩山擊","崩山擊2","上刺，可讓敵失衡或昏厥"],["裂潮擊","裂潮擊2","發動瞬間被打就反擊，失敗也能防禦"],["Gale Slash","Windstorm Slash","連斬，抓對節奏越揮越快"],["Iron Cleave","","衝撞穿過敵人後上斬，期間減傷",1]],
+mst:"arc",build:["退魔劍聖斬","裂潮擊2","蒼天斬2","魔人斬2","崩山擊2","Roar"],
+bnote:"裂潮擊／裂潮擊2 抓好時機能反擊牛頭怪、龍的撲擊。能力配 Vitality、猛擊、Dominance（擊倒力）。"},
+{id:"sorcerer",zh:"巫師",en:"巫師",wp:"大杖",pawn:1,role:"長詠唱、大範圍高爆發的魔法砲台，詠唱中被打斷就白費。很適合交給隨從——巫師隨從是公認 S 級。",
+core:[["Magick Bolt","依附魔屬性變化的魔彈"],["耐力回復","快速回復耐力（移動中效果較差）"],["Bursting Bolt","魔彈命中後延遲爆炸"],["Quickspell","耗耐力大幅加快詠唱"],["羽落術","暫時漂浮"],["魔法護盾","魔法護盾（3.2 新增）"]],
+weapon:[["火焰風暴","火焰風暴2","旋轉火焰噴射，無視防禦"],["閃電術","閃電術2","落雷"],["冰柱術","冰柱術2","冰柱／寒波"],["Spellhold","High Spellhold","存咒瞬放"],["火蜥之尾","火蜥之尾2","沿地面竄行的火焰"],["雷電陷阱","雷電陷阱2","雷球自動電擊附近敵人，擊倒小怪"],["Hagol","High Hagol","暴風雪，附帶凍傷"],["Decanter","High Decanter","吸取敵人生命補自己，要站著不動"],["地震術","地震術2","岩石噴發的物理傷害，專打抗魔怪"],["凝聚烈焰","凝聚烈焰2","在目標身上放光球，被打會延遲連鎖爆炸"],["Brontide","","召喚可揮動的雷鞭，期間仍可施放其他技能",1]],
+mst:"meteoron",build:["流星火雨","龍捲風","凝聚烈焰2","地震術2","High Hagol","雷電陷阱2"],
+bnote:"流星火雨適合開闊地，龍捲風適合狹窄處。能力配 Sagacity、Catalysis、Constancy（防打斷）。"},
+{id:"spearhand",zh:"魔劍士",en:"魔劍士",wp:"魔雙劍",pawn:0,role:"近戰＋魔法，能定身敵人、開全隊短暫無敵。兩份排行都是 S，攻守兼備又好上手，是最推薦的第一個進階職業。",
+core:[["畏懼魔彈","無傷害魔彈，讓敵人硬直，可邊走邊放"],["封印魔彈","把畏懼魔彈改成定身，蓄力延長時間"],["分散魔彈","定身效果擴散到附近敵人"],["剎那逼近","瞬移到被定身的敵人身邊"],["Ferrene Bolt","延長畏懼魔彈射程"],["螺旋斬","向前旋轉魔雙劍，連按越轉越快"]],
+weapon:[["飛龍突刺","飛龍突刺2","踩魔法平台跳刺，可打飛行怪"],["狙擊魔刃","狙擊魔刃2","追蹤魔刃，可邊打邊放"],["奪取魔手","奪取魔手2","吸取敵人生命轉成耐力"],["反彈神衣","反彈神衣2","自己與附近隊友短暫無敵屏障——公認最強技能之一"],["天龍牙","天龍牙2","跳起高速俯衝，閃避攻擊時使用更痛"],["高舉祭品","高舉祭品2","念力舉起物體或小怪丟向敵人"],["送入絕界","送入絕界2","把小怪打飛出場（沒經驗沒掉落）"],["發射魔槍","發射魔槍2","發射蓄積魔力的砲擊，耗越多耐力越痛"],["一舉蓄力","一舉蓄力2","消耗血與耐力，瞬間把定身蓄滿"],["Bataille Twinne","","召喚自己的分身連斬一段時間",1]],
+mst:"furie",build:["反彈神衣2","狂亂之噬","飛龍突刺2","奪取魔手2","天龍牙2","一舉蓄力2"],
+bnote:"用封印魔彈定住大怪再全隊集火，是這職業的基本節奏。"},
+{id:"marcher",zh:"魔弓手",en:"魔弓手",wp:"魔弓",pawn:0,role:"自動鎖定的魔法箭、屬性輸出、補血與復活隨從。2024 年被評 S，3.2 下修治療箭與殉身霸魔弓後掉到 A。怕抗魔的魔像。",
+core:[["Quickfire","向前散射三箭，攀附時直接刺入"],["轉魔眼","切換廣射／狹射"],["廣射","鎖定多個目標或多個部位齊射"],["狹射","鎖定單一目標或部位"],["Climactic Arrow","拉滿瞬間放開加傷"],["Scopic Sight","延長鎖定距離"],["Tracker's Sight","增加鎖定數量"],["Protracting Arrow","放完屬性技後，普攻短暫帶同屬性"]],
+weapon:[["Irradiant Orb","Candescent Orb","火球，照明並可點燃敵人"],["Frostseeker Bolt","Frosthunter Bolt","追蹤冰箭，可凍傷，打弱點好用"],["Remedy Arrow","Recovery Arrow","提早放＝補血；蓄滿＝復活倒地隨從"],["Ricochet Seeker","Ricochet Hunter","會反彈的箭，越彈越強，適合狹窄地城"],["Sedative Bolt","Soporific Bolt","催眠"],["Flamefang Arrow","Blazefang Arrow","可操控軌跡的爆炸火箭"],["轉命魔弓","轉命魔弓2","吸取路徑上敵人的生命給隨從"],["Hailstone Bolt","Arctic Bolt","冰塊重擊，帶物理傷害，打魔像弱點"],["Sparkchain Stake","Boltchain Stake","雷樁，多根之間會連鎖放電"],["抗反魔盾","抗反魔盾2","在隊友身上放擋攻擊並反擊的屏障"],["無盡魔箭","無盡魔箭2","召喚大量魔箭集中一點"],["Shadebind Bolt","","長時間緩速單一目標，並加快異常累積",1]],
+mst:"martyr",build:["Frosthunter Bolt","Blazefang Arrow","無盡魔箭2","Recovery Arrow","Arctic Bolt","殉身霸魔弓"],
+bnote:"對魔像這類抗魔怪換 Arctic Bolt 打物理。能力配 Sagacity、Catalysis。"},
+{id:"trickster",zh:"幻術師",en:"幻術師",wp:"香爐",pawn:0,role:"用幻影吸仇恨、強化隨從、讓敵人互打或摔下懸崖，自己幾乎沒傷害。兩份排行都墊底，但玩法最特別，適合想換口味的人。",
+core:[["Beveiling Fumes","揮香爐放煙，吸引敵人注意"],["肖像之香","召喚幻影替身吸仇恨"],["Effigial Snuff","消除幻影"],["Invoking Essence","把幻影召回身邊"],["Enthralling Aroma","讓幻影附身敵人，使敵人自相殘殺"],["Mending Vapor","召回時慢慢修復幻影"],["Drifting Brume","會飄向敵人的煙霧"],["Effigial Quickburn","加快幻影生成"],["Trailing Aroma","幻影可離自己更遠"]],
+weapon:[["Sweeping Shroud","Suffocating Shroud","大範圍煙霧吸引敵人"],["幻牆之煙","幻牆之煙2","幻影牆擋路遮視線；進階可同時兩面"],["Aromatic Rally","Aromatic Resurgence","提升隊友攻擊，0 血仍可戰鬥（強化隨從的核心）"],["離魂虛香","離魂虛香2","靈魂出竅偵查"],["幻地之霞","幻地之霞2","幻影地板，讓敵人踩空摔落"],["Latching Effigy","Binding Effigy","把幻影射向遠處敵人附身"],["Scented Alarum","Fragrant Alarum","偵測附近敵人"],["Curing Cloud","","消耗自己體力，遠距修復幻影",1]],
+mst:"delusion",build:["Aromatic Resurgence","妖龍幻影","Binding Effigy","Suffocating Shroud","幻牆之煙2","幻地之霞2"],
+bnote:"隊伍要放三個能打的隨從（戰士／鬥士／盜賊／巫師）。力量影響吸仇恨，魔力影響幻影耐久。"},
+{id:"warfarer",zh:"復甦者",en:"復甦者",wp:"任何武器",pawn:0,role:"能拿所有武器、學所有職業的自訂技能，戰鬥中用快速切換武器切換。舊版只有 4 格很尷尬，3.2 擴到 6 格後被評為 S。",
+core:[["規則一","技能只有在手上拿著對應職業的武器時才能用"],["規則二","不能用其他職業的大師技能（只有自己的快速切換武器）"],["規則三","戰士與鬥士技能分單手／雙手，不能互換"],["規則四","身上帶多把武器時，只算最重那把的重量"],["規則五","升級時沒有職業成長加成，數值成長比其他進階職業低"],["小技巧","拿法杖就有羽落術、治療結界；拿大杖就有耐力回復回耐力；火焰風暴2 等魔法法杖／大杖通用"]],
+weapon:[["（借用全職業）","","從其他職業學過的自訂技能都能放進復甦者的技能欄"]],
+mst:"rearm",build:["快速切換武器","反彈神衣2（魔雙劍）","斷頭台2（匕首）","護衛之靈2（法杖）","凝聚烈焰2（大杖）","裂潮擊2（雙手劍）"],
+bnote:"示範組合，實際看你練過哪些職業。帶的武器越多越要注意負重。"}
+];
+// 大師技能
+var MST={
+riotous:{voc:"戰士",n:"狂襲",d:"狂亂連斬，最後一擊上挑把敵人打上天；附近有敵人時可用搖桿調方向。",how:"梅爾威村 <b>倫納特</b>。完成水邊的蜥蜴、前往牛車大道等提高好感，牛車回梅爾威觸發 <b>災難降臨</b>，完成後對話（不給就每天送禮）→ <i>大師技能書</i>"},
+heavenly:{voc:"弓箭手",n:"鬼神箭",d:"消耗全部耐力的一箭，放箭時剩越多耐力越強。",how:"聖樹之村 <b>塔埃森</b>（要會精靈語的隨從）。完成 <b>煩惱的嫩枝</b> 與 <b>小樹的潛力</b>（救回他女兒），隔天對話 → <i>大師技能書</i>"},
+paean:{voc:"法師",n:"神之鼓舞",d:"放出聖光波，碰到的隊友耐力回復與移速提升、受傷減少；施放者耐力歸零並倒地。",how:"梅爾威北方艾妮家的 <b>艾妮</b>。完成 <b>追尋夢想</b>（用真本書）後立刻對話 → <i>大師技能書</i>"},
+feint:{voc:"盜賊",n:"無我境界",d:"加速反應，閃過幾乎所有攻擊；持續消耗耐力。",how:"無名村莊園後方「深處」的 <b>斯雷爾</b>，要先走完機關迷宮。主線騷亂之村期間對話問完 → <i>大師技能書</i>"},
+pyre:{voc:"盜賊",n:"絕火超炎刃",d:"匕首纏上烈焰，傷害極高，但自己也會被燒。",how:"無名村山上宅邸的 <b>弗勞德</b>。對話選項問完；不給就送禮（龍血晶或花）→ <i>大師技能書</i>"},
+arc:{voc:"鬥士",n:"退魔劍聖斬",d:"把全部耐力灌進一記終極重擊。",how:"<b>布連</b>（布連的私人帳篷或關口旅宿之鎮南方的兒時故居）。完成 <b>獸人教官</b> → <b>布連的執著</b>，輸了決鬥就送禮補好感 → <i>大師技能書</i>"},
+meteoron:{voc:"巫師",n:"流星火雨",d:"召喚隕石雨，大範圍高傷害；詠唱不能移動、Quickspell 無效，適合開闊地。",how:"艾妮家的 <b>朵莉夏</b>。完成 <b>追尋夢想</b> 並好感夠 → <i>大師技能書</i>"},
+maelstrom:{voc:"巫師",n:"龍捲風",d:"製造吞噬一切的龍捲風；詠唱不能移動，適合狹窄處。",how:"關口旅宿之鎮的 <b>米爾汀</b>。完成 <b>魔法師的信念</b>（交給他沒給朵莉夏的那幾本書，或伊普希姆偽造的）→ <i>大師技能書</i>"},
+furie:{voc:"魔劍士",n:"狂亂之噬",d:"斬擊與魔法的連段，追加按鍵消耗耐力延續。",how:"<b>西格爾特</b>。送龍血晶拉好感，或和他一起打倒食龍塔的龍；之後到哈波村海邊小屋繼續送禮 → <i>大師技能書</i>"},
+martyr:{voc:"魔弓手",n:"殉身霸魔弓",d:"暫時扣減自己的體力上限換一記極強魔箭，扣越多越強（3.2 下修）。",how:"火山島營地溫泉附近的 <b>克莉烏娜</b>。完成 <b>隱居的夫妻</b> 後再對話 → <i>大師技能書</i>"},
+delusion:{voc:"幻術師",n:"妖龍幻影",d:"召喚幻影巨龍，沒有傷害但會嚇得敵人跌倒、逃跑。",how:"禮拜神廟的 <b>露姿</b>。在樓下解鎖職業後，爬左後方梯子上屋頂，到前方和她本人對話 → <i>大師技能書</i>"},
+rearm:{voc:"復甦者",n:"快速切換武器",d:"瞬間切換身上的另一把武器，順序在裝備選單設定。",how:"火山島營地溫泉前的 <b>魯蒙德</b>。完成 <b>武藝高超的酒豪</b>（交 3 瓶蜥蜴酒）後再對話 → <i>大師技能書</i>"}
+};
+var MST_ORDER=["riotous","heavenly","paean","feint","pyre","arc","meteoron","maelstrom","furie","martyr","delusion","rearm"];
+// 能力：[名稱, 職業id, 階, 點數, 效果, 推薦, 適合]
+var AUG=[
+["Mettle","fighter",2,300,"物理防禦 +30% +45",1,"前排、近戰"],["Provocation","fighter",4,900,"被敵人鎖定的機率 +100%",0,"只有坦克裝"],["Thew","fighter",6,1800,"負重 +10 kg",0,"背很多東西的人"],["Dominion","fighter",8,3000,"壓制敵人時間 +2 秒",0,"近戰"],["Diligence","fighter",9,5000,"倒地、爬行起身更快",0,"全員"],
+["Ambuscade","archer",2,300,"對未進入戰鬥狀態的敵人傷害 +10%",0,"潛行偷襲"],["Endurance","archer",4,900,"耐力上限 +150",1,"全員"],["Radiance","archer",6,1800,"油燈省 1/3 燈油、照亮兩倍範圍",0,"常夜行"],["Lethality","archer",8,3000,"打弱點傷害 +5%",1,"弓系、盜賊"],["Avidity","archer",9,5000,"攀爬速度 +10%",0,"愛爬的人"],
+["Apotropaism","mage",2,300,"魔法防禦 +30% +45",1,"全員"],["Beatitude","mage",4,900,"藥品與治療魔法回復量 +10%（僅自己）",0,"全員"],["Intervention","mage",6,1800,"異常狀態持續時間 -30%",0,"全員"],["Perpetuation","mage",8,3000,"附魔與強化持續時間 +20%（僅自己）",0,"吃附魔的近戰"],["Exaltation","mage",9,5000,"耐力回復 +10／秒",1,"全員"],
+["Subtlety","thief",2,300,"被敵人鎖定的機率 -15%",0,"後排、脆皮"],["Gratification","thief",4,900,"擊殺回復 4% 體力",0,"近戰"],["Poise","thief",6,1800,"被抓時掙脫耐力消耗 -20%",0,"全員"],["Vigor","thief",8,3000,"攀附、壓制耐力消耗 -15%",0,"愛爬大怪"],["猛擊","thief",9,5000,"力量 +30",1,"物理系"],
+["Vitality","warrior",2,300,"體力上限 +200",1,"全員"],["Impact","warrior",4,900,"抓住敵人時推拉能力 +50%",0,"近戰"],["Pertinacity","warrior",6,1800,"破防能力 +30%",0,"近戰"],["Dominance","warrior",8,3000,"擊倒力 +15%",0,"鬥士、戰士"],["Intrepidity","warrior",9,5000,"受傷時灰血累積 -5%",0,"全員"],
+["Asperity","sorcerer",2,300,"攻擊附加異常狀態機率 +20%",0,"毒、火、冰系"],["Stasis","sorcerer",4,900,"道具腐敗速度 -25%",0,"囤肉囤藥的人"],["Constancy","sorcerer",6,1800,"擊倒抗性 +30%",1,"施法者"],["Catalysis","sorcerer",8,3000,"打屬性弱點傷害 +5%",1,"魔法系"],["Sagacity","sorcerer",9,5000,"魔力 +30",1,"魔法系"],
+["Conveyance","spearhand",2,300,"搬東西時移速 +10%",0,"—"],["Opulence","spearhand",4,900,"錢袋金幣 +5%",0,"刷錢"],["陰陽","spearhand",6,1800,"白天力量 +5%、夜晚魔力 +5%",0,"魔劍士、復甦者"],["Refulgence","spearhand",8,3000,"異界石點數 +5%",0,"刷異界石點數"],["迅步","spearhand",9,5000,"衝刺耐力消耗 -10%",1,"全員"],
+["Sustainment","marcher",2,300,"隊上隨從物防魔防 +30",0,"重視隨從"],["Voracity","marcher",4,900,"擊殺回復 10% 耐力",0,"清小怪"],["Prolificity","marcher",6,1800,"小型敵人掉寶率 +20%",0,"刷素材"],["Ascendancy","marcher",8,3000,"隊上隨從力量魔力 +30",0,"幻術師、重視隨從"],["Amelioration","marcher",9,5000,"倒地隨從復活快 1 秒",0,"重視隨從"],
+["Detection","trickster",2,300,"附近有探求之證、龍之鼓動碎片時發出聲光提示",0,"收集控"],["授惠","trickster",4,900,"合成時 15% 機率多做一個",0,"做藥"],["Fugacity","trickster",6,1800,"露營、坐牛車被偷襲機率 -65%",0,"全員"],["Obfuscation","trickster",8,3000,"非戰鬥時被敵人發現機率 -15%",0,"潛行"],["Allure","trickster",9,5000,"NPC 好感度提升 +10%",0,"刷大師好感"],
+["Zeal","warfarer",6,1800,"自訂技能耐力消耗 -5%",1,"全員"],["Dynamism","warfarer",9,5000,"負重對移速的影響降低一級",1,"重裝"]
+];
+// 資料片論著：[能力名, 效果, 取得方式, 是否待驗證]
+var AUG_COMMON=[
+["Advertence","已打倒過的敵人種類，牠的掉落物會標在小地圖上","諾爾坎北部 <b>Beorcan Stronghold</b>：集齊 Beorcan's Twinned Key 兩半開大門，門後走道上第一個寶箱（和 Fortuity 同一處，做法見第 15 節）",0],
+["Fortuity","寶箱有機率多給金幣；部分怪物、動物有機率多掉肉","同上，Beorcan Stronghold 大門後的寶箱",0],
+["Generosity","使用回復體力／耐力的道具時，分一部分給附近的隨從","讀《論著 on Generosity》，<b>取得地點目前各攻略站都還沒寫</b>",1],
+["Lupinity","有寵狼弗列基同行時，跳躍與衝刺只耗 0.4 倍耐力","諾爾坎支線 <b>A Hound and His Bone</b> 的獎勵（二選一，另一個是 Hound's Scent Pouch）",0],
+["Proficiency","自訂技能的最高階版本耗耐力較少，可與 Zeal 部分疊加","諾爾坎支線 <b>A Keepsake, for Your Sake</b> 的獎勵（二選一，另一個是 10 枚諾爾坎古錢）",0]
+];
+// 排行
+var TIER={
+t26:{S:["warfarer","thief","spearhand"],A:["warrior","fighter","marcher"],B:["archer","sorcerer","mage"],C:["trickster"],D:[]},
+t24:{S:["marcher","thief","spearhand"],A:["sorcerer","warrior","mage"],B:["fighter"],C:["archer","warfarer"],D:["trickster"]},
+pawn:{S:["mage","sorcerer","fighter"],A:["warrior","archer","thief"],B:[],C:[],D:[]}
+};
+var TWHY={
+t26:{warfarer:"同一套技能塞進多職業招式，什麼場面都能應付；不能用其他職業的大師技",thief:"單人輸出最高，無我境界有完全無敵的空檔",spearhand:"遠近都能打、能定身、能開全隊無敵；單體持續輸出略遜盜賊",warrior:"打倒地／失衡的敵人爆發極高，打敏捷怪吃虧",fighter:"穩定的近戰，自動彈反、專打頭目；上限不如盜賊",marcher:"安全距離打高屬性傷害；殉身霸魔弓下修，怕抗魔怪",archer:"穩定遠程、打弱點，但缺少防禦手段",sorcerer:"單發魔法傷害最高，但詠唱長、容易被打斷",mage:"單人傷害低，但補血、增益、自動復活在難戰很有用",trickster:"沒有直接傷害，靠幻影與仇恨控制，打頭目最吃力"},
+t24:{marcher:"補血、復活、傷害、控場一手包",thief:"最強基本職業：高傷害、控場、逃生",spearhand:"反彈神衣可反覆短暫無敵，物理魔法雙傷害",sorcerer:"範圍魔法強，但會被打斷",warrior:"傷害高、能半坦，但較難上手",mage:"最強輔助，傷害很弱",fighter:"前期好用，後期價值下降",archer:"傷害還行但被其他輸出職業壓過；練它主要為了 Endurance",warfarer:"4 格扣掉快速切換武器只剩 3 格，解鎖又晚",trickster:"幾乎純輔助，太依賴隨從 AI"},
+pawn:{mage:"補血、護盾、解異常，隊上必備",sorcerer:"流星火雨／龍捲風交給 AI 放，主角不用自己站樁",fighter:"最好的隨從坦克，嘲諷與格擋",warrior:"打擊倒值高，可當第二輸出",archer:"AI 會射弱點，不佔近戰位置",thief:"AI 會爬大怪，但容易冒進"}
+};
+var TNOTE={
+t26:"來源：AllThings.How 2026-10-13 版（以 Dark Arisen 上市後的版本為準）。",
+t24:"來源：GamerGuides 2024-05-22 版（技能欄仍是 4 格的時代）。網路上大部分「最強職業」文章是這個時期寫的。",
+pawn:"隨從只能用 6 個職業。S 級三個是多篇攻略的共識；A 級三個沒有一致排序，編者依用途並列。"
+};
+// 主線：[名稱, 中文副標, 起點, 步驟[], 獎勵, 警告, 是否危險]
+var MAIN=[
+{part:"第一部 · 序章與貝爾蒙特",list:[
+["從監獄甦醒","礦坑中覺醒","挖掘場「坑洞」（遊戲開場）",["捏臉並選起始職業（戰士／弓箭手／法師／盜賊），之後都能換","跟著監工 Fiska、認識 Rook，幫忙搬石頭","地震後迎戰 Gorgon：不要待在牠的視線範圍裡","跟 Rook 跳崖、搭上獅鷲逃離"],"—","",0],
+["起始之地","國境監視團營地","群青瀑布（獅鷲被擊落後）",["跟著 Justinn 走，崖邊寶箱拿 Salubrious Draught","打倒峽谷的哥布林並搜刮","抵達國境監視團營地，劇情介紹異界石與隨從","在營地旅館休息：第一次免費、+200 經驗"],"200 經驗","",0],
+["源自毀滅之村","前往梅爾威與王都","國境監視團營地北門（休息後自動開始）",["北門衛兵菲爾給支線新兵受難記——<b>有時限</b>，拖太久阿卡德會死","往西南到梅爾威，途中 Martyr's Resting Place 有金色帝王甲蟲","梅爾威回憶後在烏爾里克家醒來，見葛雷格爾","找旅店的倫納特（戰士大師）、留意背魔雙劍的西格爾特（魔劍士）","護送葛雷格爾經貝爾蒙特北部關卡到王都，途中打倒擋路的獨眼巨人"],"開啟王城之都","順手接梅爾威的小小的冒險、兄弟的努力",0],
+["王城之都","與貝恩德會面","抵達菲倫瓦思",["進城時被帶去驗明身分；城外追人事件可選說謊或說實話","白天逛城：職業公會接 <b>進步的阻礙</b>（鬥士／巫師）","晚上到 <b>王城酒館</b> 酒吧找貝恩德，跟他進包廂","從「魔物討伐／王妃／法官」三個委託挑一個接受即完成，其餘之後還能接"],"永恆剎那飛石（3.1 起）","",0],
+["討伐魔物","貝恩德委託：魔物討伐","貝恩德「Tell me of monster culling」",["城西北 <b>特雷弗礦山</b>：清哥布林、跟 Alex 對話；順便拿鬥士雙手劍、巫師大杖","往南到 <b>哈波村</b> 找 Dylan，清鳴潮洞窟的蜥蜴人；用龍之鼓動救倒下的士兵、救出 Hollis（期間可接棲息於海角的魔物）","到貝爾蒙特東緣，保護物資不被哥布林與蜥蜴人搶","晚上回王城酒館報告貝恩德"],"7,000G、3,000 經驗、Expeditioner's Cloak","完成後貝恩德會多兩個話題：「the masquerade」→ 偽王的計畫、「the false Sovran」→ 騷亂之村",0],
+["營救法務官","貝恩德委託：救出法官","貝恩德「Tell me of the magistrate」，拿監獄的通用鑰匙",["到城南的城堡監獄塔，衛兵 Otto 會放行，往地下牢房","潛行，或穿蒂莎的陰謀拿到的 Marcher 套裝混進去","右手第一間找法務官，回答「The Arisen」並勸他逃","找藏身處：做支線 <b>腳下的真相</b>（貧民窟肯德里克捐食物兩次）→ 發現貧民區地下書庫","回牢房告訴他地點、用鑰匙帶他出去；晚上還鑰匙給貝恩德"],"7,000G、1,200 經驗、剎那飛石","",0],
+["騷亂之村","調查偽王","貝恩德「Tell me of the false Sovran」",["往菲倫瓦思東方走到無名村","上山到山上宅邸找 <b>弗勞德</b>（盜賊大師技絕火超炎刃）","從莊園旁的洞下到「深處」，走完機關路線找 <b>斯雷爾</b>（盜賊大師技無我境界）","拿到達拉的通緝令，晚上回報貝恩德"],"7,500G、1,200 經驗、Dragon's Gaze","",0],
+["偽王的計畫","貝恩德委託：化妝舞會","貝恩德「Tell me of the masquerade」，拿薄暮面具",["準備宮廷服謁見外套／謁見長褲：支線機關盒之緣，或舞會會場內的寶箱","隨從不能進貴族區，自己一人進去","入夜潛入貴族區西側的舞會會場；環形走廊北側寶箱有禮服，半開的牆後暗室有全能靈藥","跟著劇情遇到威廉明娜，她帶你脫身並給 Myrmecoleon Card","回報貝恩德，他會去查法茲斯"],"6,500G、900 經驗、龍之鼓動碎片","",0],
+["蒂莎的陰謀","貝恩德委託：王妃的陰謀","貝恩德「Tell me of the queen regent」",["<b>午夜到黎明</b>之間走城堡後門，衛兵帶你到衛兵室","衛兵室寶箱拿 <b>Marcher 套裝</b>穿上，才能在城內自由走動","二樓 Castle Offices 桌上拿密函，被斯芬撞見後從窗戶逃","晚上把信交給貝恩德"],"6,500G、1,200 經驗、龍之鼓動","",0],
+["危險的接觸","潛入阿洛多房間","貝恩德「rumors about 阿洛多」",["夜晚到城堡，衛兵帶你到後方","穿過衛兵室進大廳，走西南角螺旋梯上二樓","等房裡的人離開，搜東牆書桌旁的暗格拿蓋有巴塔爾印章的信","從西側窗戶跳到馬車頂離開，威廉明娜會幫你引開衛兵","回報貝恩德"],"5,500G、1,200 經驗、增積戒指","",0],
+["謊言之宴","加冕之宴 · 不可逆點 #1","完成上述委託後晚上找貝恩德",["先把貝爾蒙特有沙漏的支線做完（見上方紅框）","穿上禮服，到菲倫瓦思的住所拿貝恩德送的物資包","對貝恩德選「I am ready」→ 隔天早上進王宮，劇情發展","至少等一天，晚上再問貝恩德加冕的事 → 拿到 <b>國境關口通行證</b>"],"5,000 經驗、歸途基石","參加加冕後 <b>災難降臨</b> 與貝恩德其他委託會被中止；先另存一份存檔",1]
+]},
+{part:"第二部 · 巴塔爾",list:[
+["火之國","前往獸人之國","謊言之宴完成後自動開始",["西菲倫瓦思牛車站搭車到 <b>關口旅宿之鎮</b>","從鎮南端的關口出示通行證。若拿到的是獸人版通行證（看你在接近覺醒者的黑影的選擇），人類要先在伊普希姆逸品店買獸人頭套（8,700G）","過關後跟著引導者往巴克巴塔爾，路上有紅狼、山賊和一場獅鷲戰，還有兩隻金色帝王甲蟲","到酒館與梅內拉會面，答應幫她和女皇納迪亞 → 拿到巴塔爾長期通行證"],"3,200 經驗、巴塔爾長期通行證","",0],
+["火之國的陰影","追尋線索","居留證到手後自動開始",["引導者會指向禁術研究所","往城東北穿過染料倉，到奧魯托巴特海岸找 <b>安布羅修斯</b>，給他海岸岩石上的小塊藍色碎片","（選）從海岸洞窟到海灣神廟找龍識者，之後可用龍血晶換剎那飛石等","往關口旅宿之鎮方向到 <b>禮拜神廟</b> 找神諭者露姿 → <b>解鎖幻術師</b>","到哈波村西南的 Rivage Elder 家完成對話"],"25,000G、3,200 經驗","",0],
+["邂逅","海底神殿","火之國的陰影完成後自動開始",["進哈波村旁的鳴潮洞窟，走入口後地上的開口","一路往南到浮出海面的海底神殿","搜刮後往南跳下大廳觸發劇情，見到貝爾蒙特的開國者羅瑟厄斯","對話選問 Godsway 如何運作 → 拿到 <b>破損的魂魄之劍</b>"],"15,000G、4,000 經驗、破損的魂魄之劍","",0],
+["浪恬之聲","魂魄之劍","邂逅完成後自動開始",["把破損的魂魄之劍交給禁術研究所的安布羅修斯","他要 <b>15 顆龍血晶</b>（只有龍類掉）","神諭者會指引你去巴克巴塔爾西南的 <b>食龍塔</b> 打小龍（西格爾特也在這裡，可順便拿魔劍士大師技）","交出結晶，拿到 <b>魂魄之劍</b>"],"魂魄之劍","魂魄之劍是真結局關鍵道具，千萬別賣、別送人。完成這個任務會取消支線幽靈牛車",1],
+["神的守護者","巨人守衛 · 不可逆點 #2","浪恬之聲完成後自動開始",["把魂魄之劍拿給法茲斯","到巴克巴塔爾南方的奉炎殿的咒封大門，用刀開門","塔羅斯從海中出現，跟著標記到月光塔附近的小島","打牠身上<b>發光的尖刺</b>（弱點）：近戰可打斷造成出血，在水裡用遠程也行；牠上岸後從高處跳上去","弱點全破後直接攻擊本體到倒下"],"19,000 經驗","不要用美杜莎頭石化塔羅斯、也別放著讓它被完全摧毀——會鎖掉真實世界的法茲斯的反抗。讓 NPC 打倒它則拿不到經驗。<b>這個任務結束時所有支線都變成可錯過</b>",1],
+["意志","月光塔之上","進入月光塔",["搭升降梯、爬鷹架、過橋，塔頂前的寶箱有全能靈藥","塔頂撐住偽王與守衛約 2 分鐘（不必打贏），讓法茲斯完成儀式","龍出現後二選一：<b>離開</b>＝壞結局，好感度最高的 NPC 會死；<b>戰鬥</b>＝繼續","從腿爬上龍背打頭讓牠暈眩，再從下方攻擊心臟","想走真結局：見第 10 節"],"結局","選「離開」直接播片尾，請先存檔",1]
+]}
+];
+var MAIN3={part:"第三部 · 真實世界（真結局後）",list:[
+["沉眠","醒來之後","真結局觸發後自動開始",["在巴克巴塔爾北方海灣神廟附近醒來","往南到禁術研究所，上樓找法茲斯","把他的對話選項問完","跟主隨從會合即完成"],"30,000G、1,000 異界石點數","",0],
+["探究的結果","紅色光柱","沉眠完成後",["到巴克巴塔爾宮殿門外的紅色光柱，用魂魄之劍召出龍之遺物","打倒守護遺物的幻影敵人","護送法茲斯穿越城市與岩柱，地面出現提示時閃避落石","出宮殿正門找到遺物，衝過最後走廊的哥布林與鳥身女妖，摧毀龍像"],"20,000G、20,000 經驗、龍血晶 ×35","",0],
+["黎明之都","疏散人民","探究的結果完成後",["往北到海底神殿，在中庭與羅瑟厄斯對話","露姿請你把各地人民帶到神殿避難；霧正在擴散，<b>動作要快</b>","巴克巴塔爾與檢查站：先找女皇納迪亞再找梅內拉；菲倫瓦思：王城酒館的貝恩德","聖樹之村：打倒亞龍後說服塔埃森（要會精靈語的隨從，他可能要連續拜訪好幾天）","火山島營地：幫厄尼斯特說服魯蒙德；挖掘場：和亨里克打倒魔像，用他的鑰匙開門再回報"],"25,000G、15,000 經驗、剎那飛石 ×2","開啟支線：梅內拉的誠意、斯芬的決心、塔埃森的希望、厄尼斯特的請求、亨里克的反抗",0],
+["法茲斯的反抗","最終決戰","靠近火山島營地外塔羅斯的頭",["看完劇情（任務寫跟著法茲斯，其實不用）","完成各地試煉：菲倫瓦思紅標處的頭目、聖樹之村的巨蟲頭目（從尾巴往頭打外露弱點）","全部城鎮都疏散完，再到海底神殿碰<b>紅色信標</b>進最終戰","最終之龍：站在翅膀邊緣躲牠的火焰"],"破關後開放多輪遊玩","試煉建議約 4 天內完成；紅色信標太早碰會直接結束遊戲",1]
+]};
+// 支線：n, a地區, npc起點, rw獎勵, t時限, g標籤, d說明
+var SIDE=[
+{k:"OrdealsofaNewRecruit",n:"新兵受難記",a:"v",npc:"菲爾，國境監視團營地北門",rw:"400 經驗、100G、燈油",t:1,g:[],d:"護送新兵阿卡德回哨站。拖太久他會被鳥身女妖殺掉。"},
+{k:"TheProvisionersPlight",n:"補給隊員的煩惱",a:"v",npc:"傑佛瑞，國境監視團營地",rw:"400 經驗、900G、Dried Fruit",t:0,g:[],d:"哨站補給問題，新手順路任務。"},
+{k:"MedicamentPredicament",n:"小小的冒險",a:"v",npc:"芙蘿拉，梅爾威村藥鋪",rw:"500 經驗、100G、Ring of Exultation",t:0,g:[],d:"梅爾威的藥草任務。"},
+{k:"BrothersBraveandTimid",n:"兄弟的努力",a:"v",npc:"伊恩，梅爾威村",rw:"400 經驗、1,500G、Homespun Cloak",t:1,g:[],d:"找失蹤的兄弟，時間拖久結果會變差。"},
+{k:"OneEyedInterloper",n:"One-Eyed Interloper",a:"v",npc:"主線源自毀滅之村途中，和葛雷格爾往王都、河道被岩石堵住的地方",rw:"葛雷格爾的給隊長的信（Missive to the Captain）、可搭牛車去王都",t:0,g:[],d:"擋路的獨眼巨人。<b>抄別條路（例如穿洞窟）先到王都就會錯過</b>，葛雷格爾之後的任務也可能受影響。"},
+{k:"NestingTroubles",n:"水邊的蜥蜴",a:"v",npc:"倫納特，梅爾威村",rw:"400 經驗、1,250G、Stoutness Extract",t:0,g:["maister"],d:"提高戰士大師倫納特的好感，是拿狂襲的前置之一。"},
+{k:"ScalyInvaders",n:"棲息於海角的魔物",a:"v",npc:"Fyoran，哈波村（討伐魔物期間）",rw:"1,800 經驗、5,000G、蜥蜴皮 ×6",t:0,g:[],d:"處理哈波村的蜥蜴人，是災難降臨的前置。"},
+{k:"ReadventofCalamity",n:"災難降臨",a:"v",npc:"梅爾威村（推進棲息於海角的魔物後，隔幾天再回村觸發）",rw:"2,000 經驗、4,500G、Ring of Grit",t:1,g:["voc","maister"],d:"龍再次襲擊梅爾威。打退牠（打腳與脖子的紅色部位）後去哈波村找烏爾里克回報倫納特。<b>謊言之宴前沒做完就永久失敗</b>。完成後可找西格爾特學魔劍士、找倫納特拿戰士大師技。不建議用弩砲殺死龍，可能影響西格爾特的對話。"},
+{k:"TroubleontheCape",n:"不和的海角",a:"v",npc:"烏爾里克，哈波村",rw:"1,800 經驗、6,500G、剎那飛石",t:1,g:[],d:"和烏爾里克進鳴潮洞窟救 Zoran。災難降臨在謊言之宴前完成，烏爾里克才會當上村長。"},
+{k:"HomeIsWheretheHearthIs",n:"背井離鄉之日",a:"v",npc:"梅爾威村",rw:"2,200 經驗、12,000G、Ring of Assurance",t:1,g:[],d:"梅爾威後續的高報酬任務，有時限。"},
+{k:"OxcartCourier",n:"前往牛車大道",a:"v",npc:"唐納文，菲倫瓦思",rw:"300 經驗、5,000G、Miner's Hosen",t:1,g:["maister"],d:"牛車送貨。完成後才能送禮給倫納特（戰士大師技前置）。"},
+{k:"TheOrnateBox",n:"機關盒之緣",a:"v",npc:"菲倫瓦思市集，看到商人 Auriol 和斯芬吵架時自動開始（王城之都後）",rw:"買下送他：900 經驗、4,000G、Jasper、Ring of Accrual、剎那飛石、謁見外套＋謁見長褲",t:0,g:[],d:"拿<b>宮廷服</b>的任務：偽王的計畫、Masked Correspondence、A Noble Exchange、魔法師的信念都要穿。<b>蒂莎的陰謀做完前沒接就會取消</b>。"},
+{k:"MaskedCorrespondence",n:"Masked Correspondence",a:"v",npc:"斯芬，菲倫瓦思城堡二樓西北角的斯芬房間（王城之都後）",rw:"900 經驗、6,000G、Onyx",t:0,g:[],d:"替斯芬把信送給舞會上的貴族 Patrick。<b>謊言之宴前沒做完就會取消</b>。"},
+{k:"VocationFrustration",n:"進步的阻礙",a:"v",npc:"職業公會人員，菲倫瓦思職業公會",rw:"1,200 經驗、7,500G",t:0,g:["voc"],d:"到特雷弗礦山找回雙手劍與大杖，<b>解鎖鬥士和巫師</b>。可和主線討伐魔物一起做。"},
+{k:"APlacetoCallHome",n:"心血來潮的旅人",a:"v",npc:"蜜德莉，王城酒館門口",rw:"買下菲倫瓦思的房子（20,000G）、成就",t:0,g:[],d:"幫她看家：到她家床上選「睡到早上」共 8 次，回來後她開價賣房。"},
+{k:"TheHeelofHistory",n:"腳下的真相",a:"v",npc:"肯德里克，菲倫瓦思貧民窟",rw:"900 經驗、3,000G、萬靈藥",t:0,g:[],d:"捐食物兩次後跟著馬爾科姆發現貧民區地下書庫，<b>主線營救法務官會用到</b>。"},
+{k:"TheGiftofGiving",n:"The Gift of Giving",a:"v",npc:"Daphne，菲倫瓦思商業區往貧民窟的階梯路上（小女孩）",rw:"900 經驗、100G、金色帝王甲蟲",t:0,g:[],d:"小女孩要你幫忙湊東西送人，分兩次交。完成後開啟 House of the Blue Sunbright。"},
+{k:"HouseoftheBlueSunbright",n:"House of the Blue Sunbright",a:"v",npc:"Diana，菲倫瓦思貧民窟和商業區之間的階梯旁（The Gift of Giving 之後）",rw:"900 經驗、3,000G、Fine Harspud Roborant ×2",t:0,g:[],d:"幫貴族少爺 Sebastian 找替身，好讓他偷溜出門。"},
+{k:"ACaseofSculptorsBlock",n:"年輕雕刻家的煩惱",a:"v",npc:"先找克拉克，菲倫瓦思貴族區宅邸（雕刻家佛爾維奧）",rw:"4,500 經驗、14,000G",t:0,g:[],d:"貝爾蒙特報酬最高的支線之一。"},
+{k:"ABeggarsTale",n:"功罪的棋子",a:"v",npc:"菲倫瓦思商業區噴泉旁（白天），乞丐艾伯特",rw:"900 經驗，加上依交付對象：5,000G／3 顆 Onyx／3,000G＋Noonbloom",t:0,g:[],d:"把乞丐的衣服交給不同人，結果與獎勵不同。需先完成源自毀滅之村。"},
+{k:"SaintoftheSlums",n:"淤泥中的聖女",a:"v",npc:"艾蓮娜，貧民窟救護之家",rw:"有證據 1,600 經驗、11,000G；沒證據 6,000G",t:0,g:[],d:"調查救濟院的藥。給 3 個瘴石、晚上潛入地下室拿紀錄與無標籤藥，送關口旅宿之鎮的雷德克里夫化驗。拖太久盧伯梅爾可能死亡。"},
+{k:"AMagisterialAmenity",n:"A Magisterial Amenity",a:"v",npc:"Waldhar，貧民區地下書庫（營救法務官完成幾天後）",rw:"900 經驗、Winter's Path",t:0,g:[],d:"幫法務官 Waldhar 拿回眼鏡，很短的跑腿任務。接任務的期限不明，早點接。"},
+{k:"TheArisensShadow",n:"接近覺醒者的黑影",a:"v",npc:"討伐魔物後離開酒館時自動觸發",rw:"放走 5,000G／逮捕 4,000G，各 1,000 經驗",t:0,g:[],d:"有人在跟蹤你。追上後他會賄賂你，放走或逮捕會影響之後拿到的<b>國境關口通行證版本</b>。逮捕路線別把他打死（死了要用龍之鼓動救）。"},
+{k:"TillDeathDoUsPart",n:"Till Death Do Us Part",a:"v",npc:"Margit，菲倫瓦思 Watchhead's Home 外（先在貴族區噴泉聽 Oswald 講 Ludolph 的傳聞；騷亂之村後）",rw:"2,800 經驗、5,000G、Steeled Virtue；救回葛雷格爾再加 Lustrous Targe",t:1,g:[],d:"葛雷格爾被陷害，派去打<b>無頭騎士</b>。很強的敵人，備好回復藥和龍之鼓動。"},
+{k:"ANobleExchange",n:"A Noble Exchange",a:"v",npc:"舞會上的貴族 Gunther（紅披風、黑金面具），貴族區舞會會場（謊言之宴後，每 2 晚一次）",rw:"最好結果：900 經驗、7,500G",t:0,g:[],d:"有人把贓物塞給你當替死鬼。要穿謁見外套／謁見長褲、戴薄暮面具才進得去。"},
+{k:"AVeilofGossamerClouds",n:"A Veil of Gossamer Clouds",a:"v",npc:"斯芬，菲倫瓦思城堡斯芬房間（謊言之宴後；沒去找他的話衛兵會來傳話）",rw:"找到寄出的那封信：4,000 經驗、20,000G、剎那飛石",t:0,g:[],d:"斯芬懷疑有人寫信給法茲斯，請你查清楚。"},
+{k:"EveryRoseHasItsThorn",n:"Every Rose Has Its Thorn",a:"v",npc:"威廉明娜，Rose Chateau Bordelrie 頂樓（能進巴塔爾、做完偽王的計畫與危險的接觸、和她好感度高）",rw:"幫忙暗殺：1,200 經驗、8,500G、Ring of Benevolence＋戀愛劇情；拒絕：7,500G、Tiger Eye ×3、全能靈藥",t:1,g:[],d:"<b>接了 3 天內要交出證據</b>，否則取消。只交賄賂證據的話威廉明娜會被捕，一定要交謀殺報告。"},
+{k:"DulledSteelColdForge",n:"朽劍與名匠",a:"v",npc:"羅曼，菲倫瓦思城堡中庭",rw:"整串最高 35,000G、6,000 經驗",t:0,g:[],d:"修復王權之劍：替鐵匠學徒莎拉收集 15 個蒼瑩礦（探礦者的遺蹟）。之後接巴塔爾的鐵石之心的溫度。"},
+{k:"ClawThemIntoShape",n:"獸人教官",a:"v",npc:"布連，布連的私人帳篷（梅爾威北方、多在夜晚）",rw:"1,200 經驗、4,500G",t:0,g:["maister"],d:"買 3 把劍給布連（哨站有賣），之後在訓練場和他對練。接續布連的執著。"},
+{k:"BerensFinalLesson",n:"布連的執著",a:"v",npc:"布連（獸人教官完成後）",rw:"1,600 經驗、4,500G、Lifetaker",t:1,g:["maister"],d:"打倒衝向營地的獨眼巨人，再到布連在巴塔爾的兒時故居對話拿<b>鬥士大師技退魔劍聖斬</b>。"},
+{k:"GiftoftheBow",n:"煩惱的嫩枝",a:"v",npc:"格林德爾，菲倫瓦思羅德里克的店附近（要準備一把人類做的弓）",rw:"8,500G、Ring of Proximity",t:0,g:["maister"],d:"弓箭手大師塔埃森的前置任務。"},
+{k:"ATrialofArchery",n:"小樹的潛力",a:"v",npc:"格林德爾，菲倫瓦思（煩惱的嫩枝後）",rw:"2,800 經驗、16,000G、Repeller Bow、歸途基石",t:1,g:["maister"],d:"救回塔埃森的女兒並安全帶回，之後拿<b>弓箭手大師技鬼神箭</b>。"},
+{k:"TheAilingArborheart",n:"The Ailing Arborheart",a:"v",npc:"Doireann，聖樹之村的聖樹旁（小樹的潛力之後）",rw:"1,600 經驗",t:0,g:[],d:"聖樹生病了。要能進巴塔爾才做得完，建議先做完鐵石之心的溫度。完成後接 Out of the Forest, Into the Forge。"},
+{k:"Spellbound",n:"追尋夢想",a:"v",npc:"朵莉夏，梅爾威正北方的艾妮家（祖父母不在時跟她說話）",rw:"2,000 經驗、3,000G、Cast Stone，<b>兩本大師技能書</b>",t:1,g:["maister"],d:"收集魔法書給朵莉夏（一次給 3 本真本）。幾天後她魔力暴走，別攻擊她，等她喘氣時撲倒壓制。保住艾妮夫婦。成功可拿<b>法師神之鼓舞</b> 與<b>巫師流星火雨</b>。"},
+{k:"TheSorcerersAppraisal",n:"魔法師的信念",a:"v",npc:"米爾汀，關口旅宿之鎮",rw:"巫師大師技卷軸",t:0,g:["maister"],d:"把沒給朵莉夏的書交給他（或伊普希姆逸品店偽造，每本 6,000G），拿<b>巫師龍捲風</b>。從陽台進他家拿書，走樓梯他會打你。"},
+{k:"HuntfortheJadeiteOrb",n:"下落不明的寶石",a:"v",npc:"奧夫威，關口旅宿之鎮",rw:"1,000 經驗，加上 3,000G＋高級露營組，或 12,000G＋Ring of Skullduggery",t:0,g:[],d:"依你的選擇給兩種獎勵。"},
+{k:"MercyAmongThieves",n:"略奪和慈悲",a:"v",npc:"里讚德洛，關口旅宿之鎮關口（先餵湯米兩次食物）",rw:"4,000 經驗、8,000G",t:0,g:[],d:"攻打 Coral Snakes 盜賊團的藏身處（鎮南，地圖不標，問路人）。開啟自己選擇的處世之道，也是進 Mired Conduit 地城的條件。"},
+{k:"TolledtoRest",n:"Tolled to Rest",a:"v",npc:"Oskar，古戰場遺跡東側入口的大路上（聽到呼救聲就自動開始）",rw:"3,000 經驗、9,000G、Ancient Battleground Key",t:1,g:[],d:"護送 Oskar 去敲鐘。鐘底下是魔法書 <b>Nation's Death Knell</b>（追尋夢想、魔法師的信念要用）。Fextralife 的列表標有時限、任務頁卻寫沒有；Oskar 會死，當成有時限比較保險。"},
+{k:"PreyforthePack",n:"Prey for the Pack",a:"v",npc:"Morris，關口旅宿之鎮他的店（選「Pledge your assistance」後聽他和 Lutz 說話）",rw:"平安帶回 Rodge：4,000 經驗、11,000G、Miracle Roborant ×2",t:1,g:[],d:"找失蹤的 Rodge。<b>接了就別休息、別繞路</b>，拖太久他會死。"},
+{k:"AGameofWits",n:"你知曉什麼",a:"v",npc:"史芬克斯，山岳神殿（古戰場遺跡往北，穿過盡頭山窟）",rw:"18,000 經驗、久遠的龍之鼓動，每題另有獎勵（含 100,000G、Ring of Ambition）",t:0,g:[],d:"史芬克斯的十道謎題，<b>每題只有一次機會</b>，答前先存檔。解法見第 14 節（防雷區）。<b>意志之前</b>沒接就會取消。"},
+{k:"TensionsontheHighroad",n:"Tensions on the Highroad",a:"v",npc:"Simon，菲倫瓦思北門的衛兵（北邊牛車站附近；Welcome to Battahl 之後回菲倫瓦思）",rw:"4,000 經驗、12,000G",t:0,g:[],d:"護送貴族的牛車，其實是陷阱。<b>選站在傭兵 Raghnall 那邊</b>，之後才有 Clash and Conclusion。Simon 叮嚀別告訴貝恩德。"},
+{k:"WelcometoBattahl",n:"Welcome to Battahl",a:"b",npc:"獸人 Roger，巴克巴塔爾 The Wanderer's Haven 酒館旁（第一次經過時自動觸發）",rw:"打贏 3 打 1：2,800 經驗、13,500G、Fruit Wine",t:0,g:[],d:"一進巴克巴塔爾就會被找麻煩，<b>隨從不能幫忙</b>。先去商店整理好裝備再走那條路。"},
+{k:"TwixtaRockandaHardPlace",n:"Twixt a Rock and a Hard Place",a:"b",npc:"Akakios，巴克巴塔爾商業區",rw:"2,500 經驗、20,000G、剎那飛石",t:0,g:[],d:"送信跑腿，錢很多。收信的厄尼斯特如果死了，到 Battahl Morgue 用龍之鼓動救回來。"},
+{k:"ShadowedPrayers",n:"接近聖焰的黑影",a:"b",npc:"梅內拉，巴克巴塔爾郊外",rw:"3,500 經驗、18,000G、Jasper ×5",t:1,g:[],d:"在女皇出席的活動中從人群揪出刺客赫爾曼。有假目標，<b>抓人前先存檔</b>。"},
+{k:"ACandleintheStorm",n:"A Candle in the Storm",a:"b",npc:"梅內拉，火山島營地溫泉附近（接近聖焰的黑影抓到刺客後）",rw:"支持女皇：4,800 經驗、25,000G、Ring of Amplification",t:0,g:[],d:"揪出接近聖焰的黑影的幕後主使。也是 Crossing in Shadow 的前置。"},
+{k:"CrossinginShadow",n:"Crossing in Shadow",a:"v",npc:"Vera，晚上到你在菲倫瓦思的房子來找你（需心血來潮的旅人＋A Candle in the Storm）",rw:"準時到：4,000 經驗、20,000G、Sunbloom",t:1,g:[],d:"陪女皇納迪亞微服出巡，<b>要在天亮前到 Rose Chateau Bordelrie</b>。隨從不會跟。"},
+{k:"ShortSightedAmbition",n:"Short-Sighted Ambition",a:"b",npc:"Isaac，巴克巴塔爾 Isaac's Wares（火之國後，跟他買任何東西）",rw:"好結局：3,000 經驗、16,000G",t:0,g:[],d:"眼睛快瞎的老闆想讀禁書。<b>給他真本，他全家會死</b>，一定要給伊普希姆仿造的假書。"},
+{k:"APoisonousProposal",n:"A Poisonous Proposal",a:"b",npc:"Jarle，巴克巴塔爾 Jarle's Home 樓下（The Rockmouse's Burrow 酒館對面；火之國後）",rw:"Jarle 活著：5,000 經驗、19,000G、Ring of Purification",t:1,g:[],d:"醫生 Jarle 要記錄中毒症狀，你得故意被毒三次，<b>叫隨從別幫你解毒</b>。任務頁寫沒時限，但 Jarle 會死，當成有時限比較保險。"},
+{k:"OffthePilferedPath",n:"自己選擇的處世之道",a:"b",npc:"Ekratt，巴克巴塔爾監獄入口",rw:"4,500 經驗、7,000G、Frosted Edges",t:1,g:[],d:"需先完成略奪和慈悲與接近聖焰的黑影。雨果越獄後趕快去古戰場遺跡，太慢他和仇人會同歸於盡。"},
+{k:"SteeledResolveBlazingForge",n:"鐵石之心的溫度",a:"b",npc:"莎拉，巴克巴塔爾布洛克工坊",rw:"交真劍 6,000 經驗、35,000G",t:1,g:[],d:"朽劍與名匠的續篇。莎拉失蹤後到火山島的山麓洞穴找她，趁鍛錘冷卻前護送回去。完成後<b>開放巴克巴塔爾鐵匠</b>。"},
+{k:"OutoftheForestIntotheForge",n:"Out of the Forest, Into the Forge",a:"b",npc:"Doireann，聖樹之村（The Ailing Arborheart 完成後自動開始）",rw:"13,000G、Warbler Capelet",t:1,g:[],d:"做精靈料理送矮人鐵匠布洛克，換治聖樹的 Scalecinder。攻略站對有沒有時限說法不一，當成有時限、早點做比較保險。"},
+{k:"ThePhantomOxcart",n:"幽靈牛車",a:"b",npc:"西菲倫瓦思牛車站休息到聽見對話，或找威廉明娜",rw:"4,000 經驗、14,500G、Ring of Momentum",t:0,g:[],d:"調查夜間走私隨從的牛車。<b>完成主線浪恬之聲會取消這個任務</b>。"},
+{k:"PutaSpringinThyStep",n:"隱居的夫妻",a:"b",npc:"古斯塔夫，火山島營地西邊",rw:"解鎖魔弓手、大師技卷軸",t:0,g:["voc","maister"],d:"護送矮人古斯塔夫到火山島營地的溫泉，<b>解鎖魔弓手</b>；再和克莉烏娜對話拿殉身霸魔弓。"},
+{k:"TheSottedSage",n:"武藝高超的酒豪",a:"b",npc:"魯蒙德，火山島營地溫泉前",rw:"解鎖復甦者、大師技卷軸",t:0,g:["voc","maister"],d:"交 3 瓶蜥蜴酒（希格斯酒攤每瓶 5,000G），<b>解鎖復甦者</b>，再對話拿快速切換武器。"},
+{k:"ClashandConclusion",n:"Clash and Conclusion",a:"b",npc:"Raghnall，月光塔上層（神的守護者後段；要做過 Tensions on the Highroad）",rw:"放他走：20,000G、The Exalted、Moonglint Key；打倒他：7,600 經驗、15,000G",t:1,g:[],d:"和傭兵 Raghnall 1 對 1，<b>隨從不能幫忙</b>。意志開始前沒接就取消。"},
+{k:"CivilUnrest",n:"梅內拉的誠意",a:"u",npc:"梅內拉，巴克巴塔爾商業區（黎明之都後）",rw:"20,000 經驗、10,000G、龍血晶 ×30",t:1,g:[],d:"真實世界的疏散任務之一。"},
+{k:"TheRegentkinsResolve",n:"斯芬的決心",a:"u",npc:"貝恩德，菲倫瓦思王城酒館（黎明之都後）",rw:"20,000 經驗、25,000G、龍血晶 ×35",t:0,g:[],d:"疏散菲倫瓦思。"},
+{k:"WanderingRoots",n:"塔埃森的希望",a:"u",npc:"格林德爾，聖樹之村入口（黎明之都後）",rw:"20,000 經驗、25,000G、龍血晶 ×30",t:0,g:[],d:"疏散精靈。據報找精靈王子、把嫁接樹苗種到海底神殿可省下等待天數。"},
+{k:"TheImportanceofAidingErnesto",n:"厄尼斯特的請求",a:"u",npc:"厄尼斯特，火山島營地北門（黎明之都後）",rw:"20,000 經驗、15,000G、龍血晶 ×40",t:0,g:["voc"],d:"說服魯蒙德撤離。還沒解鎖復甦者的人，這裡和魯蒙德對話也能解鎖。"},
+{k:"ShepherdofthePawns",n:"亨里克的反抗",a:"u",npc:"亨里克，挖掘場（黎明之都後）",rw:"20,000 經驗、15,000G、龍血晶 ×30",t:0,g:[],d:"和亨里克打倒魔像後疏散挖掘場。"}
+];
+// 支線步驟（用 k 對應上面的 SIDE；依 Fextralife 各任務頁整理，2026-10-16）
+var SIDE_STEPS={
+OrdealsofaNewRecruit:["在國境監視團營地北門找菲爾接任務，<b>接了就馬上出發</b>","出北門沿土路往亞勒斯山腳方向走，右手邊有藍色光暈的高樹林就是標記點","阿卡德正被約 3 隻鳥身女妖圍攻：先用弓等遠程把牠們打下來，再近戰補刀","女妖清光、阿卡德出來道謝後，回營地向菲爾回報"],
+TheProvisionersPlight:["在國境監視團營地中央的桌子旁找傑佛瑞，拿到給馬庫斯的字條","到營地北邊找馬庫斯交字條","他不肯自己去採，幫他湊 3 個 Harspud 和 2 瓶 Salubrious Draught 的材料（地圖有標；Draught 也能在營地向卡珊德拉買，250G）","跟馬庫斯回營地交補給，再向傑佛瑞回報"],
+MedicamentPredicament:["在烏爾里克家見過葛雷格爾後，往梅爾威村的藥鋪走，芙蘿拉會攔住你","她要一瓶 Fruit Roborant：藥鋪買（600G），或用 1 個 Dried Fruit 加 1 個 Greenwarish 或 Morningtide 合成","回藥鋪門口交給芙蘿拉即完成"],
+BrothersBraveandTimid:["在梅爾威村旅店外找伊恩接任務。這時<b>先別答應葛雷格爾馬上出發</b>，否則任務會取消","跟著伊恩過橋走土路，岔路靠右上山","途中在崖邊營火休息一晚，再跟伊恩說話繼續走","找到被約 5 隻狼圍住的哥哥諾伯特，把狼清掉","護送兄弟倆原路回梅爾威，過河看完劇情就完成"],
+NestingTroubles:["在梅爾威村找倫納特接任務（Fextralife 提醒：接了貝恩德的委託後可能會被取消，早點做）","到梅爾威西北邊緣拿爆炸桶，從高處丟過去炸掉岸邊的蜥蜴人巢","下面冒出來的蜥蜴人用高處＋遠程處理，然後回報倫納特","再到西北門外拿<b>唯一一罐</b>毒藥，從崖邊丟中巢穴（丟前先存檔）","回報倫納特完成"],
+ScalyInvaders:["主線討伐魔物期間第二次進哈波村時，Fyoran 會來拜託你清村裡的蜥蜴人","清完後到村子中央向 Fyoran 回報","去旅店住幾天（沒有時限），再回哈波村：Fyoran 和村長約拿斯會請你再清一次","把村裡的蜥蜴人全清掉，再找 Fyoran 回報"],
+ReadventofCalamity:["完成王城之都、做過棲息於海角的魔物後，隔幾天回梅爾威村，龍來襲時自動開始","打牠腳和脖子上的紅色部位把牠擊退（不建議殺死牠）","之後再來梅爾威，會看到馬丁指控烏爾里克叛國；隔天早上她不見了，倫納特請你去找","到西南邊的哈波村找到烏爾里克（同時接上不和的海角）","回梅爾威告訴倫納特她在哪裡。<b>謊言之宴前要做完</b>"],
+TroubleontheCape:["災難降臨去哈波村找烏爾里克時，看完 Fyoran 和約拿斯吵架，烏爾里克會跑進村南的鳴潮洞窟","進洞和烏爾里克與士兵會合，清掉蜥蜴人","往左手邊（東側）找到村民 Zoran，<b>要快</b>","護送 Zoran 回哈波村；災難降臨若在謊言之宴前完成，烏爾里克會當上村長","回梅爾威向倫納特回報烏爾里克的下落"],
+HomeIsWheretheHearthIs:["完成危險的接觸後，貝恩德會叫你去被王國軍佔領的梅爾威村","在村門口賄賂衛兵進村，任務自動開始","到烏爾里克家找倫納特，他要 4 把劍：先買好，或到村門西側的建築拿回被沒收的劍（做過兄弟的努力的話，伊恩會幫你引開衛兵）","交劍後離開會觸發和士兵的戰鬥，村民會幫忙；之後村民搬到哈波村","等幾天，晚上到哈波村碼頭找烏爾里克即完成"],
+OxcartCourier:["<b>清晨</b>到菲倫瓦思北門的牛車站找唐納文（牛車只在清晨發車，要那時接）","付 100G 搭牛車到梅爾威村，沿途保護牛車","到梅爾威井邊找倫納特，把信交給他（同時會接到水邊的蜥蜴）","回梅爾威的牛車站找唐納文即完成"],
+VocationFrustration:["在菲倫瓦思職業公會找克勞斯，他會叫你去找防具店的羅德里克","羅德里克的店在龍像左邊；他說裝備被哥布林搶走，藏在特雷弗礦山","從西菲倫瓦思牛車站搭車，或出西門走路到特雷弗礦山（路上有哥布林、獨眼巨人、蜥蜴人）","礦山裡只有一條窄路，小心陷阱：雙手劍在中段木門後的黑色大箱子，大杖在最上面右側","兩樣都拿回去交給克勞斯，解鎖鬥士和巫師"],
+APlacetoCallHome:["在菲倫瓦思的王城酒館門口找蜜德莉","在任務選單把它設成優先，地圖會標出她家","到她家後她就出門旅行；用床選「睡到早上」共 8 次（過一週）","出現「旅行結束」的目標後走出門，她回來開價 20,000G 賣房；錢不夠可以之後再來買"],
+TheHeelofHistory:["在菲倫瓦思貧民窟救護之家外，捐食物給肯德里克兩次，任務開始","問三個人：教堂北邊的 Harvey、教堂東邊水邊的 Rick、救護之家裡的 Aimee","回去找肯德里克，他會說書庫可能在哪，並指出馬爾科姆鑽進去的洞","從洞往下走（途中要過一段窄崖），岔路直走找到馬爾科姆","跟著他走到最深處的隱藏書庫即完成。主線營救法務官的藏身處就是這裡"],
+ACaseofSculptorsBlock:["推進主線後，在菲倫瓦思貴族區克拉克的宅邸外找他接任務","完成謊言之宴拿到通行證後，到巴克巴塔爾的佛爾維奧工坊，答應幫他畫獅鷲素描","到巴克巴塔爾西北的獅鷲巢和他會合：叫隨從「等待」，保護佛爾維奧別讓他死；打越久他畫得越完整，用美杜莎頭石化或讓牠睡著最好","隔幾天回工坊看看，再到克拉克宅邸二樓左邊的房間參加作品揭幕"],
+ABeggarsTale:["白天到菲倫瓦思商業區的龍像噴泉找乞丐艾伯特，再跟旁邊的 Benton 說話接任務","晚上跟蹤艾伯特：廣場 → 酒館 → 他家（坐長椅快轉時間比較好等）","在他家外等他換上貴族服出門（約現實 3–5 分鐘），進去拿角落的乞丐衣","三選一交出乞丐衣：酒館的 Celina、Baldwin 宅邸的 Hilda，或還給艾伯特本人。<b>只能選一個</b>，獎勵各不同"],
+SaintoftheSlums:["在菲倫瓦思貧民窟的救護之家，聽完 Vlasiy 和艾蓮娜的對話後跟艾蓮娜說話","給她 3 個瘴石（旅店儲物箱或晚上打幽靈取得），跟她巡診到盧伯梅爾那裡，再問門外的 Lottie","<b>晚上</b>潛入救護之家地下室（白天鎖門），拿治療紀錄和無標籤藥；酒館的 Bruno、Jehan 能提供證詞","晚上撞見艾蓮娜和 Alois 碰面（別被她發現）；證據給盧伯梅爾看，藥拿去關口旅宿之鎮給雷德克里夫化驗（約一天）","回地下室壓制艾蓮娜，扛到菲倫瓦思城堡的監獄塔。證據越齊，錢越多"],
+TheArisensShadow:["完成討伐魔物後走出菲倫瓦思的酒館，隨從會發現有個戴兜帽的人在盯你","追上他：遠程可以直接打，近戰就抓住撲倒；被他跑掉就休息一下，等牛頭人襲城時他會再出現","他自稱密探 Bermudo，想賄賂你：先要錢再放走（5,000G），或拒絕、打到貝恩德趕來逮捕（4,000G）","逮捕路線如果把他打死，用龍之鼓動救活，或把人扛去給貝恩德","過幾天到酒館問貝恩德被抓的密探，會知道他來自巴塔爾"],
+DulledSteelColdForge:["完成王城之都後，在菲倫瓦思城堡中庭找羅曼，跟他到沒人的地方說話","他請你找人修王權之劍；到巴克巴塔爾的布洛克工坊，布洛克說已經退休不接","跟學徒莎拉說話，她要 15 個蒼瑩礦（到探礦者的遺蹟挖）","把蒼瑩礦交給莎拉，接下來的修劍就是鐵石之心的溫度"],
+ClawThemIntoShape:["開場到了國境監視團營地後，在營地西南、往梅爾威路上的山丘（Moonglow Garden）找布連","在營地買 3 把劍（共 850G），拿到山丘南邊的帳篷交給他（白天不在就晚上去）","到菲倫瓦思理髮店東南找 Humphrey，選「跟他說布連的事」","回營地訓練場和布連對練，輸贏都會播劇情","劇情後布連衝出營地去救被哥布林攻擊的士兵，跟著往西，找到西邊營地的傷兵即完成"],
+BerensFinalLesson:["獸人教官完成後隔一天，回 Moonglow Garden 找布連","Randall 被獨眼巨人追著跑進來，在牠衝進營地前打倒","布連離開前<b>一定要跟他說話</b>拿 Lifetaker（可能要在附近營火睡一晚），沒說到話會拿不到獎勵","他回巴塔爾的兒時故居：從關口旅宿之鎮往南，過了 Zeplin 旅店，左手邊的房子","在那裡跟他說話，拿鬥士大師技退魔劍聖斬"],
+GiftoftheBow:["在菲倫瓦思羅德里克的店附近找精靈格林德爾，給他一把<b>人類做的弓</b>（精靈弓不收）","出發前先換成弓箭手、魔弓手或復甦者並裝上弓，不然白跑","到菲倫瓦思西北、過了特雷弗礦山的遺跡，示範射箭給他看","回菲倫瓦思找他說話，接上小樹的潛力"],
+ATrialofArchery:["煩惱的嫩枝完成後，在菲倫瓦思羅德里克的店前找格林德爾","帶會精靈語的隨從，跟他到聖樹之村東邊的標記點：沿白色火把走，過木橋往下","一路清怪進入 Ancestral Chamber（角落寶箱有 Ring of Percipience）","格林德爾的箭射中食人魔後，先抓起女孩 Doireann 扛到安全處，再回來打食人魔","護送她出去，到標記處找塔埃森；再跟他說一次話拿弓箭手大師技"],
+Spellbound:["到梅爾威正北的艾妮家，跟朵莉夏和艾妮說話，任務自動開始","趁祖父母不在時跟朵莉夏說話（他們在家就把她抱到屋外再說）","收集魔法書：Let There Be Light（關口旅宿之鎮米爾汀家）、Fulminous Shield（梅爾威的 Dudley 賣）、Nation's Death Knell（古戰場遺跡，做 Tolled to Rest 敲完鐘在鐘底下）、Howling Blizzard（無名村的 Wendy）、Towering Earth（Waldhar，他搬去貧民區地下書庫之後）","<b>一次交 3 本真本</b>給朵莉夏，拿到 Turquoise Ring；其餘留給魔法師的信念，不夠可請伊普希姆仿造","幾天後回來她魔力暴走：<b>別攻擊她</b>，等她喘氣時撲倒壓制。艾妮死了就不會觸發","再過幾天回艾妮家，拿兩本大師技能書"],
+TheSorcerersAppraisal:["穿上謁見外套＋謁見長褲（做機關盒之緣拿到，或在菲倫瓦思買），到關口旅宿之鎮的米爾汀家","準備 3 本魔法書（見追尋夢想）。Nation's Death Knell 全遊戲只有兩本真本，給誰要想好","戴著追尋夢想拿到的 Turquoise Ring，伊普希姆仿造的書他也會收","交 3 本給米爾汀，幾天後再來拿巫師大師技。<b>黎明之都完成後會取消</b>"],
+HuntfortheJadeiteOrb:["在關口旅宿之鎮找 Everard（鐵匠鋪附近）和奧夫威（Sword and Staff 外），兩個都要問","走過 Everard 那裡，樹叢後面藏著伊普希姆逸品店，花 7,500G 買下寶珠（Jadeite Orb）","（選）到山岳神殿找斯芬克斯，在猜謎時讓她複製一顆，兩邊就都能給真品","真品給 Everard（他會找伊普希姆鑑定），另一顆給牛車站附近的奧夫威","也能請伊普希姆做假貨，但 Everard 會驗：要再付錢封口，不然會叫衛兵"],
+MercyAmongThieves:["能通過關口旅宿之鎮的關口後，給湯米食物兩次（別給爛掉的）","跟牛車站對面的兩個男人聊，聽到盜賊團的事","找附近穿白袍的里讚德洛，答應幫忙","問路人找 Coral Snakes 的藏身處（鎮南，地圖不標），追著逃跑的人往西南進洞，和士兵一起殺進去","走到底首領跑掉，雨果被抓去巴塔爾的監獄，任務自動完成"],
+ShadowedPrayers:["主線火之國期間，梅內拉會在巴克巴塔爾郊外來找你","在旅店住一晚，隔天照標記找梅內拉討論計畫，她會移到奉炎殿","女皇的活動上，站到人群後方看得到全場的位置","找刺客赫爾曼：綁馬尾、右手臂有疤。人群裡有假目標，<b>抓人前先存檔</b>","對著他按抓取鍵壓制。拖太久會失敗，抓錯人女皇會被殺"],
+OffthePilferedPath:["完成略奪和慈悲（雨果和 Brefft 被關在巴克巴塔爾監獄）後，在監獄入口找獄卒長 Ekratt","跟雨果對面牢房的 Brefft 聊，得知雨果父母和古戰場遺跡的事","告訴雨果後休息一天，他會殺了 Brefft 越獄：<b>立刻趕去古戰場遺跡</b>自己解決仇人 Lanzo","另一條路：不說真相，分三次賄賂 Ekratt（1,000、2,500、5,000G）放他出來","最後幫雨果找份工作，是最好的結局（Isaac's Wares 那份工作要 Short-Sighted Ambition 走壞結局才會空出來，那條結局 Isaac 全家會死，不建議）"],
+SteeledResolveBlazingForge:["朽劍與名匠交完蒼瑩礦後，在巴克巴塔爾的布洛克工坊跟莎拉說話","離開幾天再回來看進度，她會說還要等；第三次來時莎拉不見了","布洛克說她去了火山島的山麓洞穴：沿木板路清怪，在天然熔爐找到她","<b>趁鍛錘冷卻前</b>護送她回洞口（這就是時限），再回工坊拿修好的王權之劍","把真劍交給菲倫瓦思城堡的羅曼；也能交伊普希姆做的假貨，獎勵不同"],
+ThePhantomOxcart:["主線火之國後，在西菲倫瓦思牛車站休息，直到聽見兩人提到夜間牛車（或找威廉明娜）","晚上到標記點，看士兵 Navil 把隨從交給 Mansenn；等牛車走了再上前","追上 Navil 壓制：收錢放人（+5,000G），或押他回菲倫瓦思","晚上把商人文件交給王城酒館的貝恩德，選暗中跟車，或假扮隨從混進車隊（假扮要卸下全部裝備）","一路跟到關口旅宿之鎮、再到奉炎殿的咒封大門；身分曝光後打倒衛兵，晚上回報貝恩德"],
+PutaSpringinThyStep:["穿過德拉布尼爾大石窟到火山島，路上會遇到腰痛的古斯塔夫","採 3 朵野花或藥草（例如 Morningtide）給他","走左邊的岩路過到相連的小島，到他家；克莉烏娜擋你時選「Offer to escort him」","照他的速度護送到火山島營地的溫泉，岔路走右邊（路上有岩漿蜥蜴、哥布林、石魔像）","他去泡溫泉後，跟出現在那裡的克莉烏娜回報 → 解鎖魔弓手；再和她說話拿大師技"],
+TheSottedSage:["在火山島營地的溫泉，走近接待員時，坐在台階上的魯蒙德會跟你搭話","到巴克巴塔爾的希格斯酒攤買蜥蜴酒（每瓶 5,000G）。不是獸人要先戴獸人頭套（關口旅宿之鎮伊普希姆逸品店買），幫忙把袋子搬過柵欄後他才賣","回溫泉把蜥蜴酒交給魯蒙德，總共 3 次","第 3 次後解鎖復甦者，再跟他說話拿快速切換武器"],
+CivilUnrest:["接了黎明之都後，到巴克巴塔爾商業區紅色光柱附近找梅內拉","平息三組爭執：職業公會前 Scario 和 Nabrah 的決鬥（答應觀戰）；旅店前的兩個小孩（給一個沒壞的食物）；可買的房子附近 Grant 和 Abba（挨打不還手最和平）。不插手的話他們會互相打死","回報梅內拉，再到奉炎殿找女皇納迪亞，開始疏散"],
+TheRegentkinsResolve:["接了黎明之都後，到菲倫瓦思的王城酒館找貝恩德","到菲倫瓦思城堡二樓找斯芬，他交代兩件事：處理他母親、弄到牛車","王妃蒂莎的房間在走廊另一頭：把她扛去給斯芬，或拿她桌上的機關盒給斯芬（別殺她）","到西門找阿洛多，短暫壓制他拿到牛車，再找商人 Russell 確認","回報斯芬即完成"],
+WanderingRoots:["接了黎明之都後，帶會精靈語的隨從，到聖樹之村入口找格林德爾","他帶你去見父親塔埃森；塔埃森要聖樹能在海底神殿扎根才肯走，給你嫁接樹苗","用剎那飛石到海底神殿，把樹苗種在標記的土上","回聖樹之村向塔埃森回報即完成"],
+TheImportanceofAidingErnesto:["接了黎明之都後，到火山島營地北門附近找厄尼斯特","去古斯塔夫和克莉烏娜的家，把兩人帶回營地（沒做隱居的夫妻的話，古斯塔夫可能要用扛的；先在營地放歸途基石再用剎那飛石回來最省事）","回營地鷹架下找厄尼斯特，他正在勸不肯走的魯蒙德","跟著厄尼斯特爬梯子到溫泉找魯蒙德：好感度要高（做過武藝高超的酒豪），選「Request guard for smith and wife」","再跟厄尼斯特說話即完成"],
+ShepherdofthePawns:["接了黎明之都後，到挖掘場幫亨里克打倒魔像","跟亨里克說話，跟著他去找不肯走的隨從（前任監工下令要他們留下）","拿亨里克給的監工小屋鑰匙，到旅店後面的小屋找到 Diminished Godsway","回報亨里克，他會帶隨從撤離"],
+// 以下 23 個是 2026-10-16 補上的本篇支線（官方繁中譯名查不到的保留英文）
+OneEyedInterloper:["和葛雷格爾一起走到被岩石堵住的河道，靠近岩堆，偽裝的獨眼巨人會現身","一直打牠的<b>眼睛</b>（弱點）","（選）過到對岸，從來的路上搬火藥桶丟向牠身後的岩石，河水沖下來會傷到牠，也順便清掉路障","打倒牠時別讓葛雷格爾和士兵死掉，他才會給信（不建議用龍之鼓動救他）","之後選走路，或和葛雷格爾一起搭牛車去王都"],
+TheOrnateBox:["王城之都後在菲倫瓦思市集看到 Auriol 和斯芬爭執，跟 Auriol 說話（做過小小的冒險的話他會給特價）","建議花 800G 買下機關盒，送給羅德里克店旁樓梯下的斯芬；另一個選項是借錢給他自己買，獎勵比較少","至少過 2 天再回菲倫瓦思，到龍像噴泉找斯芬","之後<b>連續 4 天</b>每天找他一次，依序拿到 Jasper、Ring of Accrual、剎那飛石、宮廷服，第 4 次完成","錯過宮廷服的話，可以到城堡的斯芬房間或客房拿"],
+MaskedCorrespondence:["在城堡二樓斯芬房間接任務，拿到給 Patrick 的信","準備舞會服裝：薄暮面具（偽王的計畫拿到）＋謁見外套／謁見長褲（機關盒之緣）。弄丟了可到伊普希姆逸品店買","<b>有舞會的晚上</b>到貴族區的舞會會場；不是舞會夜就去旅店睡一晚再來","會場裡找披藍色披風、戴黑金面具的 Patrick，把信交給他","回斯芬房間回報即完成"],
+TheGiftofGiving:["在商業區往貧民窟的路上找小女孩 Daphne 接任務","交給她一束花和一塊 Silver Ore","過幾天再回來找她","交 2 塊 Gold Ore","再交 5 個治中毒的藥（例如 Detoxifying Decoction、萬靈藥），拿獎勵"],
+HouseoftheBlueSunbright:["在貧民窟和商業區之間的階梯旁找 Diana 接任務","到貴族區的 Townshend 宅邸，Sebastian 要你找一個長得像他的人當替身","到救護之家外的帳篷旁找 Daphne，帶她回宅邸","幫 Sebastian 準備行李：解毒＋解昏睡的藥（例如 Detoxifying Decoction、Waking Powder），再加一樣有獨眼巨人味道的東西（例如 Rugged Bone 或 Cyclops Eye）。不知道要什麼可以問 Diana 和 Daphne","過幾天回宅邸，Sebastian 帶著 Blue Sunbright 回來即完成"],
+AMagisterialAmenity:["營救法務官完成後過幾天，到貧民區地下書庫找 Waldhar","到貴族區西南、城堡訓練場過去的舞會會場，門口衛兵會放你進去","進門往大廳左邊走到底，兩側點著蠟燭的小房間，左手邊架上拿 Exquisite Spectacles","回書庫交給 Waldhar 即完成"],
+TillDeathDoUsPart:["騷亂之村後，在貴族區噴泉找 Oswald，聽 Ser Ludolph 的傳聞","到 Watchhead's Home 外找 Margit：先問 Ludolph，再告訴她 Ludolph 的陰謀並答應幫忙","<b>馬上出發</b>到菲倫瓦思西北 Misty Marshes 的 Illdoers' Resting Place。路很遠，帶營具中途紮營","葛雷格爾正在和無頭騎士打：不用打贏，保住葛雷格爾、打到牠逃走就好","安全後跟葛雷格爾說話，再回去找 Margit"],
+ANobleExchange:["謊言之宴後，舞會夜穿好宮廷服、戴面具進舞會會場，在賓客間走動，紅披風的 Gunther 會塞給你 Paragon Staff","衛兵宣布東西被偷時，到會場後方右邊的小房間，把杖<b>丟在屏風後的箱子旁</b>","回大廳把塞杖給你的人撲倒壓制，他會招認","帶著杖被抓到，或直接帶著杖離開，是最差的結果（沒錢、還會被關）","杖之後可以在伊普希姆逸品店用 60,000G 買回"],
+AVeilofGossamerClouds:["謊言之宴後到城堡斯芬房間接任務，拿到一封沒寫完的信","把信拿給關在城堡監獄塔的艾蓮娜看（要做過淤泥中的聖女；穿 Marcher 套裝衛兵不會打你），巴克巴塔爾會出現標記","到巴克巴塔爾，過橋到禁術研究所，偷聽 Yglie 和 Jerome 說話後進 Workshop #2，拿桌上的 Letter to Lord Phaesus","回斯芬房間選「See for yourself」出示信件，獎勵最好","另一條路：把沒寫完的信給地下書庫的 Waldhar 看，他會說那是情書，回報斯芬（14,000G）"],
+EveryRoseHasItsThorn:["過一段時間到 Rose Chateau Bordelrie 頂樓，從威廉明娜房間（門外有 Rolf）的窺孔偷聽她和阿洛多，答應幫她","穿上 Marcher 套裝（蒂莎的陰謀拿到），找斯芬，晚上到 Patrick 宅邸選「Agree」，讓他引開阿洛多","阿洛多離開後潛入他的宅邸：二樓樓梯旁第一間辦公室，查看左牆的橢圓花卉畫，拿到謀殺報告（Murder Report）","（選）晚上去王城酒館問貝恩德，到 Clovis 理髮店附近的房子拿賄賂調查報告；給他看兩份證據，<b>別選求他幫忙</b>","回威廉明娜房間交<b>謀殺報告</b>，選繼續幫她：到隔壁房間撲倒阿洛多，從窗戶跳進乾草堆逃走。衛兵會追，喊「To me!」叫隨從別殺衛兵"],
+TheAilingArborheart:["小樹的潛力完成後，到聖樹之村的聖樹旁找 Doireann","她說治聖樹要「gwyfencha」：帶有森林語口譯專長的隨從，或問她哥哥格林德爾，會知道就是 Scalecinder","到巴克巴塔爾的布洛克工坊。布洛克討厭精靈，改跟學徒莎拉說話","莎拉建議帶他愛吃的精靈料理 nutriabh 去，任務完成並接上下一個"],
+TolledtoRest:["走古戰場遺跡的大路，聽到呼救就過去打倒圍攻 Oskar 的魔物，再跟他說話答應護送","跟著他往北，別跑太前面；古城廢墟有 Skeleton Lord 和骷髏兵","從西邊開口爬螺旋梯和梯子上城牆，往東找梯子下去，用武器打開西邊的門進到中央","跟著標記到鐘的房間讓 Oskar 敲鐘即完成。<b>Oskar 還沒到之前別先拿鐘底下的書</b>，不然容易卡任務","拿到的鑰匙可以開鐘房後面的房間，寶箱可能有剎那飛石和 Infernal Edge"],
+PreyforthePack:["在關口旅宿之鎮找 Morris 選「Pledge your assistance」，聽完他和 Lutz 說話","問 Lutz，再問 Sword and Staff 外的 Timothy、Alsa、Jacint，地圖會標出路線","出鎮沿牛車走的山路過橋，穿過小河和短隧道（盡頭有鳥身女妖），到 Putrid Cave 上方的營火","從營火走下面的路經過異界石，看到木橋就對了，在 Putrid Cave 找到 Rodge","護送（或扛著）他走回鎮上交給 Morris。<b>別搭牛車</b>，可能讓任務卡住"],
+AGameofWits:["從古戰場遺跡往北穿過盡頭山窟，到山岳神殿跟史芬克斯說話","第一處答 5 題（慧眼、瘋狂、智慧、本性、回味），解法在第 14 節的防雷區","她搬到邊境神殿（關口旅宿之鎮西邊沿河過去），再答 5 題，題目順序隨機","全部答完她要飛走時開戰：先叫隨從「等待」，用<b>會心箭</b>（只有弓箭手能射）射身體或後腿，<b>等她的血條出現再射</b>，太早射任務不算完成","拿鑰匙開她身後的金色寶箱，裡面是久遠的龍之鼓動"],
+TensionsontheHighroad:["第一次到過巴克巴塔爾後回菲倫瓦思，在北門找巡邏的 Simon（找不到就從隨從公會旁的噴泉往下走樓梯），拿到護衛信","到關口旅宿之鎮北邊的標記處保護 Ser Augustin 的牛車，傭兵 Raghnall 會來接手","建議站在 Raghnall 那邊、攻擊士兵，Simon 和 Raghnall 會跑掉","跟著他們進樹林裡的 Guerco Cavern，地板塌陷會和隨從分開，走左邊找到 Raghnall","跟他一起往外打，隔天走洞穴另一頭的路出去，出口崩塌、聽他道別即完成"],
+WelcometoBattahl:["進巴克巴塔爾後走中央大路，在牛車站那個轉角右轉","酒館旁的路上 Roger 擋住你，要你 1 打 3 打贏他的手下","巷子很窄，遠程職業比較吃虧，可以先換近戰職業","打不過時 Raghnall 會把它改成和 Taleef 單挑（贏了 8,500G）","單挑也輸的話 Raghnall 會替你認輸，從你身上付 3,000G"],
+TwixtaRockandaHardPlace:["在巴克巴塔爾商業區找 Akakios，拿到請託信","到火山島營地交給巡邏的厄尼斯特（巴克巴塔爾往南穿過德拉布尼爾大石窟；可以先在營地插歸途基石）","厄尼斯特要你再送一封信給 Barbas","到火山島營地東邊的挖掘場找 Barbas 交信即完成"],
+ACandleintheStorm:["接近聖焰的黑影後，穿過德拉布尼爾大石窟到火山島營地，在溫泉附近找梅內拉","到巴克巴塔爾監獄審問抓到的刺客：付 5,000G 他會說是 Coral Snakes 雇的（或放他逃，再到 The Wanderer's Haven 免費問）","找 Ashe，告訴他女皇在你手上；梅內拉會給你剎那飛石","到西邊標記處演一場假綁架，女皇堅持親自上場，選擇<b>支持</b>她的計畫","幕後主使現身時，拔出武器站在女皇旁邊等，<b>別跑走</b>（跑走會變成較差的結局）"],
+CrossinginShadow:["有房子、做完 A Candle in the Storm 後，在菲倫瓦思的家休息到晚上，Vera 會來敲門","答應到外面和納迪亞會合","跟著納迪亞和 Vera 走。Philbert 的雜貨店前有獸人要買藥：付 1,000G 把藥給 Dommel 就好，<b>別威脅店主</b>","貴族區的獸人小偷 Fiachra 求救時<b>拒絕</b>，幫他會和衛兵起衝突被關，就趕不上了","到 Rose Chateau Bordelrie 等她開完會，再到覺醒者雕像旁跟 Vera 和納迪亞說話完成"],
+ShortSightedAmbition:["在 Isaac's Wares 跟 Isaac 買任何東西，他拿錯貨、說出眼睛的事，要你找 Ripened Quince","在巴塔爾西部採 Quince（或打哥布林掉），到巴克巴塔爾坐長椅等 3 天讓它熟，交給他","過幾天回來，他要魔法書第 2 冊；離開時他太太 Esmerelda 請你別再幫他","到關口旅宿之鎮伊普希姆逸品店買真本（2,000G），<b>再付 2,400G 請他仿造</b>，約兩天後拿到假書 On the Transit of Souls 2","把<b>假書</b>給 Isaac、跟他回家即完成。真本叫 On the Transference of Souls 2，別拿錯"],
+APoisonousProposal:["在 Jarle's Home 樓下接任務","到標記東北的峽谷，叫隨從「等待」，讓 Asp 的毒矛刺中你，回去給 Jarle 看","白天在巴塔爾找一般體型的鳥身女妖（不是壯的那種），一樣讓牠毒到你，再回去給 Jarle 看","到巴克巴塔爾東北、染料倉和奧魯托巴特海岸再過去的地方和 Jarle 會合打奇美拉（Chimera）：先打山羊頭，讓蛇頭的毒打到 Jarle。<b>Jarle 中毒前別殺死奇美拉</b>","跟著跑回家的 Jarle（倒下就用龍之鼓動救），在他家說話即完成"],
+OutoftheForestIntotheForge:["準備 Rotten Apple 和 Rotten Fish：聖樹之村附近摘蘋果、水邊抓魚，坐長椅過幾天讓它們爛掉","等的時候別帶<b>整理行李</b>專長的隨從（會把它們合成掉），也別開 Stasis（會延緩腐爛）","交給 Doireann 做成 nutriabh，她會給你剎那飛石","和 Doireann 到布洛克工坊找莎拉，跟她出巴克巴塔爾、過橋前右轉上山，到 Stragglers' Cave 找布洛克","布洛克不吃，但讓你在洞裡撿 Scalecinder（綠色粉末，有些在可打破的東西下面）；告訴莎拉後交給 Doireann 即完成"],
+ClashandConclusion:["神的守護者後段爬月光塔追法茲斯時，Raghnall 在上層擋路要你單挑","他是拿劍盾的戰士，走廊很窄，繞著他打；法系職業會比較辛苦","想放他走：打少少的血，然後反覆抓他、扛起、撲倒，直到播劇情，他會交出鑰匙離開（獎勵最好）","直接打倒他也行，但拿不到 The Exalted 和鑰匙"]
+};
+
+/* ================= 程式 ================= */
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  function $(s,c){return (c||document).querySelector(s)}
+  function $$(s,c){return [].slice.call((c||document).querySelectorAll(s))}
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+  var VMAP={}; VOC.forEach(function(v){VMAP[v.id]=v});
+  function pressGroup(btns,on){btns.forEach(function(x){x.setAttribute("aria-pressed",x===on?"true":"false")})}
+
+  // theme
+  var saved=store("dd2-theme"); if(saved) root.setAttribute("data-theme",saved);
+  $("#themeBtn").addEventListener("click",function(){
+    var cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    var nx=cur==="dark"?"light":"dark"; root.setAttribute("data-theme",nx); store("dd2-theme",nx);
+  });
+
+  // vocation table filter
+  var vb=$$("#vocFilter button");
+  vb.forEach(function(b){b.addEventListener("click",function(){
+    pressGroup(vb,b); var f=b.dataset.f;
+    $$("#vocTable tbody tr").forEach(function(tr){tr.style.display=(f==="all"||tr.dataset.k.split(" ").indexOf(f)>-1)?"":"none"});
+  })});
+
+  // tier list
+  var tierNow="t26";
+  function tierRank(set,id){var t=TIER[set];for(var k in t){if(t[k].indexOf(id)>-1)return k}return null}
+  function renderTier(){
+    var t=TIER[tierNow],h="",order="SABCD";
+    ["S","A","B","C","D"].forEach(function(k){
+      if(!t[k].length) return;
+      h+='<div class="trow"><div class="tlabel t'+k+'">'+k+'</div><div class="titems">';
+      t[k].forEach(function(id){
+        var v=VMAP[id],mv="";
+        if(tierNow!=="pawn"){
+          var other=tierRank(tierNow==="t26"?"t24":"t26",id);
+          if(other&&other!==k){
+            var better=order.indexOf(k)<order.indexOf(other);
+            mv='<span class="mv '+((tierNow==="t26")===better?"up":"down")+'">'+(tierNow==="t26"?"2024 為 "+other+(better?" ▲":" ▼"):"2026 變 "+other+(order.indexOf(other)<order.indexOf(k)?" ▲":" ▼"))+'</span>';
+          }
+        }
+        h+='<button type="button" class="tcard" data-go="'+id+'"><b>'+v.zh+'</b>'+mv+'<span>'+TWHY[tierNow][id]+'</span></button>';
+      });
+      h+='</div></div>';
+    });
+    $("#tierBox").innerHTML=h; $("#tierNote").textContent=TNOTE[tierNow];
+    $$("#tierBox .tcard").forEach(function(c){c.addEventListener("click",function(){selectVoc(c.dataset.go);document.getElementById("skills").scrollIntoView()})});
+  }
+  var tb=$$("#tierFilter button");
+  tb.forEach(function(b){b.addEventListener("click",function(){pressGroup(tb,b);tierNow=b.dataset.t;renderTier()})});
+  renderTier();
+
+  // vocation explorer
+  var vp=$("#vpick");
+  vp.innerHTML=VOC.map(function(v){return '<button type="button" data-v="'+v.id+'" aria-pressed="false">'+v.zh+'</button>'}).join("");
+  function selectVoc(id){
+    var v=VMAP[id]; if(!v) return;
+    $$("#vpick button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===id?"true":"false")});
+    store("dd2-voc",id);
+    var r26=tierRank("t26",id),r24=tierRank("t24",id),rp=tierRank("pawn",id);
+    var h='<div class="vhead"><h3>'+v.zh+'</h3><span class="en">'+v.wp+'</span></div>';
+    h+='<div class="vmeta"><span class="tag t-new">2026 排行 '+r26+'</span><span class="tag t-unv">2024 排行 '+r24+'</span>'+(v.pawn?'<span class="tag t-ok">隨從可用'+(rp?'（隨從 '+rp+'）':'')+'</span>':'<span class="tag t-gold">主角專屬</span>')+'</div>';
+    h+='<p style="margin:0 0 6px">'+v.role+'</p>';
+    h+='<h3 style="font-size:16px">建議 6 格配招</h3><div class="slots">'+v.build.map(function(s,i){return '<div class="slot6"><i>'+(i+1)+'</i>'+esc(s)+'</div>'}).join("")+'</div><p class="small muted" style="margin:4px 0 0">'+v.bnote+'（編者依各站推薦整理）</p>';
+    var mk=v.mst==="feint"?["feint","pyre"]:v.mst==="meteoron"?["meteoron","maelstrom"]:[v.mst];
+    h+='<h3 style="font-size:16px">大師技能</h3>'+mk.map(function(k){var m=MST[k];return '<div class="maister-box"><b>'+m.n+'</b>：'+m.d+'<div class="small muted" style="margin-top:4px">取得：'+m.how+'</div></div>'}).join("");
+    h+='<h3 style="font-size:16px">'+(id==="warfarer"?"職業規則":"一般技能")+'</h3><dl class="sk">'+v.core.map(function(c){return '<dt>'+esc(c[0])+'</dt><dd>'+esc(c[1])+'</dd>'}).join("")+'</dl>';
+    h+='<h3 style="font-size:16px">自訂技能</h3><dl class="sk">'+v.weapon.map(function(w){return '<dt>'+esc(w[0])+(w[3]?' <span class="tag t-new">新</span>':'')+(w[1]?'<span class="adv">進階 → '+esc(w[1])+'</span>':'')+'</dt><dd>'+esc(w[2])+'</dd>'}).join("")+'</dl>';
+    var augs=AUG.filter(function(a){return a[1]===id});
+    h+='<h3 style="font-size:16px">這個職業給的能力</h3><dl class="sk">'+augs.map(function(a){return '<dt>'+a[0]+(a[5]?' <span class="tag t-ok">推薦</span>':'')+'<span class="adv">第 '+a[2]+' 階 · '+a[3].toLocaleString()+' 職業點數</span></dt><dd>'+a[4]+'</dd>'}).join("")+'</dl>';
+    $("#vpanel").innerHTML=h;
+  }
+  $$("#vpick button").forEach(function(b){b.addEventListener("click",function(){selectVoc(b.dataset.v)})});
+  var sv=store("dd2-voc"); selectVoc(VMAP[sv]?sv:"spearhand");
+
+  // augments
+  var augF="all",augRecOnly=false;
+  var af=$("#augFilter");
+  af.innerHTML='<button type="button" class="chip" data-x="rec" aria-pressed="false">只看推薦</button><span class="lbl" style="margin-left:6px">來源</span><button type="button" class="chip" data-x="all" aria-pressed="true">全部</button>'+VOC.map(function(v){return '<button type="button" class="chip" data-x="'+v.id+'" aria-pressed="false">'+v.zh+'</button>'}).join("");
+  function renderAug(){
+    var rows=AUG.filter(function(a){return (augF==="all"||a[1]===augF)&&(!augRecOnly||a[5])}).map(function(a){
+      return '<tr><td><b>'+a[0]+'</b>'+(a[5]?' <span class="tag t-ok">推薦</span>':'')+'</td><td>'+VMAP[a[1]].zh+'</td><td>第 '+a[2]+' 階<span class="en">'+a[3].toLocaleString()+' 職業點數</span></td><td>'+a[4]+'</td><td class="muted">'+a[6]+'</td></tr>';
+    });
+    if(augF==="all"&&!augRecOnly){rows=rows.concat(AUG_COMMON.map(function(c){return '<tr><td><b>'+c[0]+'</b> <span class="tag t-gold">資料片</span></td><td>不分職業<span class="en">讀論著</span></td><td>—</td><td>'+c[1]+'<span class="en">取得：'+c[2]+(c[3]?' <span class="tag t-unv">待驗證</span>':'')+'</span></td><td class="muted">全員</td></tr>'}))}
+    $("#augTable tbody").innerHTML=rows.join("")||'<tr><td colspan="5" class="muted">沒有符合的能力</td></tr>';
+  }
+  $$("#augFilter button").forEach(function(b){b.addEventListener("click",function(){
+    if(b.dataset.x==="rec"){augRecOnly=!augRecOnly;b.setAttribute("aria-pressed",augRecOnly?"true":"false")}
+    else{augF=b.dataset.x;$$("#augFilter button").forEach(function(x){if(x.dataset.x!=="rec")x.setAttribute("aria-pressed",x===b?"true":"false")})}
+    renderAug();
+  })});
+  renderAug();
+
+  // maister table
+  $("#maisterTable tbody").innerHTML=MST_ORDER.map(function(k){var m=MST[k];return '<tr><td><b>'+m.voc+'</b></td><td><b>'+m.n+'</b></td><td>'+m.d+'</td><td class="small">'+m.how+'</td></tr>'}).join("");
+
+  // main quests
+  var qn=0;
+  function questHTML(q){
+    qn++;
+    var h='<details class="q'+(q[6]?' danger':'')+'"><summary><span class="num">'+qn+'</span><span class="qn">'+q[0]+'<small>'+q[1]+'</small></span><span class="chev">▶</span></summary><div class="qb">';
+    h+='<div class="kv"><span><b>開始：</b>'+q[2]+'</span></div><ol>'+q[3].map(function(s){return '<li>'+s+'</li>'}).join("")+'</ol>';
+    h+='<div class="kv"><span><b>獎勵：</b>'+q[4]+'</span></div>';
+    if(q[5]) h+=(q[6]?'<div class="qwarn">'+q[5]+'</div>':'<div class="kv"><span><b>補充：</b>'+q[5]+'</span></div>');
+    return h+'</div></details>';
+  }
+  $("#mainQuests").innerHTML=MAIN.map(function(p){return '<div class="part">'+p.part+'</div>'+p.list.map(questHTML).join("")}).join("");
+  $("#mainQuests3").innerHTML='<div class="part">'+MAIN3.part+'</div>'+MAIN3.list.map(questHTML).join("");
+  $("#expandAll").addEventListener("click",function(){$$("#story details.q").forEach(function(d){d.open=true})});
+  $("#collapseAll").addEventListener("click",function(){$$("#story details.q").forEach(function(d){d.open=false})});
+
+  // spoilers
+  $$("[data-reveal]").forEach(function(b){b.addEventListener("click",function(){document.getElementById(b.dataset.reveal).classList.remove("hidden")})});
+
+  // side quests
+  var sideDone={}; try{sideDone=JSON.parse(store("dd2-side")||"{}")||{}}catch(e){sideDone={}}
+  var sArea="all",sType="all",sQ="";
+  var AREA={v:"貝爾蒙特",b:"巴塔爾",u:"真實世界"};
+  function sideKey(s){return s.k||s.n}
+  var sideOpen={};
+  function sideSteps(s){return (typeof SIDE_STEPS!=="undefined"&&SIDE_STEPS[s.k])||[]}
+  function renderSide(){
+    var q=sQ.trim().toLowerCase(),shown=0,done=0;
+    var h=SIDE.filter(function(s){
+      if(sArea!=="all"&&s.a!==sArea) return false;
+      if(sType==="timed"&&!s.t) return false;
+      if((sType==="voc"||sType==="maister")&&s.g.indexOf(sType)<0) return false;
+      if(sType==="todo"&&sideDone[sideKey(s)]) return false;
+      if(q&&(s.n+s.npc+s.rw+s.d+sideSteps(s).join("")).toLowerCase().indexOf(q)<0) return false;
+      return true;
+    }).map(function(s){
+      shown++; var k=sideKey(s),isD=!!sideDone[k],ss=sideSteps(s); if(isD)done++;
+      var steps=ss.length?'<details class="sqs" data-k="'+k+'"'+(sideOpen[k]?' open':'')+'><summary>步驟（'+ss.length+'）</summary><ol>'+ss.map(function(x){return '<li>'+x+'</li>'}).join("")+'</ol></details>':'';
+      var tags='<span class="tag t-unv">'+AREA[s.a]+'</span>'+(s.t?'<span class="tag t-bad">⌛ 有時限</span>':'')+(s.g.indexOf("voc")>-1?'<span class="tag t-gold">解鎖職業</span>':'')+(s.g.indexOf("maister")>-1?'<span class="tag t-blue">大師技能</span>':'');
+      return '<div class="sqi'+(isD?' done':'')+'"><input type="checkbox" data-k="'+k+'"'+(isD?' checked':'')+' aria-label="完成 '+s.n+'"><div><div class="sqn">'+s.n+'</div><div class="sqm">'+tags+'</div><div class="sqd"><b>起點：</b>'+s.npc+'<br><b>獎勵：</b>'+s.rw+'<br>'+s.d+'</div>'+steps+'</div></div>';
+    }).join("");
+    var total=0; for(var k in sideDone){if(sideDone[k])total++}
+    $("#sideList").innerHTML=h||'<p class="muted">沒有符合條件的任務。</p>';
+    $("#sideCount").textContent="顯示 "+shown+" 個 · 全部 "+SIDE.length+" 個中已完成 "+total+" 個";
+    $$("#sideList input").forEach(function(c){c.addEventListener("change",function(){sideDone[c.dataset.k]=c.checked;store("dd2-side",JSON.stringify(sideDone));renderSide()})});
+    $$("#sideList .sqs").forEach(function(d){d.addEventListener("toggle",function(){sideOpen[d.dataset.k]=d.open})});
+  }
+  var sa=$$("#sideArea button"),st=$$("#sideType button");
+  sa.forEach(function(b){b.addEventListener("click",function(){pressGroup(sa,b);sArea=b.dataset.a;renderSide()})});
+  st.forEach(function(b){b.addEventListener("click",function(){pressGroup(st,b);sType=b.dataset.g;renderSide()})});
+  $("#sideSearch").addEventListener("input",function(e){sQ=e.target.value;renderSide()});
+  renderSide();
+
+  // gear：[名稱, 分類 w/a/r/i, 類型說明, 效果, 在哪拿, 時機]
+  var GEAR=[
+  ["Silver Rapier","w","劍 · 戰士","前期就拿得到的好劍","菲倫瓦思隨從公會<b>鐘樓頂</b>的寶箱：從旅館屋頂跳到隨從公會屋頂，再爬上鐘樓；無名村「無名道具店」也賣，8,500G","前期"],
+  ["Daughter of the Evening","w","盾 · 戰士","到巴塔爾之前能拿到的盾裡數值最好","王宮寶庫，做法見第 13 節","前期"],
+  ["The Exalted","w","棒槌 · 戰士 · 聖屬性","聖屬性棒槌","德拉布尼爾大石窟（巴克巴塔爾往南）B2F：穿過一群 Rattler、打破可以破壞的水壩後的寶箱","中期"],
+  ["螺旋棒槌","w","棒槌 · 戰士","用錢買得到的好棒槌","巴克巴塔爾阿瓦朗武器店，38,500G","中期"],
+  ["Stalwart Sword","w","劍 · 戰士","後期主力劍","火山島營地的武器店 47,200G（古斯塔夫、布洛克工坊也賣，見上方說明）；無頭騎士約 2% 掉落","後期"],
+  ["Molten Fury","w","棒槌 · 戰士 · 火屬性","火屬性棒槌","火山島山麓洞穴 2 樓寶箱","後期"],
+  ["Carnation","w","劍 · 戰士","真實世界才買得到的強力劍","真實世界各城鎮武器店，58,500G","終局"],
+  ["Lifetaker","w","雙手劍 · 鬥士","剛解鎖鬥士時好用","菲倫瓦思西北的 Collapsed Mine：蜥蜴人守的鐵門前，爬上平台的寶箱；支線布連的執著的獎勵；關口旅宿之鎮 Celeste's Smithy 也賣，17,000G","前期"],
+  ["Ogresbane","w","雙手劍 · 鬥士","對食人魔（Ogre、Grim Ogre）加傷","Eremitic Sanctuary 裡拿著它的山賊會掉；支線略奪和慈悲完成後，Coral Snake's Hideout 的 Grim Ogre 必掉","中期"],
+  ["Black Matter","w","巨鎚 · 鬥士","基礎數值很高的鬥士武器","古戰場遺跡（關口旅宿之鎮北）獨眼巨人旁的寶箱","中期"],
+  ["Gryphic Victory","w","雙手劍 · 鬥士","巴塔爾買得到的雙手劍","巴克巴塔爾阿瓦朗武器店，36,600G","中期"],
+  ["Wounded Heart","w","雙手劍 · 鬥士","後期主力雙手劍","火山島營地的武器店 48,000G（古斯塔夫、布洛克工坊也賣）","後期"],
+  ["Cinderspine","w","巨鎚 · 鬥士 · 火屬性","火屬性巨鎚","火山島山麓洞穴 2 樓寶箱","後期"],
+  ["Cyclopean Thunder","w","巨鎚 · 鬥士 · 雷屬性","雷屬性巨鎚","Darkbeasts' Den 的寶箱；火山島營地東邊、幾條路會合處的北邊塔","後期"],
+  ["Dragon's Flight","w","雙手劍 · 鬥士","對龍類加傷","真實世界各城鎮武器店，55,000G","終局"],
+  ["Savage Fang","w","弓 · 弓箭手","前期店裡買的弓","菲倫瓦思 Rodrick's Smithy，17,800G","前期"],
+  ["Veteran's Arc","w","弓 · 弓箭手","前期店裡買的弓","關口旅宿之鎮 Celeste's Smithy，21,200G","前期"],
+  ["Predator","w","弓 · 弓箭手","對 Harpy 類加傷","巴克巴塔爾阿瓦朗武器店，33,500G","中期"],
+  ["Dinistrydd","w","弓 · 弓箭手","聖樹之村買得到的弓","聖樹之村 Grisha's Armory，38,900G","中期"],
+  ["Medusan Spellbow","w","弓 · 弓箭手","弓箭手後期好弓","美杜莎約 18% 掉落（雷拉巴塔爾風穴洞底），7 天重生可以重刷","中期"],
+  ["Revenant Wail","w","弓 · 弓箭手","後期主力弓","火山島營地的武器店 55,000G（古斯塔夫、布洛克工坊也賣）","後期"],
+  ["Hydra Husk","w","弓 · 弓箭手","被推為弓箭手最好的弓之一","各地武器店 75,000G，<b>只在多輪遊玩</b>","終局"],
+  ["Unfettered Claw","w","法杖 · 法師","前期店裡買的法杖","菲倫瓦思 Rodrick's Smithy、關口旅宿之鎮 Celeste's Smithy，13,900G","前期"],
+  ["Frigid Finger","w","法杖 · 法師 · 冰屬性","冰屬性法杖","食龍塔 B1F 的寶箱（主線浪恬之聲會來）","中期"],
+  ["Volant White","w","法杖 · 法師 · 聖屬性","聖屬性法杖","火山島營地的武器店 45,600G（古斯塔夫、布洛克工坊也賣）","後期"],
+  ["隨從之力","w","法杖 · 法師","隨從拿著，倒地幾秒後會自己起身","探求之證累計 180 枚","後期"],
+  ["Necrotic Shriek","w","法杖 · 法師","攻擊有機率讓敵人沉默","真實世界各城鎮武器店，58,000G","終局"],
+  ["Snagdaggers","w","雙匕首 · 盜賊","前期店裡買的匕首","菲倫瓦思 Rodrick's Smithy，14,800G","前期"],
+  ["Spite","w","雙匕首 · 盜賊","攻擊附帶異常狀態（Blighted）","關口旅宿之鎮 Celeste's Smithy、巴克巴塔爾阿瓦朗武器店，27,800G","中期"],
+  ["Frosted Edges","w","雙匕首 · 盜賊 · 冰屬性","冰屬性匕首","Coral Snake's Hideout 的寶箱；支線自己選擇的處世之道最好結局的獎勵","中期"],
+  ["尋水匕首","w","雙匕首 · 盜賊","附近有寶物時會發光、發出叮聲","探求之證累計 30 枚","中期"],
+  ["Framae Blades","w","雙匕首 · 盜賊","後期主力匕首","火山島營地的武器店 60,000G（古斯塔夫、布洛克工坊也賣）","後期"],
+  ["Heaven's Key","w","雙匕首 · 盜賊 · 聖屬性","聖屬性匕首","真實世界各城鎮武器店，68,000G","終局"],
+  ["Meniscus","w","大杖 · 巫師","前期店裡買的大杖","菲倫瓦思 Rodrick's Smithy、關口旅宿之鎮 Celeste's Smithy，9,600G","前期"],
+  ["Favored Branches","w","大杖 · 巫師","前期撿得到的大杖","Depleted Ore Deposit B1F 的特殊寶箱（另有 2,800G；打開會冒出幽靈和骷髏）","前期"],
+  ["Plucked Heart","w","大杖 · 巫師","中期店裡買的大杖","關口旅宿之鎮 Celeste's Smithy、巴克巴塔爾阿瓦朗武器店，24,500G","中期"],
+  ["Anathema","w","大杖 · 巫師","攻擊有機率讓敵人沉默（對付敵方法師）","食龍塔 2 樓，打破牆後的寶箱（浪恬之聲順路）；巫妖也會稀有掉落","中期"],
+  ["Solar Providence","w","大杖 · 巫師","巴塔爾買得到的大杖","巴克巴塔爾阿瓦朗武器店，36,200G","中期"],
+  ["Lion-Lord's Archistaff","w","大杖 · 巫師 · 雷屬性","雷屬性大杖，要存錢","聖樹之村 Grisha's Armory，56,900G","後期"],
+  ["Caged Fury","w","大杖 · 巫師","體力越高威力越大","真實世界各城鎮武器店，68,000G","終局"],
+  ["Percipient Blade","w","魔雙劍 · 魔劍士","剛解鎖魔劍士時好用","菲倫瓦思 Rodrick's Smithy、關口旅宿之鎮 Celeste's Smithy，9,900G","前期"],
+  ["Fool's Prize","w","魔雙劍 · 魔劍士","前中期好用，對哥布林加傷","Guerco Cavern 哥布林洞窟裡的寶箱","前期"],
+  ["Wings Asunder","w","魔雙劍 · 魔劍士","中期主力魔雙劍","Rocky Lair 的寶箱；西格爾特好感度夠高時，會當禮物放在你家；聖樹之村 Grisha's Armory、阿瓦朗武器店也賣，32,000G","中期"],
+  ["Soul of Antiquity","w","魔雙劍 · 魔劍士","巴塔爾買得到的魔雙劍","巴克巴塔爾阿瓦朗武器店，45,800G","中期"],
+  ["Dead Ringer","w","魔雙劍 · 魔劍士","後期主力魔雙劍","火山島營地的武器店 56,000G（古斯塔夫、布洛克工坊也賣）；小龍（Lesser Dragon）約 12% 掉落","後期"],
+  ["Rhewynt","w","魔雙劍 · 魔劍士 · 冰屬性","冰屬性魔雙劍","真實世界各城鎮武器店，68,000G","終局"],
+  ["Terminal Gyre","w","魔弓 · 魔弓手","便宜的入門魔弓","菲倫瓦思 Rodrick's Smithy，7,850G","前期"],
+  ["Gimble Gyre","w","魔弓 · 魔弓手","撿得到的魔弓","Darkhorde Cave 南邊、精靈涼亭廢墟正中央的特殊寶箱（山賊和獨眼巨人守著）；阿瓦朗武器店也賣，12,800G","中期"],
+  ["Siocadh","w","魔弓 · 魔弓手 · 冰屬性","冰屬性魔弓","聖樹之村 Grisha's Armory，18,800G","中期"],
+  ["Herald's Helix","w","魔弓 · 魔弓手","巴塔爾買得到的魔弓","巴克巴塔爾阿瓦朗武器店，36,800G","中期"],
+  ["Blackwing Bow","w","魔弓 · 魔弓手","真實世界才買得到的魔弓","真實世界各城鎮武器店，65,000G","終局"],
+  ["Bewitching Balm","w","香爐 · 幻術師","入門香爐","巴克巴塔爾阿瓦朗武器店，12,250G","中期"],
+  ["Redolent Whisper","w","香爐 · 幻術師","撿得到的香爐","Tomb of Te'Glarr 可以打破的牆後面的寶箱；阿瓦朗武器店也賣，26,500G","中期"],
+  ["Whimsical Daydream","w","香爐 · 幻術師","每打中一下會掉隨機金額的錢","史芬克斯謎題「鑑別」的獎勵（見下方）","中期"],
+  ["Resonant Hymn","w","香爐 · 幻術師","後期香爐","火山島營地的武器店 39,000G（古斯塔夫、布洛克工坊也賣）","後期"],
+  ["Achromic Reverie","w","香爐 · 幻術師","真實世界才買得到的香爐","真實世界的武器店，65,000G","終局"],
+  ["龍識者武器","w","各職業","各職業公認的最強武器","龍識者商店，每把 110 顆龍血晶，終局後開賣（清單見下方）","終局"],
+  ["Wyrmhunter's Cloak","a","披風","地城裡順手拿的防具","王宮寶庫","前期"],
+  ["Grand Cuirass","a","胸甲","地城裡順手拿的防具","海底神殿地下一樓的寶箱（主線邂逅順路）","中期"],
+  ["Indomitable Armor","a","鎧甲","地城裡順手拿的防具","德拉布尼爾大石窟","中期"],
+  ["龍識者防具","a","各職業","各職業終局防具","龍識者商店：頭 20、腿 30、身體 70 顆龍血晶","終局"],
+  ["Ring of Exultation","r","戒指","體力上限 +100","梅爾威村支線小小的冒險","前期"],
+  ["增積戒指","r","戒指","負重 +5","主線危險的接觸","前期"],
+  ["Ring of Reassurance","r","戒指","扶起倒地的隨從後，暫時提高他的防禦","王宮寶庫","前期"],
+  ["Ring of Grit","r","戒指","用盾格擋時耐力消耗 -25%","梅爾威村支線災難降臨（有時限）","前期"],
+  ["Ring of Assurance","r","戒指","物防、魔防各 +10","梅爾威村支線背井離鄉之日","前期"],
+  ["壓倒戒指","r","戒指","擊倒力 +100","探求之證累計 5 枚","前期"],
+  ["昂然戒指","r","戒指","體力 +100、耐力 +100、負重 +5","探求之證累計 15 枚","前期"],
+  ["Ring of Acclamation","r","戒指","體力上限 +200","菲倫瓦思菲爾伯特雜貨店、關口旅宿之鎮莫里斯道具店有賣","中期"],
+  ["Ring of Momentum","r","戒指","最大耐力 +150","巴塔爾支線幽靈牛車（做完主線浪恬之聲會被取消）","中期"],
+  ["Ring of Skullduggery","r","戒指","從背後攻擊傷害 +20%（盜賊愛用）","支線下落不明的寶石，選 12,000G 那組獎勵","中期"],
+  ["大積戒指","r","戒指","負重 +10","海底神殿 1 樓寶箱；或探求之證累計 70 枚","中期"],
+  ["Ring of Ambition","r","戒指","擊敗敵人得到的經驗 +50%","史芬克斯的謎題「決鬥」","中期"],
+  ["誓約戒指","r","戒指","好感度 +10%","史芬克斯的謎題「徒勞」；或探求之證累計 120 枚","中期"],
+  ["求道戒指","r","戒指","職業點數 +50%","探求之證累計 220 枚","後期"],
+  ["金色帝王甲蟲","i","金色帝王甲蟲","吃下去負重永久 +0.15","大多趴在路邊樹幹上，也有在石頭、地上的；會發光，晚上好找","前期"],
+  ["龍之鼓動碎片","i","龍之鼓動碎片","集滿 3 片合成 1 顆龍之鼓動","各地寶箱、地城、任務獎勵","前期"],
+  ["美杜莎頭","i","美杜莎頭顱","可以把敵人石化","砍下美杜莎的頭：第一條血還沒打掉時砍下最好（新鮮），之後是普通，快死時砍下是枯萎的","中期"],
+  ["歸途基石","i","歸途基石","可以插在地圖任何地方當傳送點，最多插 10 顆","主線謊言之宴、史芬克斯（謎題「瘋狂」；「本性」可複製）、龍識者 20 顆龍血晶","中期"],
+  ["龍血晶","i","龍血晶","龍識者商店的唯一貨幣、魂魄之劍要 15 顆","打倒龍類掉 10–20 顆；海灣神廟第一次去地上有 5 顆","中期"],
+  ["會心箭","i","箭 · 弓箭手","打史芬克斯拿久遠的龍之鼓動用","史芬克斯的謎題「追憶」；龍識者 8 顆龍血晶（限 1 支）","中期"],
+  ["久遠的龍之鼓動","i","久遠的龍之鼓動","一次復活附近<b>所有</b>倒下的 NPC（用一次就沒了）","打倒史芬克斯後的金色寶箱；關口旅宿之鎮伊普希姆可以偽造，30,000G","中期"]
+  ];
+  var GTYPE={w:"武器",a:"防具",r:"戒指",i:"道具"},GTIME={"前期":"t-ok","中期":"t-gold","後期":"t-bad","終局":"t-new"};
+  var gT="all",gV="all",gQ="",GORD={"前期":0,"中期":1,"後期":2,"終局":3};
+  function vocOk(g){return gV==="all"||(g[1]==="w"&&(g[2].indexOf("· "+gV)>-1||g[2]==="各職業"))}
+  function renderGear(){
+    var q=gQ.trim().toLowerCase();
+    var list=GEAR.filter(function(g){return (gT==="all"||g[1]===gT)&&vocOk(g)&&(!q||(g[0]+g[2]+g[3]+g[4]).toLowerCase().indexOf(q)>-1)});
+    if(gV!=="all")list=list.slice().sort(function(a,b){return GORD[a[5]]-GORD[b[5]]});
+    var rows=list.map(function(g){
+      return '<tr><td><b>'+g[0]+'</b> <span class="tag '+GTIME[g[5]]+'">'+g[5]+'</span></td><td>'+GTYPE[g[1]]+'<span class="en">'+g[2]+'</span></td><td>'+g[3]+'</td><td class="small">'+g[4]+'</td></tr>';
+    });
+    $("#gearTable tbody").innerHTML=rows.join("")||'<tr><td colspan="4" class="muted">沒有符合的項目</td></tr>';
+  }
+  var gb=$$("#gearType button");
+  gb.forEach(function(b){b.addEventListener("click",function(){pressGroup(gb,b);gT=b.dataset.g;renderGear()})});
+  var vb=$$("#gearVoc button");
+  vb.forEach(function(b){b.addEventListener("click",function(){pressGroup(vb,b);gV=b.dataset.v;renderGear()})});
+  $("#gearSearch").addEventListener("input",function(e){gQ=e.target.value;renderGear()});
+  renderGear();
+
+  // checklist
+  var boxes=$$("#checkList input");
+  var state={}; try{state=JSON.parse(store("dd2-check")||"{}")||{}}catch(e){state={}}
+  function renderCheck(){
+    var n=0; boxes.forEach(function(b){if(b.checked)n++});
+    $("#bar").style.width=(n/boxes.length*100)+"%";
+    $("#count").textContent="已完成 "+n+" / "+boxes.length+(n===boxes.length?"，可以出發了。":"");
+  }
+  boxes.forEach(function(b){
+    b.checked=!!state[b.dataset.id];
+    b.addEventListener("change",function(){state[b.dataset.id]=b.checked;store("dd2-check",JSON.stringify(state));renderCheck()});
+  });
+  $("#resetBtn").addEventListener("click",function(){state={};store("dd2-check","{}");boxes.forEach(function(b){b.checked=false});renderCheck()});
+  renderCheck();
+
+  // toc highlight + read bar + to top
+  var links=$$("#toc a");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){
+      var on=a.getAttribute("href")==="#"+e.target.id; a.classList.toggle("active",on);
+      if(on&&window.innerWidth<=900){var nav=$("#toc");nav.scrollTo({left:a.offsetLeft-nav.clientWidth/2+a.clientWidth/2,behavior:"smooth"})}
+    })}})},{rootMargin:"-20% 0px -70% 0px"});
+    $$("main section").forEach(function(s){io.observe(s)});
+  }
+  var bar=$("#readbar"),top=$("#toTop");
+  function onScroll(){var d=document.documentElement,max=d.scrollHeight-d.clientHeight;bar.style.width=(max>0?d.scrollTop/max*100:0)+"%";top.classList.toggle("show",d.scrollTop>800)}
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+})();
+</script>
+<script id="dmap-js">
+/* ===== 互動示意地圖（第 13 節）=====
+   座標系 0..1590 × 0..1980，比例照 game-maps.com 的世界地圖。
+   m＝比對用的名稱（新舊譯名＋英文都收）：內文改譯名時，把新名字補進 m，清單旁的 📍 按鈕就會接回來。
+   清單（.spots）裡有同名項目時，「有什麼」直接讀清單內文，不在這裡重寫一份。 */
+(function(){
+  var svg=document.getElementById("dmapSvg"),info=document.getElementById("dmapInfo");
+  if(!svg||!info) return;
+  var NS="http://www.w3.org/2000/svg";
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var REG={v:"貝爾蒙特",e:"兩國邊界",b:"巴塔爾",x:"火山島"};
+  var KIND={town:"城鎮",main:"主線順路",side:"要自己繞路",way:"主線經過"};
+  var ZOOM={all:[-30,-45,1650,2045],north:[660,-30,800,600],capital:[600,420,1000,560],border:[0,430,760,700],battahl:[0,860,900,1080],volcano:[470,1520,760,440]};
+  // k種類 n名稱 en英文 x,y座標 r區 z從外面點進來時縮放到哪 ap位置推估 lp標籤放左邊 how怎麼走 d預設說明 m比對名稱
+  var IT=[
+   {id:"start",k:"way",n:"群青瀑布",en:"Ultramarine Waterfall",x:1190,y:75,r:"v",z:"north",how:"開場坐牛車到的地方，往西南走就是國境監視團營地。瀑布洞窟的出口也在這裡。",m:["群青瀑布","Ultramarine"]},
+   {id:"borderwatch",k:"town",n:"國境監視團營地",en:"Borderwatch Outpost",x:1100,y:150,r:"v",z:"north",lp:1,how:"地圖最北邊的軍營，開場後第一個據點。",m:["國境監視團營地","邊境哨站","Borderwatch"]},
+   {id:"nvc",k:"way",n:"貝爾蒙特北部關卡",en:"Northern Vermund Checkpoint",x:1150,y:168,r:"v",z:"north",how:"營地東邊的關卡。從這裡沿大路往東、再繞往南，就會走到王都菲倫瓦思。",m:["貝爾蒙特北部關卡","北維爾蒙德檢查站","Northern Vermund"]},
+   {id:"melve",k:"town",n:"梅爾威村",en:"Melve",x:1030,y:300,r:"v",z:"north",how:"營地往西南、過一條峽谷的小村。前期好幾個支線在這裡接。",m:["梅爾威","Melve","Beren","Eini"]},
+   {id:"arbor",k:"town",n:"聖樹之村",en:"Sacred Arbor",x:765,y:285,r:"v",z:"north",how:"精靈村，在梅爾威西邊的古綠之森裡（菲倫瓦思西北）。要帶會精靈語的隨從。",m:["聖樹之村","神聖樹林","Sacred Arbor"]},
+   {id:"vernworth",k:"town",n:"菲倫瓦思",en:"Vernworth",x:1150,y:700,r:"v",z:"capital",how:"貝爾蒙特王都，第一部的基地。城南是王城。",m:["菲倫瓦思","Vernworth","Stardrop","貧民窟","王都","王城","城堡","貴族區"]},
+   {id:"harve",k:"town",n:"哈波村",en:"Harve Village",x:822,y:850,r:"v",z:"capital",how:"王都往西南、海邊的漁村。村子正南的海岸就是鳴潮洞窟。",m:["哈波村","Harve"]},
+   {id:"stormwind",k:"way",n:"鳴潮洞窟",en:"Stormwind Cave",x:840,y:910,r:"v",z:"capital",how:"哈波村正南方的海邊洞窟（蜥蜴人巢穴）。主線後段可以穿過它走到海底神殿。",m:["鳴潮洞窟","Stormwind"]},
+   {id:"nameless",k:"town",n:"無名村",en:"Nameless Village",x:1545,y:575,r:"v",z:"capital",lp:1,how:"王都往東、深山裡的村子，在地圖最東邊。王都委託會派你來。",m:["無名村","Nameless"]},
+   {id:"checkpoint",k:"town",n:"關口旅宿之鎮",en:"Checkpoint Rest Town",x:255,y:780,r:"e",z:"border",how:"兩國邊界的關口小鎮，在地圖西側。從王都一路往西走；過了關口往南就是巴塔爾。",m:["關口旅宿之鎮","檢查站休息鎮","檢查站","Checkpoint"]},
+   {id:"bakbattahl",k:"town",n:"巴克巴塔爾",en:"Bakbattahl",x:470,y:1245,r:"b",z:"battahl",lp:1,how:"巴塔爾首都，第二部的基地。從關口旅宿之鎮往南，穿過巴塔爾森林就到。",m:["巴克巴塔爾","巴克巴達爾","Bakbattahl"]},
+   {id:"olta",k:"way",n:"奧魯托巴特海岸",en:"Olta'Battahl Coast",x:515,y:1160,r:"b",z:"battahl",ap:1,how:"巴克巴塔爾北邊、往海的那一側海岸。",m:["奧魯托巴特","Olta","禁術研究所"]},
+   {id:"flamebearer",k:"way",n:"奉炎殿",en:"Flamebearer Palace",x:578,y:1258,r:"b",z:"battahl",how:"巴克巴塔爾城東側、大階梯上去的宮殿。",m:["奉炎殿","Flamebearer"]},
+   {id:"volcamp",k:"town",n:"火山島營地",en:"Volcanic Island Camp",x:850,y:1795,r:"x",z:"volcano",how:"火山島中間的補給營地，3.1 起有固定的歸途基石。魔弓手、復甦者的解鎖在營地的溫泉。從巴克巴塔爾往南穿過德拉布尼爾大石窟就能走到。",m:["火山島營地","間歇泉村","Volcanic Island Camp","Geyser"]},
+   {id:"excavation",k:"town",n:"挖掘場",en:"Excavation Site",x:1075,y:1605,r:"x",z:"volcano",how:"序章的地方，火山島最東南角。火山島營地往東走。",m:["挖掘場","Excavation"]},
+   {id:"moonglint",k:"way",n:"月光塔",en:"Moonglint Tower",x:1140,y:1722,r:"x",z:"volcano",ap:1,how:"火山島東南，挖掘場那一帶再過去。只有主線「The Guardian Gigantus」期間之後才進得去。",m:["月光塔","Moonglint"]},
+
+   {id:"waterfall",k:"side",n:"瀑布洞窟",en:"Waterfall Cave",x:1320,y:262,r:"v",z:"north",ap:1,how:"從北部關卡沿大路往王都走，第一個有營火和裂隙石的十字路口，旁邊瀑布後面藏著入口（出口在開場的群青瀑布旁）。game-maps 建議約 Lv.20 再來全清。",m:["瀑布洞窟","Waterfall Cave"]},
+   {id:"mtnsecret",k:"side",n:"The Mountains' Secret",en:"山之秘境",x:1070,y:42,r:"v",z:"north",how:"營地正北方的山裡，地圖最北端。出口在營地北邊不遠，入口要再往北爬。",m:["The Mountains' Secret","山之秘境"]},
+   {id:"trevo",k:"main",n:"特雷弗礦山",en:"Trevo Mine",x:890,y:640,r:"v",z:"capital",how:"王都往西、往哈波村那條路的北側山邊。",m:["特雷弗礦山","Trevo"]},
+   {id:"spirits",k:"side",n:"Spirits' Path",en:"靈之道",x:1300,y:560,r:"v",z:"capital",ap:1,lp:1,how:"王都往東北（往無名村方向）的路邊。入口是巨石後面帶梯子的石坑，路邊有山賊就表示快到了。",m:["Spirits' Path","Spirits Path","靈之道"]},
+   {id:"vault",k:"side",n:"王宮寶庫",en:"Vernworth Castle Vault",x:1160,y:815,r:"v",z:"capital",how:"菲倫瓦思南邊的王城裡，地下一樓。",m:["王宮寶庫","王城寶庫","Castle Vault"]},
+   {id:"guerco",k:"side",n:"Guerco Cavern",en:"",x:690,y:832,r:"v",z:"capital",ap:1,lp:1,how:"哈波村往西，過 Theodracus 二世橋。洞窟一路往南通到巴塔爾北岸（海灣神廟那一帶）。",m:["Guerco"]},
+   {id:"battleground",k:"side",n:"古戰場遺跡",en:"Ancient Battleground",x:265,y:640,r:"e",z:"border",ap:1,how:"關口旅宿之鎮出門一路往北。過橋後第一個岔路左轉，下一個岔路再左轉往西北。",m:["古戰場","Ancient Battleground"]},
+   {id:"mtnshrine",k:"side",n:"山岳神殿",en:"Mountain Shrine",x:340,y:545,r:"e",z:"border",ap:1,how:"古戰場遺跡再往北：從城寨最北端進盡頭山窟，出來後沿崖邊的平台爬上去。",m:["山岳神殿","山之神殿","Mountain Shrine"]},
+   {id:"reverent",k:"main",n:"禮拜神廟",en:"Reverent Shrine",x:150,y:1085,r:"e",z:"battahl",ap:1,how:"關口旅宿之鎮沿大路往南，過了巴塔爾森林再過河，第二個左轉。",m:["禮拜神廟","Reverent"]},
+   {id:"baywayside",k:"main",n:"海灣神廟",en:"Bay Wayside Shrine",x:600,y:1120,r:"b",z:"battahl",ap:1,how:"巴克巴塔爾最北邊的出口出去，往海邊下坡到十字路口靠左，過斷掉的木橋進洞窟、一路靠左。也能從哈波村那頭的 Guerco Cavern 過來。",m:["海灣神廟","Bay Wayside"]},
+   {id:"seafloor",k:"main",n:"海底神殿",en:"Seafloor Shrine",x:765,y:1040,r:"b",z:"battahl",how:"哈波村西南、隔著海灣的岬角尖端。主線會帶你來，也能穿過鳴潮洞窟走過來。",m:["海底神殿","Seafloor"]},
+   {id:"dragonsbreath",k:"main",n:"食龍塔",en:"Dragonsbreath Tower",x:275,y:1878,r:"b",z:"battahl",ap:1,how:"巴克巴塔爾往西出城（經過商業區），第一個岔路走下面那條往西南；最後一個岔路走南邊，在 Wyrmsblood 森林南緣。",m:["食龍塔","Dragonsbreath"]},
+   {id:"caliginous",k:"side",n:"雷拉巴塔爾風穴",en:"Caliginous Depths",x:212,y:1765,r:"b",z:"battahl",ap:1,how:"跟食龍塔同一條路，最後一個岔路改走北邊。在 Wyrmsblood 森林裡、巴塔爾最西南角。",m:["雷拉巴塔爾風穴","幽暗深淵","Caliginous"]},
+   {id:"drabnir",k:"side",n:"德拉布尼爾大石窟",en:"Drabnir's Grotto",x:565,y:1645,r:"b",z:"volcano",ap:1,how:"巴克巴塔爾沿路往南，走到沙漠跟火山島的交界。穿過去就是火山島。",m:["德拉布尼爾","Drabnir"]},
+   {id:"mtnbase",k:"side",n:"火山島山麓洞穴",en:"Mountain Base Cave",x:735,y:1700,r:"x",z:"volcano",ap:1,how:"火山島營地往西出去，在島的北側。",m:["火山島山麓洞穴","山麓洞穴","山腳洞窟","Mountain Base"]}
+  ];
+  var BY={},no=0;
+  IT.forEach(function(it){BY[it.id]=it;if(it.k==="main"||it.k==="side")it.no=++no;});
+
+  // 陸地骨架：粗線＋圓角連起來就是示意的陸塊
+  var LAND=[
+   {c:"v",w:150,p:[[[1190,75],[1100,150],[1030,300]],[[1100,150],[1070,45]],[[1100,150],[1150,168],[1300,230],[1440,320],[1440,470],[1300,560],[1160,640]],[[1300,560],[1545,575]],[[1150,640],[1158,818]],[[1030,300],[960,430],[1000,560],[1150,650]],[[765,285],[900,330],[1030,300]],[[765,285],[760,450],[860,540],[1000,560]],[[860,540],[890,640],[840,760],[825,860],[840,910]],[[860,540],[700,560],[580,560],[420,640],[300,690],[255,790],[120,800],[60,860]],[[440,520],[700,500]],[[255,790],[265,640],[340,545]],[[830,800],[700,825],[640,880]],[[800,860],[745,900],[765,980],[768,1045]]]},
+   {c:"b",w:170,p:[[[60,860],[150,980],[150,1090],[220,1180],[330,1260],[470,1245],[578,1258]],[[640,880],[585,960],[590,1060],[600,1120],[520,1165],[470,1245]],[[220,1180],[180,1400],[230,1600],[212,1765],[275,1878]],[[470,1245],[500,1420],[440,1560],[330,1700],[300,1840]],[[500,1420],[560,1560],[565,1645]]]},
+   {c:"x",w:150,p:[[[565,1645],[640,1700],[735,1700],[850,1795],[960,1700],[1075,1605],[1140,1722],[1060,1820],[960,1760]],[[560,1720],[560,1880],[700,1890],[850,1795]]]}
+  ];
+  var ROADS=[[[1190,75],[1100,150],[1150,168],[1300,230],[1440,320],[1440,470],[1300,560],[1150,650],[1158,818]],[[1100,150],[1030,300],[960,430],[1000,560],[1150,650]],[[1000,560],[860,540],[700,560],[580,560],[420,640],[300,690],[255,790]],[[860,540],[890,640],[840,760],[825,860]],[[1300,560],[1545,575]],[[765,285],[900,330],[1030,300]],[[255,790],[120,820],[150,980],[150,1090],[220,1180],[330,1260],[470,1245],[578,1258]],[[470,1245],[500,1420],[560,1560],[565,1645],[640,1700],[735,1700],[850,1795],[960,1700],[1075,1605]],[[470,1245],[520,1165],[600,1120]],[[500,1420],[440,1560],[330,1700],[212,1765],[275,1878]]];
+  var ROUTE={
+   p1:{main:["excavation",null,"start","borderwatch","melve","nvc",[1300,230],[1440,330],[1430,470],[1300,560],"vernworth"],br:[["vernworth","trevo"],["vernworth","harve","stormwind"],["vernworth",[1300,560],"nameless"]]},
+   p2:{main:[[1150,700],[1000,570],[860,545],[700,560],[580,560],[420,640],[300,700],"checkpoint",[120,830],[150,1000],[220,1180],[330,1260],"bakbattahl","olta","reverent","stormwind","seafloor","dragonsbreath","flamebearer","moonglint"],br:[]}
+  };
+
+  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function xy(p){return typeof p==="string"?[BY[p].x,BY[p].y]:p}
+  function d(a){return "M"+a.map(function(p){return xy(p).join(",")}).join(" L")}
+
+  // ---- 畫圖：海 → 陸地（邊框再填色）→ 道路 → 區名 → 主線路線 → 圖釘 → 路線序號
+  el("rect",{x:-3000,y:-3000,width:8000,height:8000,style:"fill:var(--map-sea)"},svg);
+  var gl=el("g",{"class":"land"},svg);
+  [["-edge",14],["",0]].forEach(function(ly){LAND.forEach(function(L){L.p.forEach(function(s){
+    el("path",{d:d(s),style:"stroke:var(--map-"+L.c+ly[0]+");stroke-width:"+(L.w+ly[1])},gl);
+  })})});
+  ROADS.forEach(function(s){el("path",{"class":"road",d:d(s),"vector-effect":"non-scaling-stroke"},svg)});
+  [["貝爾蒙特",1185,410],["巴塔爾",390,1015],["火山島",820,1955]].forEach(function(r){var t=el("text",{"class":"rname",x:r[1],y:r[2],"text-anchor":"middle"},svg);t.textContent=r[0]});
+  var gr=el("g",{},svg),gp=el("g",{},svg),gb=el("g",{},svg),badges=[];
+  ["p1","p2"].forEach(function(key){
+    var R=ROUTE[key],seg=[],segs=[];
+    R.main.forEach(function(p){if(p===null){segs.push(seg);seg=[]}else seg.push(p)});segs.push(seg);
+    segs.forEach(function(s){if(s.length>1)el("path",{"class":"route "+key,d:d(s),"vector-effect":"non-scaling-stroke"},gr)});
+    R.br.forEach(function(s){el("path",{"class":"route br "+key,d:d(s),"vector-effect":"non-scaling-stroke"},gr)});
+    var n=0;R.main.forEach(function(p){if(typeof p!=="string")return;n++;var g=el("g",{"class":"rb "+key},gb),i=el("g",{transform:"translate(-15 -15)"},g);el("circle",{r:9},i);el("text",{y:4},i).textContent=n;badges.push({g:g,x:BY[p].x,y:BY[p].y})});
+  });
+  var ORDER={way:0,town:1,side:2,main:2};
+  IT.slice().sort(function(a,b){return ORDER[a.k]-ORDER[b.k]}).forEach(function(it){
+    var g=el("g",{"class":"pin k-"+it.k,tabindex:"0",role:"button","aria-label":(it.no?it.no+" ":"")+it.n+"，"+KIND[it.k]},gp);
+    el("title",{},g).textContent=it.n+(it.en?"（"+it.en+"）":"");
+    el("circle",{"class":"halo",r:it.k==="way"?12:21},g);
+    if(it.ap) el("circle",{"class":"ap",r:it.k==="way"?10:17},g);
+    if(it.k==="town") el("rect",{"class":"dot",x:-8,y:-8,width:16,height:16,rx:3.5},g);
+    else if(it.k==="way") el("circle",{"class":"dot",r:6},g);
+    else {el("circle",{"class":"dot",r:12},g);el("text",{"class":"num",y:4.2},g).textContent=it.no}
+    var off=it.k==="way"?(it.ap?14:11):it.k==="town"?13:(it.ap?21:17);
+    el("text",{"class":"lbl",x:it.lp?-off:off,y:4.5,"text-anchor":it.lp?"end":"start"},g).textContent=it.n;
+    it.g=g;
+    g.addEventListener("click",function(){select(it.id,false)});
+    g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();select(it.id,false)}});
+  });
+
+  // ---- 縮放：圖釘與文字維持固定的螢幕大小（scale k 抵銷縮放）
+  var vb=ZOOM.all.slice(),raf=0,qbad=[];
+  function applyVB(){
+    svg.setAttribute("viewBox",vb.join(" "));
+    var r=svg.getBoundingClientRect();if(!r.width||!r.height)return;
+    var k=Math.max(vb[2]/r.width,vb[3]/r.height);
+    svg.classList.toggle("zoomed",k<2.3);
+    IT.forEach(function(it){it.g.setAttribute("transform","translate("+it.x+" "+it.y+") scale("+k+")")});
+    badges.concat(qbad).forEach(function(b){b.g.setAttribute("transform","translate("+b.x+" "+b.y+") scale("+k+")")});
+  }
+  // 框住一組地點的範圍（任務模式用），留邊給右側的地名
+  function boxOf(ids){
+    var x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+    ids.forEach(function(id){var it=BY[id];x0=Math.min(x0,it.x);y0=Math.min(y0,it.y);x1=Math.max(x1,it.x);y1=Math.max(y1,it.y)});
+    var w=Math.max(x1-x0+300,560),h=Math.max(y1-y0+240,460);
+    return [(x0+x1)/2-w/2+40,(y0+y1)/2-h/2,w,h];
+  }
+  var zb=[].slice.call(document.querySelectorAll("#dmapZoom [data-z]"));
+  function zoomTo(key){
+    var to=typeof key==="string"?(ZOOM[key]||ZOOM.all):key,from=vb.slice();
+    zb.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-z")===key?"true":"false")});
+    cancelAnimationFrame(raf);
+    if(reduce){vb=to.slice();applyVB();return}
+    var t0=performance.now();
+    (function step(now){var p=Math.min(1,(now-t0)/380),e=1-Math.pow(1-p,3);vb=from.map(function(v,i){return v+(to[i]-v)*e});applyVB();if(p<1)raf=requestAnimationFrame(step)})(t0);
+  }
+  zb.forEach(function(b){b.addEventListener("click",function(){zoomTo(b.getAttribute("data-z"))})});
+  var rb=[].slice.call(document.querySelectorAll("#dmapRoute [data-r]"));
+  rb.forEach(function(b){b.addEventListener("click",function(){
+    rb.forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+    svg.classList.remove("r1","r2");var r=b.getAttribute("data-r");if(r)svg.classList.add(r);
+  })});
+  if(window.ResizeObserver) new ResizeObserver(function(){applyVB()}).observe(svg); else window.addEventListener("resize",applyVB);
+
+  // ---- 任務 ↔ 地點：掃主線（起點＋步驟）和支線（起點＋說明）的文字，照出現順序抓出提到的地點
+  //      同一個位置有長短兩個名字都對得上時取長的（「王城寶庫」不會被當成「王城」）
+  // 長得像地名、其實不是的字（任務名「王城之都」含「王城」、NPC Harvey 含 Harve），比對前先拿掉
+  function strip(h){return String(h||"").replace(/<[^>]+>/g,"").replace(/王城之都|Harvey/g,"＊")}
+  function placesIn(text){
+    var hits=[],out=[],end=-1;
+    IT.forEach(function(it){it.m.forEach(function(a){for(var i=text.indexOf(a);i>-1;i=text.indexOf(a,i+1))hits.push({i:i,n:a.length,id:it.id})})});
+    hits.sort(function(a,b){return a.i-b.i||b.n-a.n});
+    hits.forEach(function(h){if(h.i<end)return;end=h.i+h.n;if(out.indexOf(h.id)<0)out.push(h.id)});
+    return out;
+  }
+  function matchIt(text){text=(text||"").trim();var best=null,bn=0;IT.forEach(function(it){it.m.forEach(function(a){if(a.length>bn&&text.indexOf(a)===0){best=it;bn=a.length}})});return best}
+  var SQ=(typeof SIDE!=="undefined"&&SIDE)||[],QF={},QM=[],QS=[];
+  var MP=(typeof MAIN!=="undefined"&&MAIN)||[],qi=0;
+  MP.concat(typeof MAIN3!=="undefined"&&MAIN3?[MAIN3]:[]).forEach(function(p){
+    var part=p.part.split(" · ")[0],sp=p===MAIN3;
+    p.list.forEach(function(q){qi++;
+      var o={key:"m"+qi,kind:"main",t:q[0],sub:"主線第 "+qi+" 個 · "+part,start:placesIn(strip(q[2])),ids:placesIn(strip(q[2]+"／"+q[3].join("／"))),sp:sp};
+      QF[o.key]=o;QM.push(o);
+    });
+  });
+  SQ.forEach(function(s,i){
+    var o={key:"s"+i,kind:"side",t:s.n,sub:"支線 · "+({v:"貝爾蒙特",b:"巴塔爾",u:"真實世界"}[s.a]||""),start:placesIn(strip(s.npc)),ids:placesIn(strip(s.npc+"／"+((typeof SIDE_STEPS!=="undefined"&&SIDE_STEPS[s.k])||[]).join("／")+"／"+s.d))};
+    QF[o.key]=o;QS.push(o);
+  });
+  // 第三部主線名稱本身就是劇透：防雷區還沒打開前，地點說明裡不列
+  function spOpen(){var e=document.getElementById("spPart3");return !e||!e.classList.contains("hidden")}
+  function about(id,L){return L.filter(function(q){return q.ids.indexOf(id)>-1&&(!q.sp||spOpen())})}
+
+  // ---- 右側說明欄
+  function idxHTML(){
+    var h='<h4>地點索引</h4><p class="small muted" style="margin-top:4px">點地圖上的編號、下面的地點，或主線／支線裡的 📍 按鈕，這裡會告訴你<b>怎麼走</b>、<b>有什麼</b>，和<b>哪些任務會來這裡</b>。</p>';
+    [["v","貝爾蒙特"],["e","兩國邊界"],["b","巴塔爾"],["x","火山島"]].forEach(function(g){
+      var L=IT.filter(function(it){return it.r===g[0]&&it.no});if(!L.length)return;
+      h+='<div class="gh">'+g[1]+'</div><ul class="dmap-idx">'+L.map(function(it){return '<li><button type="button" data-pick="'+it.id+'"><span class="dmi-no k-'+it.k+'">'+it.no+'</span>'+it.n+'<span class="rg">'+KIND[it.k]+'</span></button></li>'}).join("")+'</ul>';
+    });
+    return h;
+  }
+  function infoHTML(it){
+    var h='<div class="dmi-head"><span class="dmi-no k-'+it.k+'">'+(it.no||"")+'</span><div><h4>'+it.n+'</h4><span class="en">'+it.en+'</span></div></div>';
+    h+='<div class="sqm"><span class="tag t-unv">'+REG[it.r]+'</span><span class="tag '+(it.k==="main"?"t-gold":it.k==="side"?"t-bad":"t-blue")+'">'+KIND[it.k]+'</span>'+(it.ap?'<span class="tag t-unv">位置是推估</span>':'')+'</div>';
+    h+='<p class="how"><span class="lab">怎麼走</span>'+it.how+'</p>';
+    var sd=it.li&&it.li.querySelector(".sd");
+    if(sd) h+='<p class="what"><span class="lab">有什麼</span>'+sd.innerHTML+'</p>';
+    function ql(L){return '<ul class="dmap-ql">'+L.map(function(q){return '<li><button type="button" data-qpick="'+q.key+'">'+q.t+(q.start.indexOf(it.id)>-1?'<span class="st">在這裡接</span>':'')+'</button></li>'}).join("")+'</ul>'}
+    var rm=about(it.id,QM),rs=about(it.id,QS);
+    if(rm.length) h+='<p><span class="lab">主線會來這裡</span></p>'+ql(rm);
+    if(rs.length) h+='<p><span class="lab">支線會來這裡（'+rs.length+'）</span></p>'+ql(rs);
+    h+='<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">'+(curQ&&curQ.ids.indexOf(it.id)>-1?'<button type="button" class="btn" data-backq="1">← 回「'+curQ.t+'」</button>':'')+(it.li?'<button type="button" class="btn" data-tolist="1">在第 13 節清單看</button>':'')+'<button type="button" class="btn" data-back="1">← 地點索引</button></p>';
+    return h;
+  }
+  function qHTML(q){
+    var h='<div class="dmi-head"><span class="dmi-no k-q">'+(q.kind==="main"?"主":"支")+'</span><div><h4>'+q.t+'</h4><span class="en">'+q.sub+'</span></div></div>';
+    h+='<p class="small muted" style="margin-top:4px">任務裡提到的地方，照步驟裡出現的先後編號（地圖上的綠色小數字）。點一個看怎麼走。</p><ul class="dmap-idx">';
+    h+=q.ids.map(function(id,i){var it=BY[id];return '<li><button type="button" data-pick="'+id+'"><span class="dmi-no k-q">'+(i+1)+'</span>'+it.n+'<span class="rg">'+(q.start.indexOf(id)>-1?"起點 · ":"")+REG[it.r]+'</span></button></li>'}).join("")+'</ul>';
+    h+='<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" data-toq="'+q.key+'">看任務步驟</button><button type="button" class="btn" data-back="1">← 地點索引</button></p>';
+    return h;
+  }
+  var cur=null,curQ=null;
+  function unsel(){if(cur)cur.g.classList.remove("sel");cur=null}
+  function clearQ(){curQ=null;svg.classList.remove("qf");IT.forEach(function(it){it.g.classList.remove("hl")});qbad.forEach(function(b){b.g.parentNode.removeChild(b.g)});qbad=[]}
+  function focusQ(q){
+    clearQ();unsel();curQ=q;svg.classList.add("qf");
+    q.ids.forEach(function(id,i){
+      var it=BY[id];it.g.classList.add("hl");it.g.parentNode.appendChild(it.g);
+      var g=el("g",{"class":"qo"},gb),n=el("g",{transform:"translate(16 -17)"},g);el("circle",{r:9},n);el("text",{y:4},n).textContent=i+1;
+      qbad.push({g:g,x:it.x,y:it.y});
+    });
+    info.innerHTML=qHTML(q);applyVB();
+  }
+  function select(id){
+    var it=BY[id];if(!it)return;
+    if(curQ&&curQ.ids.indexOf(id)<0)clearQ();
+    var focused=document.activeElement===it.g;
+    unsel();cur=it;it.g.classList.add("sel");it.g.parentNode.appendChild(it.g);
+    if(focused)it.g.focus({preventScroll:true});
+    info.innerHTML=infoHTML(it);
+  }
+  function flash(e){e.classList.remove("dmap-flash");void e.offsetWidth;e.classList.add("dmap-flash")}
+  function smooth(){return reduce?"auto":"smooth"}
+
+  // ---- 跳回任務文字：主線就展開那一個；支線若被篩選藏起來，先把篩選清掉
+  function sideRow(q){return [].filter.call(sl.querySelectorAll(".sqi"),function(r){var n=r.querySelector(".sqn");return n&&n.textContent===q.t})[0]}
+  function goQuest(q){
+    var t;
+    if(q.kind==="main"){t=q.el;if(!t)return;t.open=true}
+    else{
+      t=sideRow(q);
+      if(!t){
+        [["#sideArea","data-a"],["#sideType","data-g"]].forEach(function(g){var b=document.querySelector(g[0]+" ["+g[1]+'="all"]');if(b&&b.getAttribute("aria-pressed")!=="true")b.click()});
+        var s=document.getElementById("sideSearch");if(s&&s.value){s.value="";s.dispatchEvent(new Event("input"))}
+        t=sideRow(q);
+      }
+      if(!t)return;
+      var ds=t.querySelector(".sqs");if(ds)ds.open=true;
+    }
+    if(!narrow())setDock(true);
+    t.scrollIntoView({behavior:smooth(),block:"center"});flash(t);
+  }
+  info.addEventListener("click",function(e){
+    var p=e.target.closest("[data-pick]");if(p){var it=BY[p.getAttribute("data-pick")];select(it.id);if(it.x<vb[0]+30||it.x>vb[0]+vb[2]-30||it.y<vb[1]+30||it.y>vb[1]+vb[3]-30)zoomTo(it.z);return}
+    var qp=e.target.closest("[data-qpick]");if(qp){focusQ(QF[qp.getAttribute("data-qpick")]);zoomTo(boxOf(curQ.ids));if(docked)dockBody.scrollTop=0;return}
+    if(e.target.closest("[data-backq]")&&curQ){unsel();focusQ(curQ);zoomTo(boxOf(curQ.ids));if(docked)dockBody.scrollTop=0;return}
+    var tq=e.target.closest("[data-toq]");if(tq){goQuest(QF[tq.getAttribute("data-toq")]);return}
+    if(e.target.closest("[data-back]")){unsel();clearQ();info.innerHTML=idxHTML();return}
+    if(e.target.closest("[data-tolist]")&&cur&&cur.li){var li=cur.li;setDock(false);li.scrollIntoView({behavior:smooth(),block:"center"});flash(li)}
+  });
+
+  // ---- 浮動地圖：在第 13 節以外點 📍 時，把整塊地圖搬進浮動視窗（電腦在右側、手機在下方），看完放回原位
+  var home=document.getElementById("dmap"),docked=false,ph=null;
+  var dockEl=document.createElement("div");dockEl.className="dmap-dock";dockEl.hidden=true;
+  dockEl.setAttribute("role","dialog");dockEl.setAttribute("aria-label","浮動地圖");
+  dockEl.innerHTML='<div class="dmap-dock-bar"><b>地圖</b><button type="button" class="btn" data-dock="big">到第 13 節看大圖</button><button type="button" class="btn" data-dock="close" aria-label="關閉浮動地圖">✕</button></div><div class="dmap-dock-body"></div>';
+  document.body.appendChild(dockEl);
+  var dockBody=dockEl.querySelector(".dmap-dock-body");
+  var fab=document.createElement("button");fab.type="button";fab.className="dmap-fab";fab.textContent="🗺 地圖";fab.setAttribute("aria-label","打開浮動地圖");
+  document.body.appendChild(fab);
+  function narrow(){return window.innerWidth<=900}
+  // 電腦版開浮動地圖時，內文會往左讓位而重新換行；用畫面上的一個元素當錨點，把捲動位置補回來，眼睛看的那行不會跑掉
+  function probe(){var m=document.querySelector("main");if(!m)return null;var r=m.getBoundingClientRect(),e=document.elementFromPoint(r.left+Math.min(r.width/2,200),Math.min(window.innerHeight/3,220));return e&&!dockEl.contains(e)?e:null}
+  function setDock(on,anchor){
+    if(on===docked)return;
+    var a=anchor||probe(),t0=a?a.getBoundingClientRect().top:0;
+    docked=on;
+    if(on){
+      ph=document.createElement("div");ph.className="dmap-ph";
+      ph.innerHTML='<span>地圖現在開在浮動視窗裡。</span><button type="button" class="btn" data-dock="home">放回這裡</button>';
+      home.parentNode.insertBefore(ph,home);dockBody.appendChild(home);
+      dockEl.hidden=false;document.body.classList.add("dmap-docked");
+    }else{
+      ph.parentNode.insertBefore(home,ph);ph.parentNode.removeChild(ph);ph=null;
+      dockEl.hidden=true;document.body.classList.remove("dmap-docked");
+    }
+    applyVB();
+    if(a&&a.isConnected){var dy=a.getBoundingClientRect().top-t0;if(Math.abs(dy)>1)window.scrollBy(0,dy)}
+    updFab();
+  }
+  // 手機：浮動地圖蓋住下半部，點的那個按鈕若被蓋到，就把它捲到上半部
+  function keepVisible(b){
+    if(!docked||!narrow()||!b.isConnected)return;
+    var r=b.getBoundingClientRect(),top=dockEl.getBoundingClientRect().top;
+    if(r.bottom>top-8||r.top<60)window.scrollBy(0,r.top-Math.max(64,(top-r.height)/3));
+  }
+  function updFab(){var r=home.getBoundingClientRect();fab.classList.toggle("show",!docked&&(r.bottom<0||r.top>window.innerHeight))}
+  var fq=0;window.addEventListener("scroll",function(){if(!fq)fq=requestAnimationFrame(function(){fq=0;updFab()})},{passive:true});
+  fab.addEventListener("click",function(){setDock(true)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&docked)setDock(false)});
+
+  // ---- 把 📍 按鈕接到內文：地點清單、主線路線、支線
+  function goBtn(it,label){var b=document.createElement("button");b.type="button";b.className="dmap-go";b.setAttribute("data-go",it.id);b.setAttribute("aria-label","在地圖上看 "+it.n);b.textContent="📍 "+label;return b}
+  [].forEach.call(document.querySelectorAll("#map .spots li"),function(li){
+    var sn=li.querySelector(".sn"),it=sn&&matchIt(sn.textContent);if(!it)return;
+    it.li=li;sn.appendChild(goBtn(it,it.no||"地圖"));
+  });
+  [].forEach.call(document.querySelectorAll("#map .callout > b:first-child, #map .card > p.small.muted b"),function(b){
+    var it=matchIt(b.textContent);if(it)b.insertAdjacentElement("afterend",goBtn(it,"地圖"));
+  });
+  [].forEach.call(document.querySelectorAll("#map .route .stop"),function(s){
+    var it=matchIt(s.firstChild?s.firstChild.textContent:"");if(!it)return;
+    s.setAttribute("data-go",it.id);s.setAttribute("role","button");s.setAttribute("tabindex","0");s.title="在地圖上看";
+    s.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();s.click()}});
+  });
+  // 主線每個任務、支線每一條：一排「地圖：📍 地點 … 🗺 一起看」
+  function qpEl(q){
+    var d=document.createElement("div");d.className="dmap-qp";
+    d.innerHTML='<span class="lab">地圖</span>'+q.ids.map(function(id){return '<button type="button" class="dmap-go" data-qf="'+q.key+'" data-go="'+id+'" aria-label="在地圖上看 '+BY[id].n+'">📍 '+BY[id].n+'</button>'}).join("")+(q.ids.length>1?'<button type="button" class="dmap-go all" data-qf="'+q.key+'">🗺 一起看</button>':'');
+    return d;
+  }
+  [].forEach.call(document.querySelectorAll("#story details.q"),function(dt){
+    var t=dt.querySelector(".qn"),nm=t&&t.firstChild?t.firstChild.textContent:"";
+    var q=QM.filter(function(x){return x.t===nm&&!x.el})[0];if(!q)return;
+    q.el=dt;var qb=dt.querySelector(".qb");if(qb&&q.ids.length)qb.insertBefore(qpEl(q),qb.firstChild);
+  });
+  var sl=document.getElementById("sideList");
+  function decorateSide(){
+    [].forEach.call(sl.querySelectorAll(".sqi"),function(row){
+      if(row.querySelector(".dmap-qp"))return;
+      var nm=row.querySelector(".sqn"),m=row.querySelector(".sqm");if(!nm||!m)return;
+      var q=QS.filter(function(x){return x.t===nm.textContent})[0];
+      if(q&&q.ids.length)m.insertAdjacentElement("afterend",qpEl(q));
+    });
+  }
+  if(sl&&SQ.length){decorateSide();new MutationObserver(decorateSide).observe(sl,{childList:true})}
+  document.addEventListener("click",function(e){
+    var b=e.target.closest("[data-go],[data-qf],[data-dock]");if(!b)return;
+    var dk=b.getAttribute("data-dock");
+    if(dk){setDock(false);if(dk==="big")home.scrollIntoView({behavior:smooth(),block:"start"});return}
+    e.preventDefault();
+    var atHome=!!b.closest("#map"),qk=b.getAttribute("data-qf"),id=b.getAttribute("data-go");
+    setDock(!atHome,b);
+    if(qk){focusQ(QF[qk]);if(id){select(id);zoomTo(BY[id].z)}else zoomTo(boxOf(curQ.ids))}
+    else{select(id);zoomTo(BY[id].z)}
+    if(atHome)home.scrollIntoView({behavior:smooth(),block:"start"});else{dockBody.scrollTop=0;keepVisible(b)}
+  });
+
+  info.innerHTML=idxHTML();
+  applyVB();updFab();
+})();
+</script>
+</body>
+</html>

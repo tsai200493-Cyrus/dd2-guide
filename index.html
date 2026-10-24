@@ -135,6 +135,51 @@ td .en{display:block;font-size:12px;color:var(--muted)}
 .slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:8px 0}
 .slot6{border:1px dashed var(--gold);border-radius:9px;padding:8px 6px;text-align:center;font-size:13px;line-height:1.35;background:var(--gold-soft);color:var(--ink);word-break:break-word}
 .slot6 i{display:block;font-style:normal;font-size:11px;color:var(--gold);font-weight:700}
+/* augment simulator */
+.augsim{padding-top:0}
+.sim-bar{position:sticky;top:6px;z-index:5;background:var(--card);margin:0 -20px 12px;padding:14px 20px 4px;border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+.sim-slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.sim-slots.n7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.sslot{position:relative;min-height:52px;border:1px dashed var(--line);border-radius:9px;padding:6px;text-align:center;font-size:13px;line-height:1.35;color:var(--muted);background:var(--bg2);word-break:break-word}
+.sslot i{display:block;font-style:normal;font-size:11px;font-weight:700}
+button.sslot{border:1px solid var(--gold);background:var(--gold-soft);color:var(--ink);cursor:pointer;font-weight:700}
+button.sslot i{color:var(--gold)}
+button.sslot:hover{border-color:var(--accent)}
+button.sslot .x{position:absolute;top:1px;right:6px;font-size:12px;color:var(--muted);font-weight:400}
+.sim-msg{min-height:1.6em;font-size:13.5px;color:var(--muted);margin:6px 0 4px}
+.sim-msg.warn{color:var(--bad);font-weight:700}
+.sim-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 16px}
+.sim-gh{font-weight:700;font-size:14px;margin-bottom:5px}
+.sim-gh a{font-weight:400;font-size:12px;margin-left:6px}
+.sim-grp{min-width:0}
+.sim-chips{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}
+.schip{display:block;width:100%;text-align:left;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);cursor:pointer;line-height:1.35}
+.schip:hover{border-color:var(--accent)}
+.schip b{font-size:14px}
+.schip b::before{content:"＋ ";color:var(--muted);font-weight:400}
+.schip small{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.schip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.schip[aria-pressed="true"] b{color:var(--accent)}
+.schip[aria-pressed="true"] b::before{content:"✓ ";color:var(--accent)}
+.sim-pick.full .schip[aria-pressed="false"]{opacity:.45}
+h3.sim-h{font-size:16px;margin:0 0 10px}
+.req{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;padding:8px 0;border-top:1px dashed var(--line)}
+.req:first-child{border-top:0;padding-top:0}
+.req-r{display:grid;place-items:center;align-content:center;height:46px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font:900 22px/1 "Noto Serif TC",serif}
+.req-r small{font:700 10.5px/1.2 "Noto Sans TC",sans-serif}
+.req-r.bk{background:var(--gold-soft);color:var(--gold);font-size:15px}
+.req .rv{font-weight:700}
+.req .ra{font-size:13.5px;color:var(--muted);line-height:1.55}
+.req-total{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:14.5px}
+table.sim-stats{font-size:14px}
+.sim-stats th,.sim-stats td{padding:7px 8px;vertical-align:middle}
+.sim-stats th,.sim-stats td:first-child{white-space:nowrap}
+.sim-stats input{width:100%;max-width:96px;font:inherit;font-size:14px;padding:4px 8px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.sim-stats tr.on td:first-child{font-weight:700}
+.sim-stats .bn{color:var(--ok);font-weight:700;white-space:nowrap}
+.sim-stats .af b{font-size:15px}
+.sim-stats .af small{display:block;font-size:12px;color:var(--muted);line-height:1.4}
+.sim-other li b{margin-right:4px}
 .maister-box{border-left:3px solid var(--gold);padding:8px 14px;background:var(--bg2);border-radius:0 10px 10px 0;margin:8px 0;font-size:14.5px}
 .maister-box b{color:var(--gold)}
 /* party */
@@ -236,6 +281,12 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
   .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vpick{grid-template-columns:repeat(3,minmax(0,1fr))}
   .slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sim-bar{top:46px;margin:0 -16px 12px;padding:12px 16px 4px}
+  .augsim{padding-left:16px;padding-right:16px}
+  .sim-slots,.sim-slots.n7{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .sslot{min-height:0;font-size:12px;padding:6px 14px 6px 6px;word-break:normal;overflow-wrap:anywhere}
+  .sslot i{display:none}
+  .sim-pick{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sk{grid-template-columns:1fr;gap:0}
   .sk dd{border-top:0;padding-top:0;padding-bottom:4px}
   details.q .qb{padding:0 14px 14px 14px}
@@ -556,6 +607,46 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
 <section id="augments">
   <h2><span class="no">05</span>能力（被動）</h2>
   <p class="lead">每個職業升到第 2、4、6、8、9 階時可用職業點數解鎖一個能力，<b>解鎖後所有職業都能裝</b>。所以常見的玩法是：先練巫師拿 +30 魔力、練盜賊拿 +30 力量，再回主職業。<b>復甦者只有 2 個能力</b>（第 6 階 Zeal、第 9 階 Dynamism），這是遊戲本身的設計——它本來就是借用其他職業的技能和能力，不是這裡漏列。標 <span class="tag t-ok">推薦</span> 的是適用面廣、多數配置都會裝的（編者依效果整理，非官方）。</p>
+
+  <h3 id="augsim">能力模擬器</h3>
+  <p class="small muted" style="margin:-4px 0 12px">點選想裝的能力，會算出每個職業要練到第幾階、要花多少職業點數，以及力量、魔力、體力等數值能加多少。在「數值加成」填上你目前的數值，就能看到裝上後變成多少。選擇會記在這台裝置的瀏覽器裡。</p>
+  <div class="card augsim">
+    <div class="sim-bar">
+      <div class="sim-slots" id="simSlots"></div>
+      <p class="sim-msg" id="simMsg" aria-live="polite"></p>
+    </div>
+    <div class="filters" id="simTools" role="group" aria-label="模擬器工具">
+      <span class="lbl">套用組合</span>
+      <button type="button" class="chip" data-p="phys">物理系</button>
+      <button type="button" class="chip" data-p="mag">魔法系</button>
+      <button type="button" class="chip" data-p="pawn">重視隨從</button>
+      <span class="lbl" style="margin-left:6px">顯示</span>
+      <button type="button" class="chip" id="simRec" aria-pressed="false">只看推薦</button>
+      <button type="button" class="chip" id="simCap7" aria-pressed="false">第 7 格（資料片）</button>
+      <button type="button" class="btn" id="simClear">清空</button>
+    </div>
+    <div class="sim-pick" id="simPick"></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <h3 class="sim-h">要練哪些職業</h3>
+      <div id="simReq"></div>
+    </div>
+    <div class="card">
+      <h3 class="sim-h">數值加成</h3>
+      <table class="sim-stats">
+        <thead><tr><th>屬性</th><th>你的數值</th><th>能力加成</th><th>裝上後</th></tr></thead>
+        <tbody id="simStats"></tbody>
+      </table>
+      <p class="small muted" style="margin:8px 0 0" id="simStatNote"></p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3 class="sim-h">其他效果</h3>
+    <ul class="tight sim-other" id="simOther"></ul>
+  </div>
+
+  <h3>全部能力一覽</h3>
   <div class="filters" id="augFilter" role="group" aria-label="能力篩選"></div>
   <div class="tbl-wrap">
     <table id="augTable" class="wide">
@@ -1200,6 +1291,17 @@ var AUG_COMMON=[
 ["Lupinity","有寵狼弗列基同行時，跳躍與衝刺只耗 0.4 倍耐力","諾爾坎支線 <b>A Hound and His Bone</b> 的獎勵（二選一，另一個是 Hound's Scent Pouch）",0],
 ["Proficiency","自訂技能的最高階版本耗耐力較少，可與 Zeal 部分疊加","諾爾坎支線 <b>A Keepsake, for Your Sake</b> 的獎勵（二選一，另一個是 10 枚諾爾坎古錢）",0]
 ];
+// 能力模擬器：能直接算進角色數值的能力。{屬性: [加值, 倍率]}，倍率依說明文字「+30% +45」推算
+var AUG_STAT={
+"Vitality":{hp:[200,1]},"Endurance":{st:[150,1]},"猛擊":{str:[30,1]},"Sagacity":{mag:[30,1]},
+"Mettle":{pdef:[45,1.3]},"Apotropaism":{mdef:[45,1.3]}
+};
+var SIM_STATS=[["hp","體力"],["st","耐力"],["str","力量"],["mag","魔力"],["pdef","物防"],["mdef","魔防"]];
+var SIM_PRESET={
+phys:["猛擊","Vitality","Endurance","Exaltation","Mettle","迅步"],
+mag:["Sagacity","Catalysis","Constancy","Endurance","Exaltation","Apotropaism"],
+pawn:["Ascendancy","Sustainment","Vitality","Endurance","Exaltation","Apotropaism"]
+};
 // 排行
 var TIER={
 t26:{S:["warfarer","thief","spearhand"],A:["warrior","fighter","marcher"],B:["archer","sorcerer","mage"],C:["trickster"],D:[]},
@@ -1466,6 +1568,124 @@ ClashandConclusion:["神的守護者後段爬月光塔追法茲斯時，Raghnall
     renderAug();
   })});
   renderAug();
+
+  // augment simulator
+  var SIM_ALL=AUG.map(function(a){return {k:a[0],v:a[1],r:a[2],dp:a[3],e:a[4],rec:a[5]}})
+    .concat(AUG_COMMON.map(function(c){return {k:c[0],v:null,e:c[1],how:c[2]}}));
+  var SIM_MAP={}; SIM_ALL.forEach(function(a){SIM_MAP[a.k]=a});
+  var SIM_START=["fighter","archer","mage","thief"];
+  var simSel,simBase,simCap=store("dd2-sim-cap")==="7"?7:6,simRecOnly=false;
+  try{simSel=JSON.parse(store("dd2-sim")||"[]").filter(function(k){return SIM_MAP[k]}).slice(0,simCap)}catch(e){simSel=[]}
+  try{simBase=JSON.parse(store("dd2-sim-base")||"{}")||{}}catch(e){simBase={}}
+  function simNum(n){return Math.round(n).toLocaleString()}
+  function simMsg(t,warn){var m=$("#simMsg");m.textContent=t;m.className="sim-msg"+(warn?" warn":"")}
+
+  var simGroups=VOC.map(function(v){return {name:v.zh,id:v.id,list:SIM_ALL.filter(function(a){return a.v===v.id})}})
+    .concat([{name:"資料片論著",id:null,list:SIM_ALL.filter(function(a){return !a.v})}]);
+  function renderSimPick(){
+    $("#simPick").innerHTML=simGroups.map(function(g){
+      var list=simRecOnly?g.list.filter(function(a){return a.rec}):g.list;
+      if(!list.length) return "";
+      return '<div class="sim-grp"><div class="sim-gh">'+g.name+(g.id?'':'<a href="#dlc">什麼是論著</a>')+'</div><div class="sim-chips">'+list.map(function(a){
+        return '<button type="button" class="schip" data-k="'+esc(a.k)+'" aria-pressed="false" title="'+esc(a.e)+'"><b>'+esc(a.k)+'</b><small>'+(a.v?'第 '+a.r+' 階 · ':'')+esc(a.e)+'</small></button>';
+      }).join("")+'</div></div>';
+    }).join("");
+    $$("#simPick .schip").forEach(function(b){b.addEventListener("click",function(){simToggle(b.dataset.k)})});
+    simRender();
+  }
+  function simToggle(k){
+    var i=simSel.indexOf(k);
+    if(i>-1){simSel.splice(i,1);simMsg("")}
+    else if(simSel.length>=simCap){simMsg("能力欄已滿（"+simCap+" 格），先點上面的格子拿掉一個。",true);return}
+    else simSel.push(k);
+    simRender();
+  }
+
+  // 數值表的輸入框只建一次，之後只更新加成欄，打字時才不會失焦
+  $("#simStats").innerHTML=SIM_STATS.map(function(s){
+    return '<tr data-s="'+s[0]+'"><td>'+s[1]+'</td><td><input type="number" inputmode="numeric" min="0" placeholder="選填" aria-label="你目前的'+s[1]+'" value="'+(simBase[s[0]]!=null?esc(simBase[s[0]]):"")+'"></td><td class="bn"></td><td class="af"></td></tr>';
+  }).join("");
+  $$("#simStats input").forEach(function(inp){inp.addEventListener("input",function(){
+    var s=inp.closest("tr").dataset.s;
+    if(inp.value==="") delete simBase[s]; else simBase[s]=inp.value;
+    store("dd2-sim-base",JSON.stringify(simBase)); simRenderStats();
+  })});
+
+  function simRenderStats(){
+    var pol=simSel.indexOf("陰陽")>-1,anyMul=false;
+    SIM_STATS.forEach(function(s){
+      var add=0,mul=1,tr=$('#simStats tr[data-s="'+s[0]+'"]');
+      simSel.forEach(function(k){var f=AUG_STAT[k]&&AUG_STAT[k][s[0]];if(f){add+=f[0];mul*=f[1]}});
+      if(mul!==1) anyMul=true;
+      var polHere=pol&&(s[0]==="str"||s[0]==="mag"),when=s[0]==="str"?"白天":"夜晚";
+      var bn=[]; if(mul!==1) bn.push("+"+Math.round((mul-1)*100)+"%"); if(add) bn.push("+"+add); if(polHere) bn.push(when+" +5%");
+      tr.className=bn.length?"on":"";
+      tr.querySelector(".bn").textContent=bn.length?bn.join(" "):"—";
+      var b=parseFloat(simBase[s[0]]),af="";
+      if(bn.length&&b>0){
+        var v=b*mul+add,h='<b>'+simNum(v)+'</b>'+(v!==b?'<small>+'+simNum(v-b)+'（+'+((v-b)/b*100).toFixed(1)+'%）</small>':'');
+        if(polHere){var pv=v*1.05;h+='<small>'+when+'約 '+simNum(pv)+'（+'+((pv-b)/b*100).toFixed(1)+'%）</small>'}
+        af=h;
+      }else if(bn.length) af='<small>填數值看結果</small>';
+      else af='<span class="muted">—</span>';
+      tr.querySelector(".af").innerHTML=af;
+    });
+    var note=[];
+    if(anyMul) note.push("物防／魔防的「+30% +45」依遊戲說明算成「原值 × 1.3 + 45」");
+    if(pol) note.push("陰陽 的 5% 用裝上其他能力後的數值估算");
+    $("#simStatNote").innerHTML=note.length?'<span class="tag t-unv">推算</span> '+note.join("；")+"，實際可能有些許誤差。":"沒有裝會改變這些數值的能力時顯示「—」。加成是固定值，所以基礎數值越低，加的比例越高。";
+  }
+
+  function simRender(){
+    store("dd2-sim",JSON.stringify(simSel)); store("dd2-sim-cap",String(simCap));
+    // 格子
+    var h="";
+    for(var i=0;i<simCap;i++){
+      var k=simSel[i];
+      h+=k?'<button type="button" class="sslot" data-k="'+esc(k)+'" aria-label="拿掉 '+esc(k)+'"><span class="x">×</span><i>'+(i+1)+'</i>'+esc(k)+'</button>':'<div class="sslot"><i>'+(i+1)+'</i>空</div>';
+    }
+    var sl=$("#simSlots"); sl.innerHTML=h; sl.className="sim-slots"+(simCap===7?" n7":"");
+    $$("#simSlots button").forEach(function(b){b.addEventListener("click",function(){simToggle(b.dataset.k)})});
+    $$("#simPick .schip").forEach(function(b){b.setAttribute("aria-pressed",simSel.indexOf(b.dataset.k)>-1?"true":"false")});
+    $("#simPick").classList.toggle("full",simSel.length>=simCap);
+    $("#simCap7").setAttribute("aria-pressed",simCap===7?"true":"false");
+    if(!$("#simMsg").classList.contains("warn")||simSel.length<simCap) simMsg(simSel.length?"已裝 "+simSel.length+" / "+simCap+" 格，點格子可以拿掉。":"從下面點選想裝的能力，或先套用一組常見組合。");
+
+    // 要練的職業
+    var need={},books=[];
+    simSel.forEach(function(k){
+      var a=SIM_MAP[k];
+      if(!a.v){books.push(a);return}
+      var n=need[a.v]||(need[a.v]={r:0,dp:0,list:[]});
+      n.r=Math.max(n.r,a.r); n.dp+=a.dp; n.list.push(a.k);
+    });
+    var ids=Object.keys(need).sort(function(x,y){return need[y].r-need[x].r}),dp=0;
+    h=ids.map(function(id){
+      var n=need[id],v=VMAP[id]; dp+=n.dp;
+      var tags=(SIM_START.indexOf(id)<0?' <a class="tag t-gold" href="#vocations" style="text-decoration:none">要先解鎖</a>':'')+(v.pawn?'':' <span class="tag t-unv">隨從學不到</span>');
+      return '<div class="req"><div class="req-r">'+n.r+'<small>階</small></div><div><div class="rv">'+v.zh+tags+'</div><div class="ra">'+n.list.map(esc).join("、")+' · '+n.dp.toLocaleString()+' 職業點數</div></div></div>';
+    }).join("");
+    h+=books.map(function(a){return '<div class="req"><div class="req-r bk">書</div><div><div class="rv">'+esc(a.k)+' <span class="tag t-gold">資料片</span></div><div class="ra">不用練職業，取得：'+a.how+'</div></div></div>'}).join("");
+    if(ids.length) h+='<div class="req-total">共要練 <b>'+ids.length+'</b> 個職業，最高到第 <b>'+need[ids[0]].r+'</b> 階；解鎖這些能力共花 <b>'+dp.toLocaleString()+'</b> 職業點數（每個職業的點數各自累積，不能互通）。</div>';
+    $("#simReq").innerHTML=h||'<p class="muted small" style="margin:0">還沒選能力。</p>';
+
+    // 其他效果
+    var other=simSel.filter(function(k){return !AUG_STAT[k]});
+    $("#simOther").innerHTML=other.length?other.map(function(k){return '<li><b>'+esc(k)+'</b>'+esc(SIM_MAP[k].e)+'</li>'}).join(""):'<li class="muted" style="list-style:none;margin-left:-1.2em">沒有其他效果。屬性以外的能力（耐力回復、傷害加成、隨從加成等）會列在這裡。</li>';
+    simRenderStats();
+  }
+
+  $$("#simTools [data-p]").forEach(function(b){b.addEventListener("click",function(){
+    simSel=SIM_PRESET[b.dataset.p].slice(0,simCap); simMsg(""); simRender();
+  })});
+  $("#simRec").addEventListener("click",function(){simRecOnly=!simRecOnly;this.setAttribute("aria-pressed",simRecOnly?"true":"false");renderSimPick()});
+  $("#simCap7").addEventListener("click",function(){
+    simCap=simCap===7?6:7;
+    if(simSel.length>simCap){simSel=simSel.slice(0,simCap);simMsg("改回 6 格，第 7 格的能力已拿掉。",true)}
+    simRender();
+  });
+  $("#simClear").addEventListener("click",function(){simSel=[];simMsg("");simRender()});
+  renderSimPick();
 
   // maister table
   $("#maisterTable tbody").innerHTML=MST_ORDER.map(function(k){var m=MST[k];return '<tr><td><b>'+m.voc+'</b></td><td><b>'+m.n+'</b></td><td>'+m.d+'</td><td class="small">'+m.how+'</td></tr>'}).join("");

@@ -180,6 +180,9 @@ table.sim-stats{font-size:14px}
 .sim-stats .af b{font-size:15px}
 .sim-stats .af small{display:block;font-size:12px;color:var(--muted);line-height:1.4}
 .sim-other li b{margin-right:4px}
+/* relic special skills */
+#relicTable .rt-n{width:180px}
+#relicTable .rt-m{display:none;margin-top:3px}
 .maister-box{border-left:3px solid var(--gold);padding:8px 14px;background:var(--bg2);border-radius:0 10px 10px 0;margin:8px 0;font-size:14.5px}
 .maister-box b{color:var(--gold)}
 /* party */
@@ -287,6 +290,9 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
   .sslot{min-height:0;font-size:12px;padding:6px 14px 6px 6px;word-break:normal;overflow-wrap:anywhere}
   .sslot i{display:none}
   .sim-pick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #relicTable .rt-d{display:none}
+  #relicTable .rt-m{display:block}
+  #relicTable .rt-n{width:42%}
   .sk{grid-template-columns:1fr;gap:0}
   .sk dd{border-top:0;padding-top:0;padding-bottom:4px}
   details.q .qb{padding:0 14px 14px 14px}
@@ -1159,6 +1165,32 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     </ol>
     <p class="small muted" style="margin:8px 0 0">雪兔在 Valgr Ravine、Norgandian Foothills 可以獵到。每次帶弗列基出門都要餵一份肉，多備幾份。隊伍摔死太多次可能讓牠離隊。</p>
   </div>
+  <h3 id="relic">遺物鑑定與裝備特殊技能</h3>
+  <div class="card">
+    <ul class="tight" style="margin:0">
+      <li><b>怎麼拿：</b>在諾爾坎打怪或探索撿到遺物（Spoils），帶回諾爾坎聚落給 <b>Jiera</b> 鑑定（先做完支線 Relics of the Past），花異界石點數鑑定成武器或防具。</li>
+      <li><b>鑑定費：</b>實測約 5～35 異界石點數一個，遺物等級越高、武器類越貴。</li>
+      <li><b>結果隨機：</b>同一個遺物每次鑑定出來的裝備、數值、特殊技能都不一樣。遺物分 1～5 階，階級越高越容易出好技能，有時一件會帶好幾個。名稱有 <b>Ancient</b> 的遺物，實測一定會帶特殊技能。</li>
+      <li><b>兩種技能：</b><span class="tag t-blue">武器技能進化</span> 只有對應職業、而且技能欄裝著那招的第 2 階版本才有效；<span class="tag t-ok">被動</span> 任何職業都有效。</li>
+      <li><b>別搞混：</b>在 Hal 的鍛造坊（支線 Hammer and Tongs 之後）也能直接打造部分諾爾坎裝備，但數值較低，<b>沒有特殊技能</b>。</li>
+    </ul>
+  </div>
+  <div class="filters" role="group" aria-label="特殊技能分類" id="relicType" style="margin-top:14px">
+    <button type="button" class="chip" data-r="all" aria-pressed="true">全部</button>
+    <button type="button" class="chip" data-r="adv" aria-pressed="false">武器技能進化</button>
+    <button type="button" class="chip" data-r="cmb" aria-pressed="false">戰鬥與抗性</button>
+    <button type="button" class="chip" data-r="oth" aria-pressed="false">其他被動</button>
+  </div>
+  <div class="filters"><input type="search" class="search" id="relicSearch" placeholder="搜尋技能名、效果、職業（例：盜賊、耐力、摔落）" aria-label="搜尋特殊技能"></div>
+  <p class="count" id="relicCount"></p>
+  <div class="tbl-wrap">
+    <table id="relicTable">
+      <thead><tr><th class="rt-n">特殊技能</th><th class="rt-d" style="width:110px">類型</th><th>效果</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin:8px 0 0"><span class="tag t-unv">待驗證</span> 攻略站目前只寫了效果的方向，<b>還沒有各階（I、II、III…）的確切數值</b>，也沒寫哪個技能只會出現在哪個部位。中文效果是編者依 Fextralife 和 AllThings.How 翻譯整理，技能名保留英文，方便查攻略。</p>
+
   <div class="callout c-ok"><b>建議順序</b>不必破完主線就能玩。官方表示兩者在主線早期就能進入，建議等級只是「起點」，越往後越難。中等級角色可以先打被忘卻的考驗拿裝備和恩寵獻火，再去諾爾坎。</div>
   <div class="callout c-warn"><b>進諾爾坎前準備</b>暴風雪會壓低耐力上限，準備<b>抗寒裝備</b>或保暖道具；新怪「Fimbul Dragon」會用冰雹削血 <span class="tag t-unv">待驗證：取自單一攻略站</span>。開打前把 6 格技能填滿、身上帶一瓶墮龍藥。</div>
 </section>
@@ -1200,7 +1232,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);paddin
     <li>結局：<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-how-to-get-the-true-ending/">Samurai Gamers — 真結局</a>、<a href="https://rpgsite.net/guide/15650-dragons-dogma-ii-point-no-return-guide">RPG Site — 不可逆點</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/A+New+Godsway">Fextralife — A New Godsway</a>、<a href="https://www.ggrecon.com/guides/dragons-dogma-2-unmoored-world-true-ending/">GGRecon — 脫錨世界</a></li>
     <li>支線：<a href="https://dragonsdogma2.wiki.fextralife.com/Side+Quests">Fextralife — Side Quests</a> 及各任務頁、<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-side-quest-list-and-guides/">Samurai Gamers — 支線列表與獎勵</a>、<a href="https://www.dexerto.com/gaming/dragons-dogma-2-timed-quests-explained-2606463/">Dexerto — 時限任務說明</a></li>
     <li>Dark Arisen：<a href="https://www.gameleap.com/articles/dragon-s-dogma-2-dark-arisen-out-now">GameLeap — 上市與 TU 4.0</a>、<a href="https://afkjournal.com/guides/dragons-dogma-2-dark-arisen-how-to-start-norgan-lost-rites">AFK Journal — 如何開始</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dark+Arisen">Fextralife — Dark Arisen</a>、<a href="https://www.videogameschronicle.com/guide/dragons-dogma-2-how-to-start-the-dark-arisen-dlc-recommended-levels/">VGC — 開始方式與建議等級</a></li>
-    <li>資料片被動與狼犬：<a href="https://allthings.how/?p=262293">AllThings.How — Dark Arisen 被動與第 7 格</a>、<a href="https://allthings.how/dragon-s-dogma-2-dark-arisen-the-five-new-augments-and-a-seventh-augment-slot/">AllThings.How — 5 個新能力與第 7 格</a>、<a href="https://allthings.how/how-to-get-and-upgrade-the-evil-eye-weapon-in-dragon-s-dogma-2-dark-arisen/">AllThings.How — Molten Gauntlet 戰利品（Generosity）</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Obelisk_of_Benediction">Fextralife — Obelisk of Benediction</a>、<a href="https://allthings.how/dragon-s-dogma-2-dark-arisen-every-obelisk-location-and-new-vocation-skill/">AllThings.How — 恩寵石塔位置與屬性強化</a>、<a href="https://allthings.how/a-hound-and-his-bone-walkthrough-finding-skoll-in-dragon-s-dogma-2-dark-arisen/">AllThings.How — A Hound and His Bone</a>、<a href="https://www.videogameschronicle.com/guide/dd2-dark-arisen-treat-for-the-hounds-a-direwolf-delicacy-quest-guide/">VGC — A Direwolf Delicacy</a>、<a href="https://hardcoregamer.com/dragons-dogma-2-dark-arisen-beorcans-twinned-key/">Hardcore Gamer — Beorcan's Twinned Key</a>、<a href="https://game8.co/games/Dragons-Dogma-2/archives/630970">Game8 — Treatise on Advertence</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Treatise+on+Advertence">Fextralife — Treatise on Advertence</a></li>
+    <li>資料片被動與狼犬：<a href="https://allthings.how/?p=262293">AllThings.How — Dark Arisen 被動與第 7 格</a>、<a href="https://allthings.how/dragon-s-dogma-2-dark-arisen-the-five-new-augments-and-a-seventh-augment-slot/">AllThings.How — 5 個新能力與第 7 格</a>、<a href="https://allthings.how/how-to-get-and-upgrade-the-evil-eye-weapon-in-dragon-s-dogma-2-dark-arisen/">AllThings.How — Molten Gauntlet 戰利品（Generosity）</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Obelisk_of_Benediction">Fextralife — Obelisk of Benediction</a>、<a href="https://allthings.how/dragon-s-dogma-2-dark-arisen-every-obelisk-location-and-new-vocation-skill/">AllThings.How — 恩寵石塔位置與屬性強化</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Special_Skills">Fextralife — Special Skills（遺物特殊技能）</a>、<a href="https://allthings.how/dragon-s-dogma-2-dark-arisen-every-relic-special-skill-and-what-it-does/">AllThings.How — 遺物特殊技能一覽</a>、<a href="https://www.gamerfuzion.com/dragons-dogma-2-dark-arisen-relic-appraisal-costs-jiera-explained/">GamerFuzion — 遺物鑑定費用實測</a>、<a href="https://allthings.how/a-hound-and-his-bone-walkthrough-finding-skoll-in-dragon-s-dogma-2-dark-arisen/">AllThings.How — A Hound and His Bone</a>、<a href="https://www.videogameschronicle.com/guide/dd2-dark-arisen-treat-for-the-hounds-a-direwolf-delicacy-quest-guide/">VGC — A Direwolf Delicacy</a>、<a href="https://hardcoregamer.com/dragons-dogma-2-dark-arisen-beorcans-twinned-key/">Hardcore Gamer — Beorcan's Twinned Key</a>、<a href="https://game8.co/games/Dragons-Dogma-2/archives/630970">Game8 — Treatise on Advertence</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Treatise+on+Advertence">Fextralife — Treatise on Advertence</a></li>
     <li>地圖與探索：<a href="https://game-maps.com/DD2/dd2-world-map.asp">Game-Maps — 世界地圖分區</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Locations">Fextralife — Locations</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Vernworth+Castle+Vault">Vernworth Castle Vault</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Ancient+Battleground">Ancient Battleground</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dragonsbreath+Tower">Dragonsbreath Tower</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Drabnir's+Grotto">Drabnir's Grotto</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Mountain+Base+Cave">Mountain Base Cave</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Seafloor+Shrine">Seafloor Shrine</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Medusa">Medusa</a>、<a href="https://www.gamerguides.com/dragons-dogma-2/guide/exploration/caves/how-to-reach-battahl-early-guerco-cave-walkthrough">GamerGuides — Guerco Cavern</a>、<a href="https://www.pcgamesn.com/dragons-dogma-2/map">PCGamesN — 地圖與城鎮</a></li>
     <li>裝備與道具：<a href="https://dragonsdogma2.wiki.fextralife.com/The+Dragonforged">Fextralife — The Dragonforged</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Weapons">Fextralife — Weapons</a> 及各武器頁（各職業前中後期武器的取得地點與價格）、<a href="https://www.sportskeeda.com/esports/how-get-overpowered-early-dragon-s-dogma-2">Sportskeeda — 前期裝備</a>、<a href="https://samurai-gamers.com/dragons-dogma-2/dd2-best-weapons-for-each-vocation/">Samurai Gamers — 各職業最強武器</a>、<a href="https://videogames.si.com/guides/dragons-dogma-2-best-weapons">SI — Best weapons</a>、<a href="https://primagames.com/gaming/the-7-best-hidden-items-you-must-find-in-dragons-dogma-2">Prima Games — 7 個隱藏好物</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Rings">Fextralife — Rings</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Seeker's+Token">Fextralife — Seeker's Token</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Eternal+Wakestone">Fextralife — Eternal Wakestone</a>、<a href="https://www.powerpyx.com/dragons-dogma-2-all-sphinx-riddles-solutions/">PowerPyx — 獅身人面全謎題</a>、<a href="https://www.ggrecon.com/guides/dragons-dogma-2-golden-trove-beetle-locations-map/">GGRecon — 黃金寶甲蟲</a></li>
     <li>大型魔物打法：Fextralife 各魔物頁（<a href="https://dragonsdogma2.wiki.fextralife.com/Cyclops">Cyclops</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Ogre">Ogre</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Grim+Ogre">Grim Ogre</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Golem">Golem</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Griffin">Griffin</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Chimera">Chimera</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Minotaur">Minotaur</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Drake">Drake</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Lesser+Dragon">Lesser Dragon</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dullahan">Dullahan</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Lich">Lich</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Wight">Wight</a>、<a href="https://dragonsdogma2.wiki.fextralife.com/Dragon">Dragon</a>）、<a href="https://gamingbolt.com/dragons-dogma-2-guide-all-boss-fights-and-best-strategies-to-beat-them">GamingBolt — 頭目打法</a></li>
@@ -1318,6 +1350,145 @@ phys:["猛擊","Vitality","Endurance","Exaltation","Mettle","迅步"],
 mag:["Sagacity","Catalysis","Constancy","Endurance","Exaltation","Apotropaism"],
 pawn:["Ascendancy","Sustainment","Vitality","Endurance","Exaltation","Apotropaism"]
 };
+// 遺物特殊技能：[名稱, 分類 adv/cmb/oth, 職業 id（adv 才有）, 效果, 階數]
+var RELIC=[
+["Plenilune Slash","adv","fighter","Full Moon Slash 進化：多一段旋轉連斬，最後橫掃收尾"],
+["Eviscerating Skewer","adv","fighter","Gutting Skewer 進化：刺得更多更快，可把小型敵人釘住"],
+["Punishing Counter","adv","fighter","Vengeful Slash 進化：反擊後把小型敵人打上天"],
+["Tornadic Strike","adv","fighter","Hurricane Strike 進化：範圍與傷害更大"],
+["Myriad Shot","adv","archer","Manifold Shot 進化：射出更多箭"],
+["Stampede Shot","adv","archer","Cascade Shot 進化：射出更多箭"],
+["Corkscrew Arrow","adv","archer","Spiral Arrow 進化：命中次數更多，箭最後會爆炸"],
+["Cataract Shot","adv","archer","Tempest Shot 進化：射速更快，最後一箭威力強"],
+["Eagle Arrow","adv","archer","Kite Arrow 進化：射出更多箭"],
+["Fire Pact","adv","mage","Fire Affinity 進化：火屬性附魔改成全隊一起附"],
+["Ice Pact","adv","mage","Ice Affinity 進化：冰屬性附魔改成全隊一起附"],
+["Lightning Pact","adv","mage","Lightning Affinity 進化：雷屬性附魔改成全隊一起附"],
+["Grand Halidom","adv","mage","High Halidom 進化：可一次解除隊友多種異常狀態"],
+["Argent Solace","adv","mage","Argent Succor 進化：體力回復持續更久，耐力回復更快"],
+["Grand Spellhold","adv","mage","High Spellhold 進化：儲存魔法時耐力回復不變慢、也不額外耗耐力（巫師也有同名技能）"],
+["Deific Bolt","adv","mage","Exalted Bolt 進化：神靈與光彈更多，而且會貫穿"],
+["Shearing Wind","adv","thief","Cutting Wind 進化：第二擊更強，按住可壓制目標"],
+["Effortless Kill","adv","thief","Masterful Kill 進化：追加攻擊次數，反擊判定時間更長"],
+["Detonate and Dash","adv","thief","Draw and Quarter 進化：抽身時引爆，把自己彈開"],
+["Powder Barrage","adv","thief","Powder Blast 進化：爆炸更多，昏厥累積更高"],
+["Fanged Rupture","adv","thief","Fanged Rift 進化：爆炸更多、傷害更高"],
+["Ravening Coil","adv","warrior","Ravening Lunge 進化：把敵人撞牆的傷害更高，衝鋒中可接旋轉斬"],
+["Razing Ruin","adv","warrior","Razing Sweep 進化：追加斬擊"],
+["Diluvian Tremor","adv","warrior","Diluvian Strike 進化：砸地產生衝擊波，把小型敵人打上天"],
+["Tidal Rage","adv","warrior","Tidal Wrath 進化：斬擊更多、耗耐力更少、反擊判定時間更長"],
+["Titanic Cleave","adv","warrior","Steel Cleave 進化：追加上挑斬，命中數與傷害更高"],
+["Grand Salamander","adv","sorcerer","High Salamander 進化：可把小型敵人打上天，地上留下火焰"],
+["Grand Hagol","adv","sorcerer","High Hagol 進化：追加冰片，凍傷與冰封持續更久"],
+["Grand Decanter","adv","sorcerer","High Decanter 進化：吸取周圍敵人的體力，並回復灰血"],
+["Grand Spellhold","adv","sorcerer","High Spellhold 進化：儲存魔法時耐力回復不變慢、也不額外耗耐力（法師也有同名技能）"],
+["Grand Seism","adv","sorcerer","High Seism 進化：岩石噴發更多，留下可以撿起來丟的大石"],
+["Grand Brontide","adv","sorcerer","High Brontide 進化：傷害更高，連續揮鞭會越來越快"],
+["Dragoun's Pounce","adv","spearhand","Dragoun's Foin 進化：命中後可以連續施放"],
+["Skiedragoun's Edacite","adv","spearhand","Skiedragoun's Feste 進化：俯衝後的衝擊波範圍更大"],
+["Seching Flete","adv","spearhand","Seching Storm 進化：飛刃更多而且會貫穿"],
+["Magike Sperebaliste","adv","spearhand","Magike Speregonne 進化：傷害更高，爆炸波會把敵人打上天"],
+["Glacial Bolt","adv","marcher","Arctic Bolt 進化：蓄力更快，蓄滿會貫穿"],
+["Shockchain Stake","adv","marcher","Boltchain Stake 進化：昏厥累積更高"],
+["Fortifying Arrow","adv","marcher","Recovery Arrow 進化：可治療或復活更多隨從，並暫時提升防禦"],
+["Sagittate Whiteout","adv","marcher","Sagittate Avalanche 進化：連按可持續射出魔法箭"],
+["Shadesnare Bolt","adv","marcher","Shadefetter Bolt 進化：命中時讓周圍敵人變慢"],
+["Figmental Facade","adv","trickster","Illusive Divider 進化：最多同時立三道牆"],
+["Beguiling Bridge","adv","trickster","Tricky Terrace 進化：最多同時三座平台"],
+["Dwelling Effigy","adv","trickster","Binding Effigy 進化：沒有幻影也能施放，附身期間體力提升"],
+["Pungent Alarum","adv","trickster","Fragrant Alarum 進化：還能偵測稀有道具、巨龍附身的隨從和恩寵石塔"],
+["Gliding Gauze","adv","trickster","Vitalizing Vapor 進化：幻影的體力暫時不會減少"],
+["Health Boost","cmb","","體力上限提升","I–III"],
+["Stamina Boost","cmb","","耐力上限提升","I–III"],
+["Battle Frenzy","cmb","","造成和受到的傷害都提升","I–IV"],
+["Swift Strike","cmb","","蓄力攻擊蓄得更快","I–II"],
+["Fire Resistance","cmb","","火屬性抗性提升","I–II"],
+["Ice Resistance","cmb","","冰屬性抗性提升","I–II"],
+["Lightning Resistance","cmb","","雷屬性抗性提升","I–II"],
+["Slashing Resistance","cmb","","斬擊抗性提升","I–II"],
+["Striking Resistance","cmb","","打擊抗性提升","I–II"],
+["Fiendish Ward","cmb","","邪惡生物對你造成的魔法傷害降低","I–III"],
+["Beast Counter","cmb","","對狼、食人魔、牛頭人、巨人、奇美拉傷害提升","I–II"],
+["Humanoid Counter","cmb","","對獨眼巨人、哥布林、流浪者、Beorcan 傷害提升","I–II"],
+["Saurian Counter","cmb","","對蜥蜴人類敵人傷害提升","I–II"],
+["Winged Beast Counter","cmb","","對獅鷲、哈比傷害提升","I–II"],
+["Demon Counter","cmb","","對惡魔傷害提升","I–III"],
+["Spirit Counter","cmb","","對靈體等非人世的存在傷害提升","I–II"],
+["Abomination Counter","cmb","","對 Abomination（異形）類敵人傷害提升","I–III"],
+["Corrupted Foe Counter","cmb","","對被 Brine 侵蝕的敵人傷害提升","I–III"],
+["Adventurous Appetite","oth","","吃道具不會中毒；部分道具還會回血，並少量治療附近隊友"],
+["Aggressive Recovery","oth","","攻擊有機率回復體力（機率與回復量依武器種類）"],
+["Airborne Reflexes","oth","","在空中被打時傷害降低"],
+["Animated Recovery","oth","","從睡眠、冰封、昏厥中更快恢復"],
+["Arcane Wisdom","oth","","魔導書有機率造成大量傷害；書本的附魔效果擴及全隊"],
+["Battering Shield","oth","","盾牌攻擊的傷害大幅提升"],
+["Blighted Retort","oth","","攻擊時附加中毒累積（觸發條件和「Blighted」狀態有關，兩站說法不同）"],
+["Blighting Strike","oth","","每次命中附加 Blighted 累積（依武器種類）"],
+["Bolstered Outset","oth","","戰鬥開始時短暫提升物防與魔防"],
+["Breakneck Toss","oth","","Tusk Toss 蓄力更快、傷害更高"],
+["Breath Resistance","oth","","受到吐息攻擊的傷害與異常降低"],
+["Carnivore","oth","","吃肉後短時間內不消耗耐力"],
+["Chaotic Strike","oth","","物理攻擊有機率造成冰封、著火、睡眠或沉默"],
+["Climber's Agility","oth","","攀爬敵人或牆面時耗耐力較少"],
+["Critical Shot","oth","","用弓打弱點傷害更高（只限弓）"],
+["Cushioned Fall","oth","","摔落傷害大幅降低"],
+["Debilitating Bolts","oth","","魔弓的昏厥、著火、冰封累積更高（只限魔弓）"],
+["Deflect Strike","oth","","完美格擋（True Deflect）後的下一擊傷害更高"],
+["Deflected Impact","oth","","完美格擋會反傷攻擊者"],
+["Desperate Evasion","oth","","主角倒地或爬行時，敵人的攻擊會分散到隊友身上"],
+["Elusive","oth","","被束縛時更快掙脫"],
+["Endless Caper","oth","","助跑跳躍不耗耐力"],
+["Enduring Defense","oth","","舉盾防禦耗耐力較少"],
+["Enduring Grip","oth","","抓住或攀附敵人時耗耐力較少"],
+["Enhanced Burst","oth","","Bursting Bolt 擊倒力提升；強化版再加傷害"],
+["Enhanced Jump","oth","","跳得更高；有機率提升遠程或空中的物理傷害（不含魔法）"],
+["Equanimity","oth","","失衡或踉蹌時，連續受到的傷害逐次降低"],
+["Extended Burst","oth","","Magike Cut 的魔力爆發傷害與距離提升"],
+["Extended Dash","oth","","衝刺耗耐力較少"],
+["Extended Recovery","oth","","Anodyne 回復體力的時間延長"],
+["Forceful Strikes","oth","","擊倒力提升"],
+["Fortified Invocation","oth","","詠唱時受到的傷害較少、較不易被打倒"],
+["Frosted Edge","oth","","武器附上冰屬性"],
+["Frozen Soul","oth","","冰雹無效、有機率抵銷魔法傷害；龍族傷害降低；攻擊你的敵人冰凍累積增加"],
+["Full Bend","oth","","Puncture Dart 傷害提升"],
+["Full Thermal","oth","","體溫值固定為 100（不怕冷）"],
+["Gigantus's Vim","oth","","耐力上限大幅提升，但造成的魔法傷害大幅降低、受到的魔法傷害增加"],
+["Hailproof","oth","","冰雹傷害無效"],
+["Hill Strider","oth","","在陡坡上移動速度不減"],
+["Homing Instinct","oth","","暴風雪中也能用 Ferrystone 傳送"],
+["Ice Elemental","oth","","體溫 100、冰魔法傷害提升；冰雹或暴風雪中物防大幅提升"],
+["Imperiled Reflexes","oth","","失衡或踉蹌時有機率立刻恢復"],
+["Improved Efficacy","oth","","回復體力／耐力的道具效果略微提升"],
+["Improved Empale","oth","","Empale 傷害提升"],
+["Improved Odds","oth","","被 5 隻以上敵人包圍時物防提升"],
+["Intact Fortitude","oth","","體力全滿時受到的傷害降低"],
+["Knockout Strike","oth","","攻擊有機率讓敵人昏厥（機率依武器種類）"],
+["Leaping Strike","oth","","跳躍中的普通攻擊傷害提升"],
+["Mighty Chain","oth","","Mighty Sweep 傷害提升，搭配 Chain of Blows 可接更多段"],
+["Molten Spirit","oth","","體溫 100、冰雹無效、火焰傷害無效，但受到的雷傷增加"],
+["Moribund Frenzy","oth","","體力低於一定比例時，各項數值大幅提升一段時間"],
+["Moribund Recovery","oth","","爬行或瀕死時恢復更快"],
+["Nimble Tread","oth","","拿匕首攀爬更快"],
+["Perdurable Illusion","oth","","自己放的幻影更耐打"],
+["Phantasmal Tome","oth","","魔導書用完有機率不消耗（只限香爐）"],
+["Piercing Escalade","oth","","攀附在敵人身上時傷害提升（只限匕首）"],
+["Precipitate Revival","oth","","主角被打倒時有機率立刻復活"],
+["Prone Defense","oth","","倒地或爬行時受到的傷害減半"],
+["Provoking Aura","oth","","敵人更容易鎖定主角"],
+["Relic Hunter","oth","","打倒敵人有機率多掉一個遺物（寶箱不算）"],
+["Resilient","oth","","受到超過體力上限的致命一擊時，留一絲體力不死"],
+["Restorative Bolts","oth","","魔弓手技能的體力回復量提升"],
+["Riotous Magick","oth","","魔法傷害有機率大幅提升"],
+["Shadowbound","oth","","夜晚或黑暗中物防提升，在光亮處降低"],
+["Siege Hardened","oth","","受傷後短暫提升物防，不可疊加"],
+["Snatching-Beast's Foil","oth","","負重降一級，道具也不會被偷；強化版降兩級"],
+["Spectral Feint","oth","","體力上限降低，但有機率抵銷物理傷害"],
+["Survival Instinct","oth","","灰血累積大幅變慢"],
+["Thawing Shield","oth","","用盾擋住冰吐息時不會凍傷或冰封"],
+["Vertiginous Strike","oth","","Winding Cut 轉到最快時，收尾傷害提升"],
+["Wicked Knight","oth","","近戰蓄力攻擊更快、邪惡生物的傷害降低；強化版再提升蓄力傷害與速度"],
+["Wind Rider","oth","","順風跳得更遠、空中傷害提升，逆風無效"]
+];
 // 排行
 var TIER={
 t26:{S:["warfarer","thief","spearhand"],A:["warrior","fighter","marcher"],B:["archer","sorcerer","mage"],C:["trickster"],D:[]},
@@ -1861,6 +2032,25 @@ ClashandConclusion:["神的守護者後段爬月光塔追法茲斯時，Raghnall
   vb.forEach(function(b){b.addEventListener("click",function(){pressGroup(vb,b);gV=b.dataset.v;renderGear()})});
   $("#gearSearch").addEventListener("input",function(e){gQ=e.target.value;renderGear()});
   renderGear();
+
+  // relic special skills
+  var rT="all",rQ="",RTYPE={adv:'<span class="tag t-blue">武器技能進化</span>',cmb:'<span class="tag t-ok">被動</span><span class="en">戰鬥與抗性</span>',oth:'<span class="tag t-ok">被動</span><span class="en">其他</span>'};
+  function renderRelic(){
+    var q=rQ.trim().toLowerCase();
+    var list=RELIC.filter(function(r){
+      var voc=r[2]?VMAP[r[2]].zh:"全職業";
+      return (rT==="all"||r[1]===rT)&&(!q||(r[0]+r[3]+voc).toLowerCase().indexOf(q)>-1);
+    });
+    $("#relicTable tbody").innerHTML=list.map(function(r){
+      var type=RTYPE[r[1]]+(r[2]?'<span class="en">'+VMAP[r[2]].zh+'</span>':'');
+      return '<tr><td><b>'+esc(r[0])+'</b>'+(r[4]?' <span class="tag t-gold">'+r[4]+'</span>':'')+'<div class="rt-m">'+type+'</div></td><td class="rt-d">'+type+'</td><td>'+esc(r[3])+'</td></tr>';
+    }).join("")||'<tr><td colspan="3" class="muted">沒有符合的技能</td></tr>';
+    $("#relicCount").textContent="共 "+list.length+" 個";
+  }
+  var rb=$$("#relicType button");
+  rb.forEach(function(b){b.addEventListener("click",function(){pressGroup(rb,b);rT=b.dataset.r;renderRelic()})});
+  $("#relicSearch").addEventListener("input",function(e){rQ=e.target.value;renderRelic()});
+  renderRelic();
 
   // checklist
   var boxes=$$("#checkList input");

@@ -1,0 +1,47 @@
+name: 發布網站（加密）
+
+# 網站不再直接拿 repo 發佈：先把 index.html 加密成密碼頁，再交給 GitHub Pages。
+# notes/（收藏筆記）本來就是加密頁，原樣帶過去。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install cryptography==43.0.3
+
+      - name: 打包並加密 index.html
+        env:
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: |
+          mkdir _site
+          git ls-files -z | grep -zv '^\.github/' | xargs -0 cp --parents -t _site
+          python .github/seal.py index.html _site/index.html --store dd2-guide-key
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
